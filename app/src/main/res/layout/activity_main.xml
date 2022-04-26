@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="100dp"
+    tools:context=".MainActivity">
+
+<CheckBox
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Harry potter"
+    android:id="@+id/checkboxHarry"
+    android:checked="true"
+    />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Star Wars"
+        android:id="@+id/checkboxStarwar"
+        android:checked="true"
+        android:layout_toRightOf="@+id/checkboxHarry"
+        />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The Joker"
+        android:id="@+id/checkboxJoker"
+        android:checked="false"
+        android:layout_below="@+id/checkboxHarry"
+        />
+
+
+</RelativeLayout>
