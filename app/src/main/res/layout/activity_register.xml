@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Register">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,9 +46,23 @@
         android:layout_marginBottom="10dp"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etPassword"
+        android:inputType="textPassword"
+        android:layout_marginBottom="10dp"
+
+        />
     <Button
-        android:id="@+id/bntLogout"
-        android:text="Logout"
+        android:id="@+id/btnRegister"
+        android:text="Register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>
