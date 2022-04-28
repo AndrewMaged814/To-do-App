@@ -3,42 +3,80 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
-    Button btRegister;
-    EditText etName, etUsername,etAge, etPassword;
+    private Button btRegister;
+    private EditText etName, etUsername, etAge, etPassword;
+    private UserLocalStore userLocalStore;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        etName = (EditText) findViewById(R.id.etName);
-        etUsername = (EditText) findViewById(R.id.etUsername);
-        etAge = (EditText) findViewById(R.id.etAge);
-        etPassword = (EditText) findViewById(R.id.etPassword);
-        btRegister = (Button) findViewById(R.id.btnRegister);
+        etName = findViewById(R.id.etName);
+        etUsername = findViewById(R.id.etUsername);
+        etAge = findViewById(R.id.etAge);
+        etPassword = findViewById(R.id.etPassword);
+        btRegister = findViewById(R.id.btnRegister);
         btRegister.setOnClickListener(this);
+        userLocalStore = new UserLocalStore(Register.this);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btnRegister:
-                String name = etName.getText().toString();
-                String Username = etUsername.getText().toString();
-                String pasword = etPassword.getText().toString();
-                int age = Integer.parseInt(etAge.getText().toString());
-                User user = new User(name,Username,pasword,age);
+        if (view.getId() == R.id.btnRegister) {
+            String name = etName.getText().toString();
+            String Username = etUsername.getText().toString();
+            String password = etPassword.getText().toString();
+            String age = etAge.getText().toString();
+            if (validateCheck(name, Username, password, age)) {
+                User user = new User(name, Username, password, age);
                 registerUser(user);
-                break;
+            }
         }
     }
 
+
+    private boolean validateCheck(String name, String username, String password, String age) {
+        if(name.isEmpty()){
+            etName.setError("full name is required");
+            etName.requestFocus();
+            return false;
+        }
+        if(age.isEmpty()){
+            etAge.setError("Age is required ");
+            etAge.requestFocus();
+            return false;
+        }
+        if(username.isEmpty()){
+            etUsername.setError("Username is required");
+            etUsername.requestFocus();
+            return false;
+        }
+        if(password.isEmpty()){
+            etPassword.setError("password is required");
+            etPassword.requestFocus();
+            return false;
+        }
+        if(password.length() < 6){
+            etPassword.setError("Min password length should be 6 characters");
+            etPassword.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
+
     private void registerUser(User user) {
-        startActivity(new Intent(this,MainActivity.class));
+        userLocalStore.storeUserData(user);
+        Toast.makeText(Register.this, "Registered successfully!", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(this, Login.class));
     }
 }

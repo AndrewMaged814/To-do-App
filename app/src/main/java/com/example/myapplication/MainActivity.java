@@ -3,30 +3,27 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btLogout;
-    EditText etName, etUsername,etAge;
-    UserLocalStore userLocalStore;
+    private Button btLogout;
+    private EditText etName, etUsername, etAge;
 
+    private UserLocalStore userLocalStore;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        etName = (EditText) findViewById(R.id.etName);
-        etUsername = (EditText) findViewById(R.id.etUsername);
-        etAge = (EditText) findViewById(R.id.etAge);
-        btLogout = (Button) findViewById(R.id.bntLogout);
+        etName = findViewById(R.id.etName);
+        etUsername = findViewById(R.id.etUsername);
+        etAge = findViewById(R.id.etAge);
+        btLogout = findViewById(R.id.bntLogout);
         btLogout.setOnClickListener(this);
         userLocalStore = new UserLocalStore(this);
 
@@ -36,12 +33,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
-        if(authenticate() == true){
+        if (authenticate() == true) {
             displayUserDetails();
-        }
-        else
-            startActivity(new Intent(this,Login.class));
-
+        } else
+            startActivity(new Intent(this, Login.class));
 
     }
 
@@ -54,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //this will return true if the user is logged in
-    private boolean authenticate(){
+    private boolean authenticate() {
         return userLocalStore.getUserLoggedIn();
 
     }
@@ -62,18 +57,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.bntLogout:
-                //when user logs out clear data
-                userLocalStore.clearUserData();
-                userLocalStore.setUserLoggedIn(false);
-                startActivity(new Intent(this,Login.class));
-                break;
+        if (view.getId() == R.id.bntLogout) {
+            //when user logs out clear data
+            // userLocalStore.logout();
+            userLocalStore.setUserLoggedIn(false);
+            startActivity(new Intent(this, Login.class));
+        }
     }
-}
-
-
-
 
 
 }

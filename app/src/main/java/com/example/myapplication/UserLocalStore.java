@@ -9,51 +9,68 @@ public class UserLocalStore {
     /* the name we need to provide the name of
     the file where the user details will be
     stored when they've logged in */
-    public static final String SP_NAME= "userDetails";
+    public static final String USER_DETAILS = "userDetails";
+
+    private static final String IS_LOGIN = "IsLoggedIn";
+
+    public static final String KEY_NAME = "name";
+    public static final String KEY_AGE = "age";
+    public static final String KEY_USERNAME = "username";
+    public static final String KEY_PASSWORD = "password";
+    public static final String KEY_Rememberme= "rememberMe";
 
     //SharedPreferences allows data to be stored locally in a file
     SharedPreferences userLocalDatabase;
+    SharedPreferences.Editor editor;
+    Context context;
 
     //SharedPreferences need to know where the app is located
     // and the only way to know that by a Context.
-    public UserLocalStore (Context context) {
-        userLocalDatabase = context.getSharedPreferences(SP_NAME,0);
+    public UserLocalStore(Context context) {
+        this.context = context;
+        userLocalDatabase = context.getSharedPreferences(USER_DETAILS, 0);
+        editor = userLocalDatabase.edit();
 
     }
-    public void storeUserData(User user){
-        //this allows to edit what is stored
-        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
-        spEditor.putInt("age", user.age);
-        spEditor.putString("name", user.name);
-        spEditor.putString("username", user.username);
-        spEditor.putString("password", user.password);
-        spEditor.commit();
+
+    public void storeUserData(User user) {
+        editor.putString(KEY_AGE, user.age);
+        editor.putString(KEY_NAME, user.name);
+        editor.putString(KEY_USERNAME, user.username);
+        editor.putString(KEY_PASSWORD, user.password);
+        editor.putBoolean(KEY_Rememberme, true);
+        editor.commit();
     }
+
     //gets data of the current user which is logged on
-    public User getLoggedInUser(){
-        String name = userLocalDatabase.getString("name","");
-        int age = userLocalDatabase.getInt("age",-1);
-        String username = userLocalDatabase.getString("username","");
-        String password = userLocalDatabase.getString("password","");
+    public User getLoggedInUser() {
+        String name = userLocalDatabase.getString("name", "");
+        String age = userLocalDatabase.getString("age", "");
+        String username = userLocalDatabase.getString("username", "");
+        String password = userLocalDatabase.getString("password", "");
 
-        return new User(name,username,password,age);
+        return new User(name, username, password, age);
     }
+
+
     //if the user is logged in loggedIn is set to true otherwise false
-    public void setUserLoggedIn(Boolean loggedIn){
-        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
-        spEditor.putBoolean("loggedIn",loggedIn);
-        spEditor.commit();
+
+    public void setUserLoggedIn(boolean loggedIn) {
+        editor.putBoolean(IS_LOGIN, loggedIn);
+        editor.commit();
+
     }
-    public boolean getUserLoggedIn(){
-        if(userLocalDatabase.getBoolean("loggedin",false)==true)
+
+    public boolean getUserLoggedIn() {
+        if (userLocalDatabase.getBoolean(IS_LOGIN, false))
             return true;
         else
             return false;
     }
-    public void clearUserData(){
-        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
-        spEditor.clear();
-        spEditor.commit();
+
+    public void logout() {
+        editor.clear();
+        editor.apply();
     }
 
 }

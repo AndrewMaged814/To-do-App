@@ -5,7 +5,8 @@
       <map>
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/drawable/roundbutton.xml" value="0.1915" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/font/josefinslabbold.xml" value="0.23541666666666666" />
-        <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_login.xml" value="0.20520833333333333" />
+        <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_home.xml" value="0.165625" />
+        <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_register.xml" value="0.20520833333333333" />
       </map>
