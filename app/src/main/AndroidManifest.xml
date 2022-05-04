@@ -9,7 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-
+        <activity
+            android:name=".pomodoroTimer"
+            android:exported="false" />
+        <activity
+            android:name=".ShowTaskDetails"
+            android:exported="false" />
+        <activity
+            android:name=".Today"
+            android:exported="false" />
+        <activity
+            android:name=".PersonalityTest"
+            android:exported="false" />
         <activity
             android:name=".Register"
             android:exported="false" />
@@ -17,7 +28,7 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

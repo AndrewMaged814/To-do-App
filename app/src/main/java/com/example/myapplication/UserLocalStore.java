@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 // this class allows us to store user data on a file
 
 public class UserLocalStore {
-    /* the name we need to provide the name of
+    /*we need to provide the name of
     the file where the user details will be
     stored when they've logged in */
     public static final String USER_DETAILS = "userDetails";
@@ -17,7 +17,7 @@ public class UserLocalStore {
     public static final String KEY_AGE = "age";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_PASSWORD = "password";
-    public static final String KEY_Rememberme= "rememberMe";
+
 
     //SharedPreferences allows data to be stored locally in a file
     SharedPreferences userLocalDatabase;
@@ -38,7 +38,6 @@ public class UserLocalStore {
         editor.putString(KEY_NAME, user.name);
         editor.putString(KEY_USERNAME, user.username);
         editor.putString(KEY_PASSWORD, user.password);
-        editor.putBoolean(KEY_Rememberme, true);
         editor.commit();
     }
 
@@ -66,6 +65,7 @@ public class UserLocalStore {
             return true;
         else
             return false;
+
     }
 
     public void logout() {

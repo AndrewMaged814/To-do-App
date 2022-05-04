@@ -6,34 +6,36 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-//TODO implement remember me checkbox
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 //view.OnClickListener allows clicks to make actions
 public class Login extends AppCompatActivity implements View.OnClickListener {
-    private Button btLogin;
     private EditText etUsername, etPassword;
-    private TextView registerLink;
     private UserLocalStore userLocalStore;
-    CheckBox cbRememberMe;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btLogin = findViewById(R.id.btLogin);
+        Button btLogin = findViewById(R.id.btLogin);
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
-        registerLink = findViewById(R.id.tvRegisterLink);
-        cbRememberMe = findViewById(R.id.cbRememberme);
+        TextView registerLink = findViewById(R.id.tvRegisterLink);
 
         btLogin.setOnClickListener(this);
         registerLink.setOnClickListener(this);
         userLocalStore = new UserLocalStore(Login.this);
+
+
     }
+
 
     //when a button gets clicks this method gets invoked
     @Override
@@ -49,8 +51,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     userLocalStore.setUserLoggedIn(true);
                     authenticate(user);
                 }
-                }else {
-                    Toast.makeText(Login.this, "You need to register first", Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.tvRegisterLink:
@@ -64,16 +64,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private boolean validateLogin(String username, String password) {
         if (username.isEmpty()) {
+            YoYo.with(Techniques.Bounce).duration(700).repeat(1).playOn(etUsername);
             etUsername.setError("Username is required");
             etUsername.requestFocus();
             return false;
         }
         if (password.isEmpty()) {
+            YoYo.with(Techniques.Bounce).duration(700).repeat(1).playOn(etPassword);
             etPassword.setError("password is required");
             etPassword.requestFocus();
             return false;
         }
         if (password.length() < 6) {
+            YoYo.with(Techniques.Bounce).duration(700).repeat(1).playOn(etPassword);
             etPassword.setError("Min password length should be 6 characters");
             etPassword.requestFocus();
             return false;
@@ -86,7 +89,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         if (user.username.equals(userRegistered.username) && user.password.equals(userRegistered.password)) {
             Toast.makeText(Login.this, "Logged in successfully!", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this, MainActivity.class));
+            //change this to home.class
+            startActivity(new Intent(this, Home.class));
         } else {
             Toast.makeText(Login.this, "Incorrect Username or password", Toast.LENGTH_LONG).show();
 

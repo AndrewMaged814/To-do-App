@@ -32,13 +32,8 @@ tools:context=".Login">
         android:id="@+id/etPassword"
         android:inputType="textPassword"
         android:layout_marginBottom="10dp"
-
         />
-    <CheckBox
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Remember me"
-        android:id="@+id/cbRememberme" />
+
     <Button
         android:id="@+id/btLogin"
         android:text="Login"

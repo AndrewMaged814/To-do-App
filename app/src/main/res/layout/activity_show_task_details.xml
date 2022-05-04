@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShowTaskDetails"
+    android:background="@color/grey">
+
+
+    <TextView
+        android:id="@+id/tvTaskNameClick"
+        android:layout_width="345dp"
+        android:layout_height="127dp"
+        android:layout_marginTop="36dp"
+        android:text="Task name"
+        android:textColor="@color/white"
+        android:textSize="44sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTaskDescription"
+        android:layout_width="312dp"
+        android:layout_height="159dp"
+        android:layout_marginTop="36dp"
+        android:text="Task description"
+        android:textSize="25sp"
+        android:textStyle="italic"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.275" />
+
+    <Button
+        android:id="@+id/btEditTaskDescription"
+        android:layout_width="34dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="44dp"
+        android:background="@drawable/ic_baseline_edit_24"
+        android:backgroundTint="@color/white"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTaskDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.971"
+        app:layout_constraintStart_toStartOf="@+id/tvTaskDescription"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.619" />
+
+    <Button
+        android:id="@+id/startTask"
+        android:layout_width="129dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="86dp"
+        android:layout_marginBottom="164dp"
+        android:background="@color/white"
+        android:text="Start Task"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etTaskDescription"
+        app:layout_constraintStart_toStartOf="@+id/etTaskDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvTaskDescription"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btEditTaskDescriptionDone"
+        android:layout_width="35dp"
+        android:layout_height="36dp"
+        android:background="@drawable/ic_baseline_done_24"
+        android:backgroundTint="@color/white"
+        android:padding="5dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.861"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.536"
+        app:tint="@color/grey" />
+
+    <EditText
+        android:id="@+id/etTaskDescription"
+        android:layout_width="312dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        android:hint="Description"
+        android:textColorHint="@color/white"
+        android:textSize="25sp"
+        android:textStyle="italic"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/startTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTaskDescription"
+        app:layout_constraintVertical_bias="0.142" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,7 +58,19 @@
         android:id="@+id/etPassword"
         android:inputType="textPassword"
         android:layout_marginBottom="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm Password"
 
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etConfirmPassword"
+        android:inputType="textPassword"
+        android:layout_marginBottom="10dp"
         />
     <Button
         android:id="@+id/btnRegister"

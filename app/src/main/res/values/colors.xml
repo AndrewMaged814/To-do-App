@@ -20,4 +20,12 @@
     <color name="colorCyanBlue">#0B9BE2</color>
     <color name="colorMidBlue">#032B3F</color>
     <color name="colorCoinBackground">#01242b</color>
+    <color name="tanAccent">#e3cbd3</color>
+    <color name="blueBlack">#111f28</color>
+    <color name="blue">#2F3C7E</color>
+    <color name="pink">#FBEAEB</color>
+    <color name="SkyBlue">#87CEEB</color>
+    <color name="grey">#322e2f</color>
+
+
 </resources>
