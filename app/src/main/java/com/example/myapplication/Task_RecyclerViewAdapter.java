@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,14 +15,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_RecyclerViewAdapter.MyViewHolder> {
     private final RecyclerViewInterface recyclerViewInterface;
     Context context;
     public static ArrayList<TaskModel> taskModelArrayList;
-
+    int row_index=-1;
     public Task_RecyclerViewAdapter(Context context, ArrayList<TaskModel> taskModelArrayList,RecyclerViewInterface recyclerViewInterface){
         this.context = context;
         Task_RecyclerViewAdapter.taskModelArrayList = taskModelArrayList;
@@ -51,6 +55,7 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
         boolean isChecked = taskModelArrayList.get(position).isTaskDone();
         holder.cbDone.setChecked(isChecked);
 
+
     }
 
     @Override
@@ -65,6 +70,7 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
         ImageView imageView;
         TextView tvName;
         CheckBox cbDone;
+
         private final static String TAG = "TASK APP";
 
         public MyViewHolder(@NonNull View itemView,RecyclerViewInterface recyclerViewInterface) {
@@ -72,7 +78,6 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
 
             imageView = itemView.findViewById(R.id.imageView);
             tvName = itemView.findViewById(R.id.tvTaskName);
-
             cbDone = itemView.findViewById(R.id.cbDone);
             cbDone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -84,12 +89,10 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
                         if (cbDone.isChecked()) {
                             tvName.setText(Html.fromHtml("<strike>" + taskName + "</strike>"));
                             task.setTaskDone(true);
-                            cbDone.setChecked(true);
                         }
                         else{
                             tvName.setText(taskName);
                             task.setTaskDone(false);
-                            cbDone.setChecked(false);
 
                         }
                         Log.d(TAG,"onCreate: " + taskModelArrayList.toString());

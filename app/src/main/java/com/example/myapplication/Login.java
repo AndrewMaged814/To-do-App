@@ -3,9 +3,12 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +21,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private EditText etUsername, etPassword;
     private UserLocalStore userLocalStore;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +31,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         etPassword = findViewById(R.id.etPassword);
         TextView registerLink = findViewById(R.id.tvRegisterLink);
 
+
         btLogin.setOnClickListener(this);
         registerLink.setOnClickListener(this);
         userLocalStore = new UserLocalStore(Login.this);
-
 
     }
 
@@ -50,13 +52,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     User user = new User(username, password);
                     userLocalStore.setUserLoggedIn(true);
                     authenticate(user);
-                }
+                 }
                 }
                 break;
             case R.id.tvRegisterLink:
                 startActivity(new Intent(this, Register.class));
                 break;
-
 
         }
 

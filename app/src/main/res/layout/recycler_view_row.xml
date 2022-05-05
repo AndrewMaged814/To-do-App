@@ -8,8 +8,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="1dp"
         app:cardBackgroundColor="@color/grey"
@@ -29,9 +29,9 @@
 
             <TextView
                 android:id="@+id/tvTaskName"
-                android:layout_width="267dp"
-                android:layout_height="33dp"
-                android:layout_marginStart="16dp"
+                android:layout_width="296dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="56dp"
                 android:text="Task name"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -39,7 +39,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.212" />
+                app:layout_constraintVertical_bias="0.323" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -56,14 +56,15 @@
 
             <CheckBox
                 android:id="@+id/cbDone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="26dp"
+                android:layout_height="25dp"
                 android:buttonTint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
-                app:layout_constraintStart_toEndOf="@+id/tvTaskName"
+                app:layout_constraintEnd_toStartOf="@+id/tvTaskName"
+                app:layout_constraintHorizontal_bias="0.666"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.235" />
+                app:layout_constraintVertical_bias="0.294" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

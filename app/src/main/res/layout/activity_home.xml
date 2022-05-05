@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Home">
+    tools:context=".Home"
+    android:gravity="center">
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,8 +15,29 @@
         android:padding="10dp"
         android:id="@+id/tvName"
         android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="#212121"
         android:hint="user's name"
         />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/paperplane"
+        app:lottie_loop="true"/>
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/laptopworking"
+        app:lottie_loop="true"/>
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/taskman"
+        app:lottie_loop="true"/>
 
     <Button
         android:id="@+id/btnToday"

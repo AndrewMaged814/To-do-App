@@ -26,25 +26,27 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         name = findViewById(R.id.tvName);
         btLogout.setOnClickListener(this);
         btnToday.setOnClickListener(this);
-        SharedPreferences preferences = getSharedPreferences("userDetails",MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("userDetails", MODE_PRIVATE);
         userLocalStore = new UserLocalStore(this);
 
-        boolean firstStart = preferences.getBoolean("firstStart",false);
+        boolean firstStart = preferences.getBoolean("firstStart", true);
         //to make the user take the personality test only once
-            if (firstStart) {
-                showPersonalityTest();
-            }
-            else
-                displayUserDetails();
+        if (firstStart)
+            showPersonalityTest();
+
+
+        displayUserDetails();
 
 
     }
+
     private void showPersonalityTest() {
         //store that the user has already toke the test so he won't take it again when login
         SharedPreferences preferences = getSharedPreferences("userDetails",MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("firstStart",false);
         editor.apply();
+
         startActivity(new Intent(this, PersonalityTest.class));
 
     }
@@ -67,6 +69,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         if (view.getId() == R.id.bntLogout) {
             //if the user logs out set the status of the user to be false
             userLocalStore.setUserLoggedIn(false);
+            userLocalStore.logout();
             startActivity(new Intent(this, Login.class));
 
         }
