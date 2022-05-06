@@ -6,6 +6,10 @@
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.155" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/drawable/button_background.xml" value="0.149" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/drawable/card_background.xml" value="0.1755" />
+        <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/drawable/circle.xml" value="0.156" />
+        <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/drawable/circleshape1_timerview.xml" value="0.156" />
+        <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/drawable/circleshape2_timerview.xml" value="0.156" />
+        <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/drawable/circleshape_timerview.xml" value="0.156" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/drawable/edit_text_background.xml" value="0.176" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.1905" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/drawable/ic_baseline_done_all_24.xml" value="0.1905" />
@@ -23,12 +27,12 @@
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_personality_test.xml" value="0.209375" />
-        <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_pomodoro_timer.xml" value="0.19166666666666668" />
+        <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_pomodoro_timer.xml" value="0.22" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_show_task_details.xml" value="0.25" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_today.xml" value="0.25" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/fragment_today.xml" value="0.209375" />
-        <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/recycler_view_row.xml" value="0.5" />
+        <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/recycler_view_row.xml" value="0.33" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/toolbar.xml" value="0.209375" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/menu/sort_menu.xml" value="0.209375" />
       </map>

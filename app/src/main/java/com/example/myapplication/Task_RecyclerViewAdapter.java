@@ -93,7 +93,6 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
                         else{
                             tvName.setText(taskName);
                             task.setTaskDone(false);
-
                         }
                         Log.d(TAG,"onCreate: " + taskModelArrayList.toString());
 

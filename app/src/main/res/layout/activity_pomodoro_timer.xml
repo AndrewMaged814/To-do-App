@@ -1,10 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pomodoroTimer">
+    android:background="@color/grey"
+    tools:context=".pomodoroTimer"
+
+    tools:layout_editor_absoluteX="-1dp"
+    tools:layout_editor_absoluteY="19dp">
+
+    <ProgressBar
+        android:id="@+id/ProgressBar"
+        android:layout_width="320dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="128dp"
+        android:indeterminateOnly="false"
+        android:progress="0"
+        android:elevation="20dp"
+        android:scaleX="-1"
+        android:progressDrawable="@drawable/circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvPomodoroTaskName" />
+
+    <Button
+        android:id="@+id/button_start_pause"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/text_view_countdown"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="80dp"
+        android:elevation="20dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/colorRed"
+        android:fontFamily="@font/seg_ui_semibold"
+        android:text="start"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_countdown" />
+
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/text_view_countdown"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="168dp"
+        android:layout_toEndOf="@+id/button_start_pause"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/colorRed"
+        android:fontFamily="@font/seg_ui_semibold"
+        android:text="reset"
+        android:elevation="20dp"
+        android:textColor="@android:color/white"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_countdown" />
+
+    <TextView
+        android:id="@+id/tvBreak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginEnd="109dp"
+        android:layout_marginBottom="48dp"
+        android:fontFamily="@font/seg_ui_semibold"
+        android:text="Break time"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/tvTimeSpent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTimeSpent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBreak"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="60dp"
+        android:fontFamily="@font/seg_ui_semibold"
+        android:text="Time Spent"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNoOfCycles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="60dp"
+        android:fontFamily="@font/seg_ui_semibold"
+        android:text="No of Cycles : 0"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPomodoroTaskName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:gravity="center_horizontal"
+        android:text="Task name"
+        android:textColor="@color/white"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_view_countdown"
@@ -12,27 +129,100 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="131dp"
+        android:fontFamily="@font/seg_ui_semibold"
         android:text="00:00"
-        android:textColor="@android:color/black"
-        android:textSize="60sp" />
+        android:textColor="@android:color/white"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/button_start_pause"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_countdown"
-        android:layout_centerHorizontal="true"
-        android:text="start" />
 
-    <Button
-        android:id="@+id/button_reset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_countdown"
-        android:layout_marginStart="11dp"
-        android:layout_toEndOf="@+id/button_start_pause"
-        android:text="reset"
-        android:visibility="invisible"
-        tools:visibility="visible" />
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--android:id="@+id/reativelayout"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:fitsSystemWindows="true">-->
 
-</RelativeLayout>
+<!--<ProgressBar-->
+<!--    android:id="@+id/progressbar_timerview"-->
+<!--    style="?android:attr/progressBarStyleHorizontal"-->
+<!--    android:layout_width="260dp"-->
+<!--    android:layout_height="260dp"-->
+<!--    android:layout_centerHorizontal="true"-->
+<!--    android:layout_centerVertical="true"-->
+<!--    android:layout_gravity="center_horizontal|bottom"-->
+<!--    android:indeterminate="false"-->
+<!--    android:progressDrawable="@drawable/circleshape2_timerview" />-->
+
+<!--<TextView-->
+<!--    android:id="@+id/textView_timerview_time"-->
+<!--    android:layout_width="80dp"-->
+<!--    android:layout_height="80dp"-->
+<!--    android:layout_centerHorizontal="true"-->
+<!--    android:layout_centerVertical="true"-->
+<!--    android:alpha="0.6"-->
+<!--    android:background="@drawable/circleshape_timerview"-->
+<!--    android:gravity="center"-->
+<!--    android:text="00:00"-->
+<!--    android:textColor="@android:color/black"-->
+<!--    android:textSize="20sp"-->
+<!--    android:textStyle="bold" />-->
+
+<!--<ProgressBar-->
+<!--    android:id="@+id/progressbar1_timerview"-->
+<!--    style="?android:attr/progressBarStyleHorizontal"-->
+<!--    android:layout_width="260dp"-->
+<!--    android:layout_height="260dp"-->
+<!--    android:layout_centerHorizontal="true"-->
+<!--    android:layout_centerVertical="true"-->
+<!--    android:layout_gravity="center_horizontal|center"-->
+<!--    android:indeterminate="false"-->
+<!--    android:progressDrawable="@drawable/circleshape1_timerview"-->
+<!--    android:visibility="gone" />-->
+
+<!--<Button-->
+<!--    android:id="@+id/button_timerview_start"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="40dp"-->
+<!--    android:layout_centerHorizontal="true"-->
+<!--    android:background="@android:color/transparent"-->
+<!--    android:text="Start !"-->
+<!--    android:textAllCaps="false"-->
+<!--    android:textSize="20sp"-->
+<!--    android:textStyle="italic" />-->
+
+
+<!--<Button-->
+<!--    android:id="@+id/button_timerview_stop"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="40dp"-->
+<!--    android:layout_centerHorizontal="true"-->
+<!--    android:background="@android:color/transparent"-->
+<!--    android:text="Stop !"-->
+<!--    android:layout_marginTop="30dp"-->
+<!--    android:textAllCaps="false"-->
+<!--    android:textSize="20sp"-->
+<!--    android:visibility="invisible"-->
+<!--    android:textStyle="italic"-->
+<!--    />-->
+
+<!--<EditText-->
+<!--    android:id="@+id/textview_timerview_back"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_alignParentBottom="true"-->
+<!--    android:gravity="center"-->
+<!--    android:padding="5dp"-->
+<!--    android:layout_marginBottom="30dp"-->
+<!--    android:textSize="35sp"-->
+<!--    android:hint=""/>-->
+<!--</RelativeLayout>-->

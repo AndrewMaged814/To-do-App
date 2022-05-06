@@ -112,7 +112,7 @@
                     android:textColor="@color/colorButtonText"
                     android:textSize="16dp"
                     android:fontFamily="@font/seg_ui_semibold"
-                    android:background="@drawable/button_background"/>
+                    android:background="@drawable/button_background" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout

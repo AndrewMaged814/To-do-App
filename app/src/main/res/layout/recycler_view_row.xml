@@ -24,14 +24,16 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="66dp">
+            android:layout_height="66dp"
+            tools:layout_editor_absoluteX="-10dp"
+            tools:layout_editor_absoluteY="5dp">
 
 
             <TextView
                 android:id="@+id/tvTaskName"
                 android:layout_width="296dp"
                 android:layout_height="32dp"
-                android:layout_marginStart="56dp"
+                android:layout_marginStart="44dp"
                 android:text="Task name"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -39,7 +41,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.323" />
+                app:layout_constraintVertical_bias="0.529" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -50,7 +52,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.277"
+                app:layout_constraintVertical_bias="0.444"
                 app:srcCompat="@drawable/ic_baseline_edit_24"
                 app:tint="@color/white" />
 
@@ -61,10 +63,10 @@
                 android:buttonTint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tvTaskName"
-                app:layout_constraintHorizontal_bias="0.666"
+                app:layout_constraintHorizontal_bias="0.555"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.294" />
+                app:layout_constraintVertical_bias="0.414" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

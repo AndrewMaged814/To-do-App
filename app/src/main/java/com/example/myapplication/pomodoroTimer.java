@@ -1,6 +1,9 @@
+
 package com.example.myapplication;
 
 import android.os.CountDownTimer;
+import android.util.Log;
+import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,17 +13,24 @@ import android.widget.TextView;
 import java.util.Locale;
 
 public class pomodoroTimer extends AppCompatActivity {
-    private static final long START_TIME_IN_MILLIS = 600000;
-
-    private TextView mTextViewCountDown;
+    private static final long START_TIME_IN_MILLIS = 15000;
+    private static final long Break_TIME_IN_MILLIS = 3000;
+    private int i=0;
+    private TextView mTextViewCountDown, seconds,tvTaskName,tvNoOfCycles;
     private Button mButtonStartPause;
     private Button mButtonReset;
+    private TextView mBreak;
+    private ProgressBar mProgressBar;
+    int cycles=0;
+    int noOfSeassions=0;
 
     private CountDownTimer mCountDownTimer;
 
     private boolean mTimerRunning;
-
+    private boolean isBreak;
+    long No_of_Seconds=0;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
+    private long totalTimeCountInMilliseconds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +38,17 @@ public class pomodoroTimer extends AppCompatActivity {
         setContentView(R.layout.activity_pomodoro_timer);
 
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
-
+        mBreak = findViewById(R.id.tvBreak);
         mButtonStartPause = findViewById(R.id.button_start_pause);
         mButtonReset = findViewById(R.id.button_reset);
+        mProgressBar = findViewById(R.id.ProgressBar);
+        seconds = findViewById(R.id.tvTimeSpent);
+        tvTaskName = findViewById(R.id.tvPomodoroTaskName);
+        tvNoOfCycles = findViewById(R.id.tvNoOfCycles);
+
+        String TaskName = getIntent().getStringExtra("TaskNamePomodoro");
+        tvTaskName.setText(TaskName);
+
 
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +56,7 @@ public class pomodoroTimer extends AppCompatActivity {
                 if (mTimerRunning) {
                     pauseTimer();
                 } else {
+                    setTimer();
                     startTimer();
                 }
             }
@@ -51,29 +70,86 @@ public class pomodoroTimer extends AppCompatActivity {
         });
 
         updateCountDownText();
+
+
     }
 
     private void startTimer() {
-        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+        //mProgressBar.setProgress(i);
+        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1) {
+
             @Override
             public void onTick(long millisUntilFinished) {
                 mTimeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
+
+                mProgressBar.setProgress((int) (millisUntilFinished));
+
             }
 
             @Override
             public void onFinish() {
+
                 mTimerRunning = false;
                 mButtonStartPause.setText("Start");
                 mButtonStartPause.setVisibility(View.INVISIBLE);
-                mButtonReset.setVisibility(View.VISIBLE);
+                mButtonReset.setVisibility(View.INVISIBLE);
+
+                mTimeLeftInMillis = Break_TIME_IN_MILLIS;
+                i++;
+                mProgressBar.setProgress(100);
+                noOfSeassions++;
+                if(noOfSeassions%4 == 0){
+                    cycles++;
+                    tvNoOfCycles.setText("No of cycles: "+cycles);
+                }
+
+                tvNoOfCycles.setText("No of cycles: "+cycles);
+
+                startBreakTimer();
+
+
+
+
+
             }
         }.start();
 
         mTimerRunning = true;
-        mButtonStartPause.setText("pause");
+        mButtonStartPause.setText("Pause");
         mButtonReset.setVisibility(View.INVISIBLE);
     }
+
+    private void startBreakTimer(){
+        mProgressBar.setProgress(0);
+        mBreak.setVisibility(View.VISIBLE);
+        setBreakTimer();
+        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mTimeLeftInMillis = millisUntilFinished;
+                updateCountDownText();
+
+                mProgressBar.setProgress((int) (millisUntilFinished));
+
+            }
+
+            @Override
+            public void onFinish() {
+
+                mTimeLeftInMillis = START_TIME_IN_MILLIS;
+                setTimer();
+                startTimer();
+                mButtonStartPause.setVisibility(View.VISIBLE);
+                mBreak.setVisibility(View.INVISIBLE);
+
+
+            }
+
+        }.start();
+    }
+
+
 
     private void pauseTimer() {
         mCountDownTimer.cancel();
@@ -87,6 +163,8 @@ public class pomodoroTimer extends AppCompatActivity {
         updateCountDownText();
         mButtonReset.setVisibility(View.INVISIBLE);
         mButtonStartPause.setVisibility(View.VISIBLE);
+        i=0;
+        mProgressBar.setProgress(i);
     }
 
     private void updateCountDownText() {
@@ -97,4 +175,20 @@ public class pomodoroTimer extends AppCompatActivity {
 
         mTextViewCountDown.setText(timeLeftFormatted);
     }
+
+    private void setTimer(){
+        int time =(int) START_TIME_IN_MILLIS;
+
+        totalTimeCountInMilliseconds =  time;
+        mProgressBar.setMax( time);
+    }
+
+    private void setBreakTimer(){
+        int time =(int) Break_TIME_IN_MILLIS;
+
+        totalTimeCountInMilliseconds =  time;
+        mProgressBar.setMax( time);
+    }
+
+
 }

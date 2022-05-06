@@ -75,7 +75,9 @@ public class ShowTaskDetails extends AppCompatActivity implements View.OnClickLi
                 }
                 break;
             case R.id.startTask:
-                startActivity(new Intent(this, pomodoroTimer.class));
+                Intent intent = new Intent(ShowTaskDetails.this,pomodoroTimer.class);
+                intent.putExtra("TaskNamePomodoro",TaskName);
+                startActivity(intent);
                 break;
 
         }
