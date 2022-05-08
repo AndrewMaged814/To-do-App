@@ -29,25 +29,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         SharedPreferences preferences = getSharedPreferences("userDetails", MODE_PRIVATE);
         userLocalStore = new UserLocalStore(this);
 
-        boolean firstStart = preferences.getBoolean("firstStart", true);
-        //to make the user take the personality test only once
-        if (firstStart)
-            showPersonalityTest();
-
-
         displayUserDetails();
 
-
-    }
-
-    private void showPersonalityTest() {
-        //store that the user has already toke the test so he won't take it again when login
-        SharedPreferences preferences = getSharedPreferences("userDetails",MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("firstStart",false);
-        editor.apply();
-
-        startActivity(new Intent(this, PersonalityTest.class));
 
     }
     private void displayUserDetails() {

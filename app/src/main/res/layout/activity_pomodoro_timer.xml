@@ -15,15 +15,16 @@
         android:layout_width="320dp"
         android:layout_height="270dp"
         android:layout_marginTop="128dp"
+        android:elevation="20dp"
         android:indeterminateOnly="false"
         android:progress="0"
-        android:elevation="20dp"
-        android:scaleX="-1"
         android:progressDrawable="@drawable/circle"
+        android:scaleX="-1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvPomodoroTaskName" />
+
 
     <Button
         android:id="@+id/button_start_pause"
@@ -31,10 +32,10 @@
         android:layout_height="50dp"
         android:layout_below="@+id/text_view_countdown"
         android:layout_marginTop="168dp"
-        android:layout_marginEnd="80dp"
-        android:elevation="20dp"
+        android:layout_marginEnd="76dp"
         android:background="@drawable/button_background"
         android:backgroundTint="@color/colorRed"
+        android:elevation="20dp"
         android:fontFamily="@font/seg_ui_semibold"
         android:text="start"
         android:textColor="@android:color/white"
@@ -85,12 +86,12 @@
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="60dp"
         android:fontFamily="@font/seg_ui_semibold"
-        android:text="Time Spent"
+        android:text="Total minutes: "
         android:textColor="@android:color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintHorizontal_bias="0.925"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -98,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="32dp"
         android:layout_marginBottom="60dp"
         android:fontFamily="@font/seg_ui_semibold"
         android:text="No of Cycles : 0"
@@ -111,7 +112,7 @@
         android:id="@+id/tvPomodoroTaskName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/segoe_ui_bold"
         android:gravity="center_horizontal"
         android:text="Task name"
@@ -130,7 +131,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="130dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="232dp"
         android:layout_marginEnd="131dp"
         android:fontFamily="@font/seg_ui_semibold"
         android:text="00:00"
@@ -140,6 +141,18 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieTimer"
+        android:layout_width="76dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ProgressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/timerhourglassloader" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

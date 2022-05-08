@@ -2,7 +2,6 @@
 package com.example.myapplication;
 
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,19 +9,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.util.Locale;
 
 public class pomodoroTimer extends AppCompatActivity {
     private static final long START_TIME_IN_MILLIS = 15000;
     private static final long Break_TIME_IN_MILLIS = 3000;
     private int i=0;
-    private TextView mTextViewCountDown, seconds,tvTaskName,tvNoOfCycles;
+    private TextView mTextViewCountDown, tvTimeSpent,tvTaskName,tvNoOfCycles;
     private Button mButtonStartPause;
     private Button mButtonReset;
     private TextView mBreak;
     private ProgressBar mProgressBar;
+    LottieAnimationView lottieAnimationView;
     int cycles=0;
     int noOfSeassions=0;
+    long totalTimeSpent = 0;
 
     private CountDownTimer mCountDownTimer;
 
@@ -31,6 +34,7 @@ public class pomodoroTimer extends AppCompatActivity {
     long No_of_Seconds=0;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
     private long totalTimeCountInMilliseconds;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +46,10 @@ public class pomodoroTimer extends AppCompatActivity {
         mButtonStartPause = findViewById(R.id.button_start_pause);
         mButtonReset = findViewById(R.id.button_reset);
         mProgressBar = findViewById(R.id.ProgressBar);
-        seconds = findViewById(R.id.tvTimeSpent);
+        tvTimeSpent = findViewById(R.id.tvTimeSpent);
         tvTaskName = findViewById(R.id.tvPomodoroTaskName);
         tvNoOfCycles = findViewById(R.id.tvNoOfCycles);
-
+        lottieAnimationView = findViewById(R.id.lottieTimer);
         String TaskName = getIntent().getStringExtra("TaskNamePomodoro");
         tvTaskName.setText(TaskName);
 
@@ -94,7 +98,6 @@ public class pomodoroTimer extends AppCompatActivity {
                 mButtonStartPause.setText("Start");
                 mButtonStartPause.setVisibility(View.INVISIBLE);
                 mButtonReset.setVisibility(View.INVISIBLE);
-
                 mTimeLeftInMillis = Break_TIME_IN_MILLIS;
                 i++;
                 mProgressBar.setProgress(100);
@@ -106,6 +109,7 @@ public class pomodoroTimer extends AppCompatActivity {
 
                 tvNoOfCycles.setText("No of cycles: "+cycles);
 
+
                 startBreakTimer();
 
 
@@ -115,12 +119,19 @@ public class pomodoroTimer extends AppCompatActivity {
             }
         }.start();
 
+       // lottieAnimationView.setVisibility(View.VISIBLE);
         mTimerRunning = true;
         mButtonStartPause.setText("Pause");
+        lottieAnimationView.resumeAnimation();
         mButtonReset.setVisibility(View.INVISIBLE);
     }
 
     private void startBreakTimer(){
+
+        totalTimeSpent+= START_TIME_IN_MILLIS;
+        long minutes = (totalTimeSpent / 1000) / 60;
+        tvTimeSpent.setText("Total minutes: "+minutes);
+
         mProgressBar.setProgress(0);
         mBreak.setVisibility(View.VISIBLE);
         setBreakTimer();
@@ -147,6 +158,7 @@ public class pomodoroTimer extends AppCompatActivity {
             }
 
         }.start();
+        //lottieAnimationView.setVisibility(View.INVISIBLE);
     }
 
 
@@ -156,6 +168,7 @@ public class pomodoroTimer extends AppCompatActivity {
         mTimerRunning = false;
         mButtonStartPause.setText("Start");
         mButtonReset.setVisibility(View.VISIBLE);
+        lottieAnimationView.pauseAnimation();
     }
 
     private void resetTimer() {

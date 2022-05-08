@@ -7,13 +7,13 @@
     tools:context=".Register"
     android:orientation="vertical"
     android:weightSum="4"
-    android:background="@color/colorPrimary">
+    android:background="@color/grey">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="550dp"
         android:layout_weight="3"
-        android:background="@color/white"
+        android:background="@color/grey"
         android:elevation="36dp">
 
         <TextView
@@ -23,7 +23,7 @@
             android:layout_marginTop="36dp"
             android:fontFamily="@font/seg_ui_semibold"
             android:text="REGISTER"
-            android:textColor="@color/colorTextBlack"
+            android:textColor="@color/colorWhite"
             android:textSize="26dp" />
 
         <LinearLayout
@@ -40,13 +40,13 @@
                 android:layout_marginRight="48dp"
                 android:background="@drawable/edit_text_background"
                 android:drawableEnd="@drawable/user_icon"
-                android:drawableTint="@color/colorTextBlack"
+                android:drawableTint="@color/colorWhite"
                 android:fontFamily="@font/seg_ui_semibold"
                 android:hint="Full name"
                 android:inputType="textPersonName"
                 android:paddingLeft="26dp"
                 android:paddingRight="26dp"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorPlaceholder" />
 
             <EditText
@@ -58,13 +58,13 @@
                 android:layout_marginTop="24dp"
                 android:background="@drawable/edit_text_background"
                 android:drawableEnd="@drawable/user_icon"
-                android:drawableTint="@color/colorTextBlack"
+                android:drawableTint="@color/colorWhite"
                 android:fontFamily="@font/seg_ui_semibold"
                 android:hint="Age"
                 android:inputType="numberSigned"
                 android:paddingLeft="26dp"
                 android:paddingRight="26dp"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorPlaceholder" />
             <EditText
                 android:id="@+id/etUsername"
@@ -75,13 +75,13 @@
                 android:layout_marginTop="24dp"
                 android:background="@drawable/edit_text_background"
                 android:drawableEnd="@drawable/user_icon"
-                android:drawableTint="@color/colorTextBlack"
+                android:drawableTint="@color/colorWhite"
                 android:fontFamily="@font/seg_ui_semibold"
                 android:hint="username"
                 android:inputType="textPersonName"
                 android:paddingLeft="26dp"
                 android:paddingRight="26dp"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorPlaceholder" />
 
 
@@ -94,13 +94,13 @@
                 android:layout_marginRight="48dp"
                 android:background="@drawable/edit_text_background"
                 android:drawableEnd="@drawable/lock_icon"
-                android:drawableTint="@color/colorTextBlack"
+                android:drawableTint="@color/colorWhite"
                 android:fontFamily="@font/seg_ui_semibold"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:paddingLeft="26dp"
                 android:paddingRight="26dp"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorPlaceholder" />
             <EditText
                 android:id="@+id/etConfirmPassword"
@@ -111,13 +111,13 @@
                 android:layout_marginRight="48dp"
                 android:background="@drawable/edit_text_background"
                 android:drawableEnd="@drawable/lock_icon"
-                android:drawableTint="@color/colorTextBlack"
+                android:drawableTint="@color/colorWhite"
                 android:fontFamily="@font/seg_ui_semibold"
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
                 android:paddingLeft="26dp"
                 android:paddingRight="26dp"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorPlaceholder" />
 
 
@@ -125,8 +125,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="48dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginRight="48dp"
+                android:gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="2">
 

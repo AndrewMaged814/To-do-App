@@ -30,6 +30,7 @@
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_pomodoro_timer.xml" value="0.22" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_show_task_details.xml" value="0.25" />
+        <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_splash.xml" value="0.209375" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/activity_today.xml" value="0.25" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/fragment_today.xml" value="0.209375" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/recycler_view_row.xml" value="0.33" />
@@ -38,10 +39,18 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android API 32 Platform" project-jdk-type="Android SDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="SwUserDefinedSpecifications">
+    <option name="specTypeByUrl">
+      <map />
+    </option>
   </component>
 </project>

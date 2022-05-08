@@ -7,7 +7,7 @@
     tools:context=".Login"
     android:orientation="vertical"
     android:weightSum="4"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorRed">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -44,15 +44,16 @@
         android:layout_height="0dp"
         android:layout_weight="3"
         android:background="@drawable/card_background">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorTextBlack"
-            android:textSize="26dp"
-            android:text="LOGIN"
-            android:fontFamily="@font/seg_ui_semibold"
+            android:layout_marginLeft="48dp"
             android:layout_marginTop="36dp"
-            android:layout_marginLeft="48dp"/>
+            android:fontFamily="@font/seg_ui_semibold"
+            android:text="LOGIN"
+            android:textColor="@color/colorWhite"
+            android:textSize="26dp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,9 +62,9 @@
             <EditText
                 android:textColorHint="@color/colorPlaceholder"
                 android:drawableEnd="@drawable/user_icon"
-                android:drawableTint="@color/colorTextBlack"
+                android:drawableTint="@color/white"
                 android:hint="username"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorWhite"
                 android:paddingLeft="26dp"
                 android:paddingRight="26dp"
                 android:inputType="textPersonName"
@@ -78,9 +79,9 @@
                 android:textColorHint="@color/colorPlaceholder"
                 android:layout_marginTop="24dp"
                 android:drawableEnd="@drawable/lock_icon"
-                android:drawableTint="@color/colorTextBlack"
+                android:drawableTint="@color/colorWhite"
                 android:hint="Password"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorWhite"
                 android:paddingLeft="26dp"
                 android:paddingRight="26dp"
                 android:inputType="textPassword"
@@ -99,46 +100,53 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2"
+                android:gravity="center"
                 android:layout_marginTop="24dp"
                 android:layout_marginLeft="48dp"
                 android:layout_marginRight="48dp">
+
+
                 <Button
+                    android:id="@+id/btLogin"
                     android:layout_width="0dp"
                     android:layout_height="52dp"
                     android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_background"
+                    android:fontFamily="@font/seg_ui_semibold"
                     android:text="Sign In"
-                    android:id="@+id/btLogin"
                     android:textAllCaps="false"
                     android:textColor="@color/colorButtonText"
-                    android:textSize="16dp"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:background="@drawable/button_background" />
+                    android:textSize="16dp" />
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
-            android:layout_marginBottom="26dp"
-            android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="26dp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextBlack"
-                android:textSize="18dp"
-                android:text="Don't have an account?"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="12dp"
                 android:fontFamily="@font/seg_ui_semibold"
-                android:layout_marginLeft="12dp" />
+                android:text="Don't have an account?"
+                android:textColor="@color/colorWhite"
+                android:textSize="18dp" />
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="18dp"
-                android:text="Register instead"
                 android:id="@+id/tvRegisterLink"
+                android:layout_width="wrap_content"
+                android:layout_height="31dp"
+                android:layout_marginLeft="12dp"
                 android:fontFamily="@font/segoe_ui_bold"
-                android:layout_marginLeft="12dp"/>
+                android:text="Register instead"
+                android:textColor="@color/colorRed"
+                android:textSize="18dp" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

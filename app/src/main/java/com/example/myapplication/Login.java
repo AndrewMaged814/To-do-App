@@ -36,6 +36,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         registerLink.setOnClickListener(this);
         userLocalStore = new UserLocalStore(Login.this);
 
+
+
     }
 
 
@@ -91,7 +93,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         if (user.username.equals(userRegistered.username) && user.password.equals(userRegistered.password)) {
             Toast.makeText(Login.this, "Logged in successfully!", Toast.LENGTH_LONG).show();
             //change this to home.class
-            startActivity(new Intent(this, Home.class));
+            startActivity(new Intent(this, PersonalityTest.class));
         } else {
             Toast.makeText(Login.this, "Incorrect Username or password", Toast.LENGTH_LONG).show();
 
