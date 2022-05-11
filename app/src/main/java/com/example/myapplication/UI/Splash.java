@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.example.myapplication.R;
+import com.example.myapplication.user.Login;
 
 public class Splash extends AppCompatActivity {
 
@@ -24,7 +26,7 @@ public class Splash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Splash.this,Login.class);
+                Intent intent = new Intent(Splash.this, Login.class);
                 startActivity(intent);
                 finish();
             }

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.task;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.myapplication.R;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -25,7 +26,6 @@ public class Today extends AppCompatActivity implements RecyclerViewInterface {
 
     ArrayList<TaskModel> taskModelArrayList = new ArrayList<>();
     Task_RecyclerViewAdapter adapter;
-    Menu menu;
     private final static String TAG = "TASK APP";
     @Override
     protected void onCreate(Bundle savedInstanceState) {

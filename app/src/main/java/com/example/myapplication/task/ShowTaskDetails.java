@@ -1,19 +1,14 @@
-package com.example.myapplication;
+package com.example.myapplication.task;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
+import com.example.myapplication.R;
 
 public class ShowTaskDetails extends AppCompatActivity implements View.OnClickListener {
     EditText etTaskDescription;
@@ -32,7 +27,7 @@ public class ShowTaskDetails extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_show_task_details);
 
         //as Intent was created in class today and the information was stored in it
-        //here we retrieve these information
+        //here we retrieve information
 
         TaskName = getIntent().getStringExtra("TaskName");
         TaskDescription = getIntent().getStringExtra("TaskDetails");

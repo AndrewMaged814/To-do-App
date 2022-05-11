@@ -1,5 +1,5 @@
 
-package com.example.myapplication;
+package com.example.myapplication.task;
 
 import android.os.CountDownTimer;
 import android.widget.ProgressBar;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.myapplication.R;
 
 import java.util.Locale;
 

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".user.AdminPanel"
+                                                   android:background="@color/grey">
+
+
+    <TextView
+            android:layout_width="345dp"
+            android:layout_height="127dp"
+            android:layout_marginTop="36dp"
+            android:text="Admin Panel"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="45sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/segoe_ui_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.464"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:id="@+id/textView2"/>
+
+
+    <TextView
+            android:id="@+id/tvName"
+            android:layout_width="322dp"
+            android:layout_height="60dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/seg_ui_semibold"
+            android:text="Name"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.494" app:layout_constraintTop_toBottomOf="@+id/textView2"
+            android:layout_marginTop="20dp"/>
+    <TextView
+            android:id="@+id/tvAge"
+            android:layout_width="322dp"
+            android:layout_height="60dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/seg_ui_semibold"
+            android:text="Age"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.494" app:layout_constraintTop_toBottomOf="@+id/tvName"
+            android:layout_marginTop="20dp"/>
+    <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="322dp"
+            android:layout_height="60dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/seg_ui_semibold"
+            android:text="User Name"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintTop_toBottomOf="@+id/tvAge" android:layout_marginTop="20dp"/>
+
+    <TextView
+            android:id="@+id/tvPassword"
+            android:layout_width="322dp"
+            android:layout_height="60dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/seg_ui_semibold"
+            android:text="Password"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintTop_toBottomOf="@+id/tvUsername" android:layout_marginTop="12dp"/>
+    <Button
+            android:id="@+id/btnRemoveUser"
+            android:layout_width="134dp"
+            android:layout_height="84dp"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/button_background"
+            android:backgroundTint="@color/colorRed"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:text="Remove User"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/tvPassword"
+            app:layout_constraintVertical_bias="1.0" app:layout_constraintHorizontal_bias="0.498"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

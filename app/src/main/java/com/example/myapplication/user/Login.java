@@ -1,20 +1,18 @@
-package com.example.myapplication;
+package com.example.myapplication.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.example.myapplication.*;
 
 //view.OnClickListener allows clicks to make actions
 public class Login extends AppCompatActivity implements View.OnClickListener {
@@ -45,15 +43,22 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         //this switch statement gets the id of the view which is clicked
+        Admin admin = new Admin();
         switch (view.getId()) {
             case R.id.btLogin:
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 if(userLocalStore.getLoggedInUser()!=null){
                 if (validateLogin(username, password)) {
-                    User user = new User(username, password);
-                    userLocalStore.setUserLoggedIn(true);
-                    authenticate(user);
+                    if(username.equals(admin.username) && password.equals(admin.password)){
+                        startActivity(new Intent(this, AdminPanel.class));
+                    }
+                    else{
+                        User user = new NormalUser(username, password);
+                        userLocalStore.setUserLoggedIn(true);
+                        authenticate(user);
+                    }
+
                  }
                 }
                 break;
@@ -78,9 +83,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             etPassword.requestFocus();
             return false;
         }
-        if (password.length() < 6) {
+        if (password.length() < 5) {
             YoYo.with(Techniques.Bounce).duration(700).repeat(1).playOn(etPassword);
-            etPassword.setError("Min password length should be 6 characters");
+            etPassword.setError("Min password length should be 5 characters");
             etPassword.requestFocus();
             return false;
         }

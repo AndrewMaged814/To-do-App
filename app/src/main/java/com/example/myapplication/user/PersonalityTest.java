@@ -1,22 +1,22 @@
-package com.example.myapplication;
+package com.example.myapplication.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import com.example.myapplication.task.Home;
+import com.example.myapplication.R;
 
 public class PersonalityTest extends AppCompatActivity {
-    private UserLocalStore userLocalStore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personality_test);
 
         SharedPreferences preferences = getSharedPreferences("userDetails",MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        userLocalStore = new UserLocalStore(this);
         boolean firstStart = preferences.getBoolean("firstStart", true);
+
 
         if(firstStart){
             showMainActivity();

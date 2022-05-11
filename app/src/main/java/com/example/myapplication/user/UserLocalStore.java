@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.user;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -48,7 +48,7 @@ public class UserLocalStore {
         String username = userLocalDatabase.getString("username", "");
         String password = userLocalDatabase.getString("password", "");
 
-        return new User(name, username, password, age);
+        return new NormalUser(name, username, password, age);
     }
 
 
@@ -60,15 +60,7 @@ public class UserLocalStore {
 
     }
 
-    public boolean getUserLoggedIn() {
-        if (userLocalDatabase.getBoolean(IS_LOGIN, false))
-            return true;
-        else
-            return false;
-
-    }
-
-    public void logout() {
+    public void RemoveUser() {
         editor.clear();
         editor.apply();
     }
