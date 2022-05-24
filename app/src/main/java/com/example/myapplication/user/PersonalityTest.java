@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import com.example.myapplication.task.Home;
+import com.example.myapplication.HomeActivity.Home;
 import com.example.myapplication.R;
 
 public class PersonalityTest extends AppCompatActivity {

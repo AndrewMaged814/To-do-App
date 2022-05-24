@@ -1,4 +1,5 @@
-package com.example.myapplication.task;
+package com.example.myapplication.task.Adapters;
+
 
 import android.content.Context;
 import android.text.Html;
@@ -6,26 +7,26 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.myapplication.R;
+import com.example.myapplication.task.Task;
 
 import java.util.ArrayList;
+
+
 
 public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_RecyclerViewAdapter.MyViewHolder> {
     private final RecyclerViewInterface recyclerViewInterface;
     Context context;
-    public static ArrayList<TaskModel> taskModelArrayList;
-    public Task_RecyclerViewAdapter(Context context, ArrayList<TaskModel> taskModelArrayList,RecyclerViewInterface recyclerViewInterface){
+    public static ArrayList<Task> taskModelArrayList;
+    public Task_RecyclerViewAdapter(Context context,ArrayList<Task> taskModelArrayList, RecyclerViewInterface recyclerViewInterface){
         this.context = context;
         Task_RecyclerViewAdapter.taskModelArrayList = taskModelArrayList;
         this.recyclerViewInterface = recyclerViewInterface;
+
 
     }
     @NonNull
@@ -37,6 +38,8 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
         View view = inflater.inflate(R.layout.recycler_view_row,parent,false);
 
         return new Task_RecyclerViewAdapter.MyViewHolder(view,recyclerViewInterface);
+
+
     }
 
     @Override
@@ -44,7 +47,7 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
         // assigning values to the views created in the recycler_view_raw layout file
         //based on the position of the recycler view
 
-        TaskModel taskModel = taskModelArrayList.get(position);
+        Task taskModel = taskModelArrayList.get(position);
 
         holder.tvName.setText(taskModel.getTaskName());
         holder.imageView.setImageResource(taskModel.getImage());
@@ -75,11 +78,12 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
             imageView = itemView.findViewById(R.id.imageView);
             tvName = itemView.findViewById(R.id.tvTaskName);
             cbDone = itemView.findViewById(R.id.cbDone);
+
             cbDone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     String taskName = tvName.getText().toString();
-                    TaskModel task = taskModelArrayList.get(getAdapterPosition());
+                    Task task = taskModelArrayList.get(getAdapterPosition());
                     Log.d(TAG,"onCreate: " + taskModelArrayList.toString());
                     if(task!=null){
                         if (cbDone.isChecked()) {
@@ -96,7 +100,6 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
 
                 }
             });
-
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -129,5 +132,7 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
 
         }
 
+
     }
+
 }

@@ -11,40 +11,42 @@
             android:theme="@style/Theme.MyApplication"
             android:usesCleartextTraffic="true">
         <activity
-                android:name=".user.AdminPanel"
+                android:name=".user.Activity.AdminPanel"
                 android:exported="true"/>
         <activity
                 android:name=".chat.MessageAdapter"
                 android:exported="true" tools:ignore="Instantiatable"/>
         <activity
-                android:name=".chat.MainActivity"
+                android:name=".chat.ChatStartupActivity"
                 android:exported="true"/>
         <activity
                 android:name=".chat.ChatActivity"
                 android:exported="true"/>
+        <activity android:name=".task.Activities.CreateNewTask"
+                  android:exported="false"/>
         <activity
-                android:name=".user.Login"
+                android:name=".user.Activity.Login"
                 android:exported="false"/>
         <activity
-                android:name=".task.pomodoroTimer"
+                android:name=".task.Activities.pomodoroTimer"
                 android:exported="false"/>
         <activity
-                android:name=".task.ShowTaskDetails"
+                android:name=".task.Activities.ShowTaskDetails"
                 android:exported="false"/>
         <activity
-                android:name=".task.Today"
+                android:name=".task.Activities.TodayActivity"
                 android:exported="false"/>
         <activity
                 android:name=".user.PersonalityTest"
                 android:exported="false"/>
         <activity
-                android:name=".user.Register"
+                android:name=".user.Activity.Register"
                 android:exported="false"/>
         <activity
-                android:name=".task.Home"
+                android:name=".HomeActivity.Home"
                 android:exported="false"/>
         <activity
-                android:name=".UI.Splash"
+                android:name=".HomeActivity.Splash"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

@@ -10,12 +10,12 @@ import android.os.Bundle;
 import android.widget.EditText;
 import com.example.myapplication.R;
 
-public class MainActivity extends AppCompatActivity {
+public class ChatStartupActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_startup_chat);
 
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)

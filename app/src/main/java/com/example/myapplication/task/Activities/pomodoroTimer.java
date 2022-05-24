@@ -1,5 +1,5 @@
 
-package com.example.myapplication.task;
+package com.example.myapplication.task.Activities;
 
 import android.os.CountDownTimer;
 import android.widget.ProgressBar;

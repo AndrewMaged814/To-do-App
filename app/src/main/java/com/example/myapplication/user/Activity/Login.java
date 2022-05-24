@@ -1,4 +1,4 @@
-package com.example.myapplication.user;
+package com.example.myapplication.user.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,11 @@ import android.widget.Toast;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.myapplication.*;
+import com.example.myapplication.user.PersonalityTest;
+import com.example.myapplication.user.UserLocalStore;
+import com.example.myapplication.user.userTypes.Admin;
+import com.example.myapplication.user.userTypes.NormalUser;
+import com.example.myapplication.user.userTypes.User;
 
 //view.OnClickListener allows clicks to make actions
 public class Login extends AppCompatActivity implements View.OnClickListener {
@@ -50,7 +55,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 String password = etPassword.getText().toString();
                 if(userLocalStore.getLoggedInUser()!=null){
                 if (validateLogin(username, password)) {
-                    if(username.equals(admin.username) && password.equals(admin.password)){
+                    if(username.equals(admin.getUsername()) && password.equals(admin.getPassword())){
                         startActivity(new Intent(this, AdminPanel.class));
                     }
                     else{
@@ -95,9 +100,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private void authenticate(User user) {
         User userRegistered = userLocalStore.getLoggedInUser();
 
-        if (user.username.equals(userRegistered.username) && user.password.equals(userRegistered.password)) {
+        if (user.getUsername().equals(userRegistered.getUsername()) && user.getPassword().equals(userRegistered.getPassword())) {
             Toast.makeText(Login.this, "Logged in successfully!", Toast.LENGTH_LONG).show();
-            //change this to home.class
             startActivity(new Intent(this, PersonalityTest.class));
         } else {
             Toast.makeText(Login.this, "Incorrect Username or password", Toast.LENGTH_LONG).show();

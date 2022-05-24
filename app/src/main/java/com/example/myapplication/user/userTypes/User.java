@@ -1,4 +1,4 @@
-package com.example.myapplication.user;
+package com.example.myapplication.user.userTypes;
 
 public abstract class User {
     protected String name, username, password,age;

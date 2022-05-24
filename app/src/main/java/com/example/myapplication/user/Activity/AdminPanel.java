@@ -1,4 +1,4 @@
-package com.example.myapplication.user;
+package com.example.myapplication.user.Activity;
 
 import android.content.Intent;
 import android.widget.Button;
@@ -7,6 +7,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.myapplication.R;
+import com.example.myapplication.user.UserLocalStore;
+import com.example.myapplication.user.userTypes.User;
 
 public class AdminPanel extends AppCompatActivity {
     private UserLocalStore userLocalStore;

@@ -1,4 +1,4 @@
-package com.example.myapplication.UI;
+package com.example.myapplication.HomeActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.myapplication.R;
-import com.example.myapplication.user.Login;
+import com.example.myapplication.user.Activity.Login;
 
 public class Splash extends AppCompatActivity {
 

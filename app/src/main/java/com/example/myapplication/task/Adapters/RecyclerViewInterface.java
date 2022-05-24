@@ -1,4 +1,4 @@
-package com.example.myapplication.task;
+package com.example.myapplication.task.Adapters;
 
 public interface RecyclerViewInterface {
     void OnItemClick(int position);

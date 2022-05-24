@@ -1,4 +1,4 @@
-package com.example.myapplication.task;
+package com.example.myapplication.task.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.example.myapplication.R;
+import com.example.myapplication.task.Task;
+import com.example.myapplication.task.Adapters.Task_RecyclerViewAdapter;
+
 
 public class ShowTaskDetails extends AppCompatActivity implements View.OnClickListener {
     EditText etTaskDescription;
@@ -19,6 +22,7 @@ public class ShowTaskDetails extends AppCompatActivity implements View.OnClickLi
     Button btEditTaskDescriptionDone;
     String TaskName;
     String TaskDescription;
+    Button addNotes;
     int taskId;
     Boolean TaskDone;
     @Override
@@ -27,7 +31,7 @@ public class ShowTaskDetails extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_show_task_details);
 
         //as Intent was created in class today and the information was stored in it
-        //here we retrieve information
+        //here we retrieve these information
 
         TaskName = getIntent().getStringExtra("TaskName");
         TaskDescription = getIntent().getStringExtra("TaskDetails");
@@ -41,48 +45,57 @@ public class ShowTaskDetails extends AppCompatActivity implements View.OnClickLi
         btStartTask = findViewById(R.id.startTask);
         btEditTaskDescription = findViewById(R.id.btEditTaskDescription);
         btEditTaskDescriptionDone = findViewById(R.id.btEditTaskDescriptionDone);
+        addNotes=findViewById(R.id.addNotes);
 
         tvTaskName.setText(TaskName);
         tvTaskDescription.setText(TaskDescription);
         btStartTask.setOnClickListener(this);
         btEditTaskDescription.setOnClickListener(this);
         btEditTaskDescriptionDone.setOnClickListener(this);
+        addNotes.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
         String etDescription = etTaskDescription.getText().toString();
-        TaskModel taskModel = findTaskUsingForLoop(taskId);
+        Task taskModel = findTaskUsingForLoop(taskId);
         switch (view.getId()) {
             case R.id.btEditTaskDescription:
+                startActivity(new Intent(ShowTaskDetails.this,EditTask.class));
+                break;
+            case(R.id.addNotes):
                 etTaskDescription.setVisibility(View.VISIBLE);
                 btEditTaskDescriptionDone.setVisibility(View.VISIBLE);
                 etTaskDescription.requestFocus();
+
                 break;
             case R.id.btEditTaskDescriptionDone:
+
                 if(taskModel!=null){
                     tvTaskDescription.append("\n\t"+etDescription);
-                    taskModel.setTaskDetails(tvTaskDescription.getText().toString());
+                    // taskModel.setTaskDetails(tvTaskDescription.getText().toString());
                     etTaskDescription.getText().clear();
                     etTaskDescription.setVisibility(View.INVISIBLE);
                     btEditTaskDescriptionDone.setVisibility(View.INVISIBLE);
+                    taskModel.notes= etTaskDescription.getText().toString();
                 }
                 break;
             case R.id.startTask:
-                Intent intent = new Intent(ShowTaskDetails.this,pomodoroTimer.class);
+                Intent intent = new Intent(ShowTaskDetails.this, pomodoroTimer.class);
                 intent.putExtra("TaskNamePomodoro",TaskName);
                 startActivity(intent);
                 break;
 
+
         }
 
     }
-    public static TaskModel findTaskUsingForLoop(int task) {
+    public static Task findTaskUsingForLoop(int task) {
         //looping through the list and return the task which id matches
         //every task is given unique id
 
-        for (TaskModel Task : Task_RecyclerViewAdapter.taskModelArrayList) {
+        for (com.example.myapplication.task.Task Task : Task_RecyclerViewAdapter.taskModelArrayList) {
             if (Task.getTaskId() == task) {
                 return Task;
             }

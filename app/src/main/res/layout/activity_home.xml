@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".task.Home"
+    tools:context=".HomeActivity.Home"
     android:gravity="center">
 
 
@@ -44,6 +44,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Today" />
+    <Button
+            android:text="CreateNewTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCreate"/>
 
     <Button
         android:id="@+id/bntLogout"

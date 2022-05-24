@@ -1,4 +1,4 @@
-package com.example.myapplication.user;
+package com.example.myapplication.user.userTypes;
 
 public class Admin extends User{
     private final static String adminUsername ="admin";

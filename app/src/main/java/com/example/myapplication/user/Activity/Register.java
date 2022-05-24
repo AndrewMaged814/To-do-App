@@ -1,4 +1,4 @@
-package com.example.myapplication.user;
+package com.example.myapplication.user.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,9 @@ import android.widget.Toast;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.myapplication.R;
+import com.example.myapplication.user.UserLocalStore;
+import com.example.myapplication.user.userTypes.NormalUser;
+import com.example.myapplication.user.userTypes.User;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
     private EditText etName, etUsername, etAge, etPassword,etConfirmPassword;

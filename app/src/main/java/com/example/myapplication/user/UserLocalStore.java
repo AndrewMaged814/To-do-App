@@ -2,6 +2,8 @@ package com.example.myapplication.user;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import com.example.myapplication.user.userTypes.NormalUser;
+import com.example.myapplication.user.userTypes.User;
 
 // this class allows us to store user data on a file
 
@@ -34,10 +36,10 @@ public class UserLocalStore {
     }
 
     public void storeUserData(User user) {
-        editor.putString(KEY_AGE, user.age);
-        editor.putString(KEY_NAME, user.name);
-        editor.putString(KEY_USERNAME, user.username);
-        editor.putString(KEY_PASSWORD, user.password);
+        editor.putString(KEY_AGE, user.getAge());
+        editor.putString(KEY_NAME, user.getName());
+        editor.putString(KEY_USERNAME, user.getUsername());
+        editor.putString(KEY_PASSWORD, user.getPassword());
         editor.commit();
     }
 

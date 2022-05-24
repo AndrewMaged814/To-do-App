@@ -1,4 +1,4 @@
-package com.example.myapplication.task;
+package com.example.myapplication.HomeActivity;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,8 +12,10 @@ import android.widget.TextView;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.myapplication.R;
-import com.example.myapplication.user.Login;
-import com.example.myapplication.user.User;
+import com.example.myapplication.task.Activities.CreateNewTask;
+import com.example.myapplication.task.Activities.TodayActivity;
+import com.example.myapplication.user.Activity.Login;
+import com.example.myapplication.user.userTypes.User;
 import com.example.myapplication.user.UserLocalStore;
 
 public class Home extends AppCompatActivity implements View.OnClickListener {
@@ -26,9 +28,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
         Button btLogout = findViewById(R.id.bntLogout);
         Button btnToday = findViewById(R.id.btnToday);
+        Button btnCreate = findViewById(R.id.btnCreate);
         name = findViewById(R.id.tvName);
         btLogout.setOnClickListener(this);
         btnToday.setOnClickListener(this);
+        btnCreate.setOnClickListener(this);
         userLocalStore = new UserLocalStore(this);
 
         displayUserDetails();
@@ -55,7 +59,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
         }
         else if (view.getId() == R.id.btnToday){
-            startActivity(new Intent(this, Today.class));
+            startActivity(new Intent(this, TodayActivity.class));
+        }
+        else if (view.getId() == R.id.btnCreate){
+            startActivity(new Intent(this, CreateNewTask.class));
         }
     }
 
