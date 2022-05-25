@@ -49,6 +49,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnCreate"/>
+    <Button
+            android:text="Upcoming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnUpcoming"/>
 
     <Button
         android:id="@+id/bntLogout"

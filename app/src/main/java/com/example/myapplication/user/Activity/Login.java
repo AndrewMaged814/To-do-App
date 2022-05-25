@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.myapplication.*;
+import com.example.myapplication.task.Tasks_Store;
 import com.example.myapplication.user.PersonalityTest;
 import com.example.myapplication.user.UserLocalStore;
 import com.example.myapplication.user.userTypes.Admin;
@@ -102,6 +103,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         if (user.getUsername().equals(userRegistered.getUsername()) && user.getPassword().equals(userRegistered.getPassword())) {
             Toast.makeText(Login.this, "Logged in successfully!", Toast.LENGTH_LONG).show();
+            Tasks_Store sharedPreferences;
+            sharedPreferences =new Tasks_Store(this);
+            sharedPreferences.getTask();
             startActivity(new Intent(this, PersonalityTest.class));
         } else {
             Toast.makeText(Login.this, "Incorrect Username or password", Toast.LENGTH_LONG).show();

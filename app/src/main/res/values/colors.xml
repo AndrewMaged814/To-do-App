@@ -40,6 +40,9 @@
     <color name="lightBlue">#add8e6</color>
     <color name="Fire">#FFA184</color>
     <color name="Okay">#FFFBC7</color>
+    <color name ="blueColor">#7886D8</color>
+    <color name ="yellow">#DD9831</color>
+
     <!--    <color name="colorPrimary">#00bcd4</color>-->
     <!--    <color name="colorPrimaryDark">#0097a7</color>-->
     <!--    <color name="colorAccent">#f2fe71</color>-->

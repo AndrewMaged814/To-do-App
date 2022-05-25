@@ -6,6 +6,7 @@
     <dimen name="logo_w_h">100dp</dimen>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="next"><![CDATA[->]]></string>
+    <string name="previous"><![CDATA[<-]]></string>
 
 </resources>

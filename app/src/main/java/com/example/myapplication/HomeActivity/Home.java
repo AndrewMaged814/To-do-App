@@ -14,6 +14,7 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.example.myapplication.R;
 import com.example.myapplication.task.Activities.CreateNewTask;
 import com.example.myapplication.task.Activities.TodayActivity;
+import com.example.myapplication.task.Calender.MainActivity;
 import com.example.myapplication.user.Activity.Login;
 import com.example.myapplication.user.userTypes.User;
 import com.example.myapplication.user.UserLocalStore;
@@ -29,10 +30,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         Button btLogout = findViewById(R.id.bntLogout);
         Button btnToday = findViewById(R.id.btnToday);
         Button btnCreate = findViewById(R.id.btnCreate);
+        Button btnUpcoming = findViewById(R.id.btnUpcoming);
         name = findViewById(R.id.tvName);
         btLogout.setOnClickListener(this);
         btnToday.setOnClickListener(this);
         btnCreate.setOnClickListener(this);
+        btnUpcoming.setOnClickListener(this);
         userLocalStore = new UserLocalStore(this);
 
         displayUserDetails();
@@ -63,6 +66,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         }
         else if (view.getId() == R.id.btnCreate){
             startActivity(new Intent(this, CreateNewTask.class));
+        }
+        else if (view.getId() == R.id.btnUpcoming){
+            startActivity(new Intent(this, MainActivity.class));
         }
     }
 

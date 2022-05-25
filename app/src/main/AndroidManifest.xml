@@ -16,6 +16,12 @@
         <activity
                 android:name=".chat.MessageAdapter"
                 android:exported="true" tools:ignore="Instantiatable"/>
+        <activity android:name=".task.Calender.EventEditActivity"
+                  android:exported="false"/>
+        <activity android:name=".task.Calender.MainActivity"
+                  android:exported="false"/>
+        <activity android:name=".task.Calender.WeekViewActivity"
+                  android:exported="false"/>
         <activity
                 android:name=".chat.ChatStartupActivity"
                 android:exported="true"/>

@@ -2,6 +2,7 @@ package com.example.myapplication.task.Adapters;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,15 +14,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.task.Task;
+import com.example.myapplication.task.Tasks_Store;
 
 import java.util.ArrayList;
 
+import static com.example.myapplication.task.Tasks_Store.Tasks;
 
 
 public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_RecyclerViewAdapter.MyViewHolder> {
     private final RecyclerViewInterface recyclerViewInterface;
     Context context;
     public static ArrayList<Task> taskModelArrayList;
+
     public Task_RecyclerViewAdapter(Context context,ArrayList<Task> taskModelArrayList, RecyclerViewInterface recyclerViewInterface){
         this.context = context;
         Task_RecyclerViewAdapter.taskModelArrayList = taskModelArrayList;
@@ -71,7 +75,6 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
         CheckBox cbDone;
 
         private final static String TAG = "TASK APP";
-
         public MyViewHolder(@NonNull View itemView,RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
@@ -123,6 +126,7 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
 
                         if(position != RecyclerView.NO_POSITION){
                             recyclerViewInterface.onItemLongClick(position);
+
                         }
 
                     }

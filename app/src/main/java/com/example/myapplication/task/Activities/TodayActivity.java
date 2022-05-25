@@ -56,22 +56,6 @@ public class TodayActivity extends AppCompatActivity implements RecyclerViewInte
         tvDate.setText(currentDate);
     }
 
-//    private void setTaskModelArrayList(){
-//        //here I hardcoded the task details as for testing and setting up the today's page
-//        //this method will be updated when the creation task form is created (take those fields as input from user)
-//
-//       /* Task t1 = new Task("Team meeting","@6pm",R.drawable.ic_baseline_edit_24,1);
-//        Task t2 = new Task("Communication","not okay",R.drawable.ic_baseline_edit_24,2);
-//        Task t3 = new Task("Gym","",R.drawable.ic_baseline_edit_24,3);
-//        Task t4 = new Task("Digital Electronics","blhob",R.drawable.ic_baseline_edit_24,4);
-//        Task t5 = new Task("Project architecture","rbna yostorha",R.drawable.ic_baseline_edit_24,5);
-//        Task t6 = new Task("Engineering Economy",":)",R.drawable.ic_baseline_edit_24,6);
-//        Task t7 = new Task("meeting","bring laptop",R.drawable.ic_baseline_edit_24,7);
-//        Task t8 = new Task("OOP","good",R.drawable.ic_baseline_edit_24,8);*/
-//        //   taskModelArrayList.addAll(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8));
-//        // Log.d(TAG,"onCreate: " + taskModelArrayList.toString());
-//    }
-
     @Override
     public void OnItemClick(int position) {
         //this method is implements the interface -RecycleViewInterface- to handle user clicks on
