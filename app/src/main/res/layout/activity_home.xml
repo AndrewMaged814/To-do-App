@@ -168,7 +168,6 @@
                 android:layout_height="190dp"
                 app:cardCornerRadius="15dp"
                 android:id="@+id/cardDelayed"
-
                 app:cardBackgroundColor="@color/grey"
                 android:layout_margin="10dp" android:focusable="true">
             <LinearLayout
@@ -222,7 +221,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-
                     app:cardCornerRadius="15dp"
                     android:elevation="3dp"
                     android:orientation="vertical">
@@ -239,15 +237,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Chat room"
+
                         android:fontFamily="@font/seg_ui_semibold"
                         android:textColor="@color/colorWhite"
                         android:textSize="26dp"
                         android:textStyle="bold"/>
 
                 <View
-                        android:layout_width="match_parent"
+                        android:layout_width="120dp"
                         android:layout_height="1dp"
-                        android:layout_margin="10dp"
+                        android:layout_marginTop="30dp"
                         android:background="@color/lightgray"/>
 
                 <!--                <TextView-->
@@ -319,20 +318,20 @@
 
 
     </LinearLayout>
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--            android:id="@+id/fab_logout"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="end"-->
-<!--            android:layout_marginEnd="16dp"-->
-<!--            android:layout_marginBottom="5dp"-->
-<!--            android:src="@drawable/icon_logout"-->
-<!--            app:fabSize="normal"-->
-<!--            app:borderWidth="0dp"-->
-<!--            android:backgroundTint="@color/colorRed"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            android:contentDescription="logout"/>-->
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--            android:id="@+id/fab_logout"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="end"-->
+    <!--            android:layout_marginEnd="16dp"-->
+    <!--            android:layout_marginBottom="5dp"-->
+    <!--            android:src="@drawable/icon_logout"-->
+    <!--            app:fabSize="normal"-->
+    <!--            app:borderWidth="0dp"-->
+    <!--            android:backgroundTint="@color/colorRed"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            android:contentDescription="logout"/>-->
 
 </LinearLayout>
 
