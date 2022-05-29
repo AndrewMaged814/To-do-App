@@ -19,6 +19,6 @@
             android:layout_marginBottom="4dp"
             android:id="@+id/imageView"
             android:layout_below="@id/nameTxt"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/iconsuser" />
 
 </RelativeLayout>

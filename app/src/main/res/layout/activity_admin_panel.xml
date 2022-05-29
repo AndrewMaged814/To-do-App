@@ -96,7 +96,23 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/tvPassword"
-            app:layout_constraintVertical_bias="1.0" app:layout_constraintHorizontal_bias="0.498"/>
+            app:layout_constraintVertical_bias="1.0" app:layout_constraintHorizontal_bias="0.227"/>
+    <Button
+            android:id="@+id/btnAprove"
+            android:layout_width="134dp"
+            android:layout_height="84dp"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/button_background"
+            android:backgroundTint="@color/colorRed"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:text="Approve User"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/tvPassword"
+            app:layout_constraintVertical_bias="1.0" app:layout_constraintHorizontal_bias="0.861"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

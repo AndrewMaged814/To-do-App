@@ -1,19 +1,27 @@
 package com.example.myapplication.user.userTypes;
 
-public abstract class User {
-    protected String name, username, password,age;
+ abstract public class User {
+     private String name, username, password,gender;
 
-    public User(String name, String username, String password, String age) {
+     private int age;
+
+
+    public User() {
+    }
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+
+    }
+
+    public User(String name, String username, String password, int age,String gender) {
         this.name = name;
         this.username = username;
         this.password = password;
         this.age = age;
+        this.gender = gender;
     }
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 
     public String getName() {
         return name;
@@ -39,12 +47,21 @@ public abstract class User {
         this.password = password;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-}
+     public String getGender() {
+         return gender;
+     }
+
+     public void setGender(String gender) {
+         this.gender = gender;
+     }
+
+
+ }

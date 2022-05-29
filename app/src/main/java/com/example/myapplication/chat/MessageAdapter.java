@@ -2,7 +2,6 @@ package com.example.myapplication.chat;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.text.NoCopySpan;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,91 +19,89 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessageAdapter extends RecyclerView.Adapter {
-
-    private static final int TYPE_MESSAGE_SENT = 0;
-    private static final int TYPE_MESSAGE_RECEIVED = 1;
-    private static final int TYPE_IMAGE_SENT = 2;
-    private static final int TYPE_IMAGE_RECEIVED = 3;
+public class MessageAdapter extends RecyclerView.Adapter
+{
+    private static final int Type_message_sent =0;
+    private static final int Type_message_received =1;
+    private static final int Type_Image_sent =2;
+    private static final int Type_Image_received =3;
 
     private LayoutInflater inflater;
     private List<JSONObject> messages = new ArrayList<>();
 
-    public MessageAdapter (LayoutInflater inflater) {
-        this.inflater = inflater;
+    public MessageAdapter ( LayoutInflater inflater)
+    {
+        this.inflater=inflater;
+
     }
 
-    public MessageAdapter() {
-    }
+    private class sentMessageholder extends RecyclerView.ViewHolder
+    {
 
-
-    private class SentMessageHolder extends RecyclerView.ViewHolder {
-
-        TextView messageTxt;
-
-        public SentMessageHolder(@NonNull View itemView) {
+        //hold reference to text view in layout item_sent_message
+        TextView messageText;
+        public sentMessageholder(@NonNull View itemView)
+        {
             super(itemView);
 
-            messageTxt = itemView.findViewById(R.id.sentTxt);
+            messageText = itemView.findViewById(R.id.sentMessage);
         }
     }
 
-    private class SentImageHolder extends RecyclerView.ViewHolder {
-
+    private class sentImageholder extends RecyclerView.ViewHolder
+    {
         ImageView imageView;
-
-        public SentImageHolder(@NonNull View itemView) {
+        public sentImageholder(@NonNull View itemView) {
             super(itemView);
-
             imageView = itemView.findViewById(R.id.imageView);
         }
     }
 
-    private class ReceivedMessageHolder extends RecyclerView.ViewHolder {
+    private class receivedMessageholder extends RecyclerView.ViewHolder
+    {
+        TextView name,message;
 
-        TextView nameTxt, messageTxt;
-
-        public ReceivedMessageHolder(@NonNull View itemView) {
+        public receivedMessageholder(@NonNull View itemView) {
             super(itemView);
-
-            nameTxt = itemView.findViewById(R.id.nameTxt);
-            messageTxt = itemView.findViewById(R.id.receivedTxt);
+            name=itemView.findViewById(R.id.senderName);
+            message=itemView.findViewById(R.id.receivedMessage);
         }
     }
 
-    private class ReceivedImageHolder extends RecyclerView.ViewHolder {
-
+    private class receivedImageholder extends RecyclerView.ViewHolder
+    {
         ImageView imageView;
-        TextView nameTxt;
+        TextView name;
 
-        public ReceivedImageHolder(@NonNull View itemView) {
+        public receivedImageholder(@NonNull View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.imageView);
-            nameTxt = itemView.findViewById(R.id.nameTxt);
-
+            imageView=itemView.findViewById(R.id.imageView);
+            name = itemView.findViewById(R.id.senderName);
         }
     }
 
+    //to know which holder to implement
     @Override
-    public int getItemViewType(int position) {
-
+    public int getItemViewType(int position)
+    {
         JSONObject message = messages.get(position);
 
         try {
-            if (message.getBoolean("isSent")) {
-
-                if (message.has("message"))
-                    return TYPE_MESSAGE_SENT;
+            if(message.getBoolean("isSent"))
+            {
+                if(message.has("message"))
+                    return Type_message_sent;
                 else
-                    return TYPE_IMAGE_SENT;
+                    return Type_Image_sent;
 
-            } else {
-
-                if (message.has("message"))
-                    return TYPE_MESSAGE_RECEIVED;
+            }
+            else
+            {
+                if(message.has("message"))
+                    return Type_message_received;
                 else
-                    return TYPE_IMAGE_RECEIVED;
+                    return Type_Image_received;
 
             }
         } catch (JSONException e) {
@@ -120,24 +117,20 @@ public class MessageAdapter extends RecyclerView.Adapter {
 
         View view;
 
-        switch (viewType) {
-            case TYPE_MESSAGE_SENT:
-                view = inflater.inflate(R.layout.item_sent_message, parent, false);
-                return new SentMessageHolder(view);
-            case TYPE_MESSAGE_RECEIVED:
-
-                view = inflater.inflate(R.layout.item_received_message, parent, false);
-                return new ReceivedMessageHolder(view);
-
-            case TYPE_IMAGE_SENT:
-
-                view = inflater.inflate(R.layout.item_sent_image, parent, false);
-                return new SentImageHolder(view);
-
-            case TYPE_IMAGE_RECEIVED:
-
-                view = inflater.inflate(R.layout.item_received_photo, parent, false);
-                return new ReceivedImageHolder(view);
+        switch (viewType)
+        {
+            case Type_message_sent:
+                view= inflater.inflate(R.layout.item_sent_message, parent, false);
+                return new sentMessageholder(view);
+            case Type_message_received:
+                view= inflater.inflate(R.layout.item_received_message, parent, false);
+                return new receivedMessageholder(view);
+            case Type_Image_sent:
+                view= inflater.inflate(R.layout.item_sent_image, parent, false);
+                return new sentMessageholder(view);
+            case Type_Image_received:
+                view= inflater.inflate(R.layout.item_received_image, parent, false);
+                return new receivedImageholder(view);
 
         }
 
@@ -150,34 +143,45 @@ public class MessageAdapter extends RecyclerView.Adapter {
         JSONObject message = messages.get(position);
 
         try {
-            if (message.getBoolean("isSent")) {
+            if (message.getBoolean("isSent"))
+            {
 
-                if (message.has("message")) {
+                if (message.has ("message"))
+                {
 
-                    SentMessageHolder messageHolder = (SentMessageHolder) holder;
-                    messageHolder.messageTxt.setText(message.getString("message"));
+                    sentMessageholder messageHolder = (sentMessageholder) holder;
+                    messageHolder.messageText.setText(message.getString("message"));
 
-                } else {
 
-                    SentImageHolder imageHolder = (SentImageHolder) holder;
+                }
+
+                else
+                {
+
+                    sentImageholder imageHolder = (sentImageholder) holder;
+                    //since the image is B64 string (binary data) to convert must use bitmap
                     Bitmap bitmap = getBitmapFromString(message.getString("image"));
 
                     imageHolder.imageView.setImageBitmap(bitmap);
 
                 }
 
-            } else {
+            }
+            else
+            {
+                if (message.has("message"))
+                {
+                    receivedMessageholder messageHolder = (receivedMessageholder) holder;
+                    messageHolder.name.setText(message.getString("name"));
+                    messageHolder.message.setText(message.getString("message"));
 
-                if (message.has("message")) {
+                }
 
-                    ReceivedMessageHolder messageHolder = (ReceivedMessageHolder) holder;
-                    messageHolder.nameTxt.setText(message.getString("name"));
-                    messageHolder.messageTxt.setText(message.getString("message"));
+                else
+                {
 
-                } else {
-
-                    ReceivedImageHolder imageHolder = (ReceivedImageHolder) holder;
-                    imageHolder.nameTxt.setText(message.getString("name"));
+                    receivedImageholder imageHolder = (receivedImageholder) holder;
+                    imageHolder.name.setText(message.getString("name"));
 
                     Bitmap bitmap = getBitmapFromString(message.getString("image"));
                     imageHolder.imageView.setImageBitmap(bitmap);
@@ -191,7 +195,8 @@ public class MessageAdapter extends RecyclerView.Adapter {
 
     }
 
-    private Bitmap getBitmapFromString(String image) {
+    private Bitmap getBitmapFromString(String image)
+    {
 
         byte[] bytes = Base64.decode(image, Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
@@ -199,12 +204,14 @@ public class MessageAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
+        //total number of messages
         return messages.size();
     }
 
-    public void addItem (JSONObject jsonObject) {
+    public void addItem (JSONObject jsonObject)
+    {
         messages.add(jsonObject);
         notifyDataSetChanged();
-    }
 
+    }
 }

@@ -21,13 +21,12 @@ public class Task {
     protected int day, month, year;
     protected double p;
     protected String Priority;
-    protected boolean done=false;
+    protected boolean done = false;
     protected String date;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String getDate() {
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//        return LocalDate.parse(date, formatter);
+
         return date;
     }
 
@@ -35,81 +34,70 @@ public class Task {
         this.date = date;
     }
 
-    protected  static int numOfTasks;
+    protected static int numOfTasks;
     protected int taskId;
+    private static int taskIdIncreamter=0;
     public String notes;
-    protected static final int image= R.drawable.ic_baseline_edit_24;
+    protected static final int image = R.drawable.ic_baseline_edit_24;
     pomodoroTimer pomodoro;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
 
 
-
-    public static List <Task> eventsList =UpComing.UpComingTasks;
+    public static List<Task> eventsList = UpComing.UpComingTasks;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public static ArrayList<Task> eventsForDate(LocalDate date){
+    public static ArrayList<Task> eventsForDate(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String formattedString = date.format(formatter);
         ArrayList<Task> events = new ArrayList<>();
 
-        for(Task event : eventsList)
-        {
-            if(event.getDate().equals(formattedString))
-                events.add(event);
+        for (Task event : eventsList) {
+            if (event.getDate().equals(formattedString)) events.add(event);
         }
 
         return events;
     }
 
 
-
     public Task(String Name, String Category, String Priority, int day, int month, int year, String date) {
         this.Name = Name;
         this.Category = Category;
-       // this.p = p;
+        // this.p = p;
         this.day = day;
         this.month = month;
         this.year = year;
         this.date = date;
-        this.Priority=Priority;
+        this.Priority = Priority;
         numOfTasks++;
-        this.taskId=numOfTasks;
+        this.taskId = taskIdIncreamter++;
 
-        this.TaskDetails=this.Name+
-                "\n"+this.date+
-                "\n"+this.Priority+
-                "\n"+this.Category+"\n"+this.done+"\n"+this.taskId;
+        this.TaskDetails = this.Name + "\n" + this.date + "\n" + this.Priority + "\n" + this.Category + "\n" + this.done + "\n" + this.taskId;
     }
 
-    public Task(String Name, String date, String Priority , String Category, String Done, String ID) {
+    public Task(String Name, String date, String Priority, String Category, String Done, String ID) {
         this.Name = Name;
         this.Category = Category;
-        this.Priority=Priority;
-        this.done= Boolean.parseBoolean(Done);
+        this.Priority = Priority;
+        this.done = Boolean.parseBoolean(Done);
         this.date = date;
-        this.taskId=Integer.parseInt(ID);
-        this.TaskDetails=Name+
-                "\n"+date+
-                "\n"+Priority+
-                "\n"+Category+"\n"+done+"\n"+taskId;
+        this.taskId = taskIdIncreamter++;
+        this.TaskDetails = Name + "\n" + date + "\n" + Priority + "\n" + Category + "\n" + done + "\n" + taskId;
     }
-
-
 
 
     public Task(Task T) {
         this.Name = T.Name;
         this.Category = T.Category;
-        this.p=T.p;
+        this.p = T.p;
         this.day = T.day;
         this.month = T.month;
         this.year = T.year;
-        this.date=T.date;
-        this.Priority=T.Priority;
-        this.TaskDetails=T.TaskDetails;
-        this.taskId=T.taskId;
+        this.date = T.date;
+        this.Priority = T.Priority;
+        this.TaskDetails = T.TaskDetails;
+        this.taskId = T.taskId;
     }
 
 
@@ -118,11 +106,13 @@ public class Task {
     }
 
     public String getTaskDetails() {
-        return "Date:"+date+"\nCategory:"+Category+"\nPriority:"+Priority;
+        return "Date:" + date + "\nCategory:" + Category + "\nPriority:" + Priority;
     }
-    public void setDone(){
-        done=true;
+
+    public void setDone() {
+        done = true;
     }
+
     public boolean isTaskDone() {
         return done;
     }
@@ -130,9 +120,11 @@ public class Task {
     public int getTaskId() {
         return taskId;
     }
-    public void setTaskNotes(String notes){
-        this.notes=notes;
+
+    public void setTaskNotes(String notes) {
+        this.notes = notes;
     }
+
     public void setTaskDone(boolean taskDone) {
         this.done = taskDone;
     }
@@ -183,7 +175,7 @@ public class Task {
     public static Comparator<Task> taskModelComparatorDone = new Comparator<Task>() {
         @Override
         public int compare(Task t1, Task t2) {
-            return Boolean.compare(t1.isTaskDone(),t2.isTaskDone());
+            return Boolean.compare(t1.isTaskDone(), t2.isTaskDone());
         }
     };
     //sort task names ascending
@@ -195,9 +187,7 @@ public class Task {
     };
 
 
-
-
-    public String toString (){
+    public String toString() {
 
         return TaskDetails;
     }

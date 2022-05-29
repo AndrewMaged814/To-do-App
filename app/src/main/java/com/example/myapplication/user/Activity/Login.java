@@ -1,5 +1,6 @@
 package com.example.myapplication.user.Activity;
 
+import android.content.SharedPreferences;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,17 +14,20 @@ import android.widget.Toast;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.myapplication.*;
+import com.example.myapplication.HomeActivity.Home;
+import com.example.myapplication.task.Activities.PersonalityTest;
 import com.example.myapplication.task.Tasks_Store;
-import com.example.myapplication.user.PersonalityTest;
 import com.example.myapplication.user.UserLocalStore;
+import com.example.myapplication.user.ValidatesLogin;
 import com.example.myapplication.user.userTypes.Admin;
 import com.example.myapplication.user.userTypes.NormalUser;
 import com.example.myapplication.user.userTypes.User;
 
 //view.OnClickListener allows clicks to make actions
-public class Login extends AppCompatActivity implements View.OnClickListener {
+public class Login extends AppCompatActivity implements View.OnClickListener, ValidatesLogin {
     private EditText etUsername, etPassword;
     private UserLocalStore userLocalStore;
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +38,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         TextView registerLink = findViewById(R.id.tvRegisterLink);
+        preferences = getSharedPreferences("userDetails", MODE_PRIVATE);
 
 
         btLogin.setOnClickListener(this);
         registerLink.setOnClickListener(this);
         userLocalStore = new UserLocalStore(Login.this);
-
 
 
     }
@@ -49,24 +53,33 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         //this switch statement gets the id of the view which is clicked
-        Admin admin = new Admin();
         switch (view.getId()) {
             case R.id.btLogin:
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                if(userLocalStore.getLoggedInUser()!=null){
+                final String username = etUsername.getText().toString();
+                final String password = etPassword.getText().toString();
+
                 if (validateLogin(username, password)) {
-                    if(username.equals(admin.getUsername()) && password.equals(admin.getPassword())){
+                    if (checkAdminPrivileges(username, password)) {
                         startActivity(new Intent(this, AdminPanel.class));
-                    }
-                    else{
+                    } else {
                         User user = new NormalUser(username, password);
-                        userLocalStore.setUserLoggedIn(true);
-                        authenticate(user);
+                        if (authenticate(user) && userLocalStore.getUserStatus()) {
+                            Toast.makeText(Login.this, "Logged in successfully!", Toast.LENGTH_LONG).show();
+                            loadTodaysList();
+                            ShowPersonalityTest();
+
+                        }
+                        else if(!authenticate(user))
+                            Toast.makeText(Login.this, "Incorrect Username or password", Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(Login.this, "Pending approval...", Toast.LENGTH_LONG).show();
+
+
                     }
 
-                 }
                 }
+
+
                 break;
             case R.id.tvRegisterLink:
                 startActivity(new Intent(this, Register.class));
@@ -75,8 +88,42 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
 
     }
+    @Override
+    public boolean checkAdminPrivileges(String username, String password) {
+        boolean isAdmin = username.equals(Admin.getAdminUsername()) && password.equals(Admin.getAdminPassword());
+        if (isAdmin) {
+            Admin admin = new Admin();
+            admin.setAdminprivilege(isAdmin);
+        }
+        return isAdmin;
+    }
 
-    private boolean validateLogin(String username, String password) {
+    private void ShowPersonalityTest() {
+        boolean firstStart = preferences.getBoolean("firstStart", true);
+
+        if (firstStart) {
+            startActivity(new Intent(this, PersonalityTest.class));
+
+        } else
+            startActivity(new Intent(this, Home.class));
+
+    }
+
+    private void loadTodaysList() {
+        Tasks_Store sharedPreferences;
+        sharedPreferences = new Tasks_Store(this);
+        sharedPreferences.getTask();
+    }
+
+    @Override
+    public boolean authenticate(User user) {
+        User userRegistered = userLocalStore.getLoggedInUser();
+        return user.getUsername().equals(userRegistered.getUsername()) && user.getPassword().equals(userRegistered.getPassword());
+
+    }
+
+    @Override
+    public boolean validateLogin(String username, String password) {
         if (username.isEmpty()) {
             YoYo.with(Techniques.Bounce).duration(700).repeat(1).playOn(etUsername);
             etUsername.setError("Username is required");
@@ -96,22 +143,5 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             return false;
         }
         return true;
-    }
-
-    private void authenticate(User user) {
-        User userRegistered = userLocalStore.getLoggedInUser();
-
-        if (user.getUsername().equals(userRegistered.getUsername()) && user.getPassword().equals(userRegistered.getPassword())) {
-            Toast.makeText(Login.this, "Logged in successfully!", Toast.LENGTH_LONG).show();
-            Tasks_Store sharedPreferences;
-            sharedPreferences =new Tasks_Store(this);
-            sharedPreferences.getTask();
-            startActivity(new Intent(this, PersonalityTest.class));
-        } else {
-            Toast.makeText(Login.this, "Incorrect Username or password", Toast.LENGTH_LONG).show();
-
-        }
-
-
     }
 }

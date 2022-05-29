@@ -44,15 +44,56 @@
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/recycler_view_row.xml" value="0.33" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/layout/toolbar.xml" value="0.209375" />
         <entry key="..\:/Andrew/Development/OOP/Android Studio/project1/app/src/main/res/menu/sort_menu.xml" value="0.209375" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable-anydpi/card_background_corner_end.xml" value="0.1899122807017544" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable-anydpi/card_background_no_corners.xml" value="0.1899122807017544" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable-xxxhdpi/circlebackgroundPurple.xml" value="0.125" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable-xxxhdpi/circlebackgroundYellow.xml" value="0.125" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable/button_background.xml" value="0.1899122807017544" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable/card_background.xml" value="0.1899122807017544" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable/circlebackgroundpink.xml" value="0.18398268398268397" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable/edit_text_background.xml" value="0.1899122807017544" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable/edittext_design.xml" value="0.125" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.12763157894736843" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.125" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable/icon_logout.xml" value="0.1899122807017544" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable/navigation.xml" value="0.18640350877192982" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/drawable/side_nav_bar.xml" value="0.125" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_admin_panel.xml" value="0.1763157894736842" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_chat.xml" value="0.17056277056277055" />
         <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_event_edit.xml" value="0.209375" />
-        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_home.xml" value="0.209375" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_login.xml" value="0.20615384615384616" />
         <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_main.xml" value="0.209375" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_main2.xml" value="0.25" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_main_navigation.xml" value="0.15" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_main_navigation2.xml" value="0.22" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_mian.xml" value="0.17280701754385966" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_personality_test.xml" value="0.17280701754385966" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_personality_test2.xml" value="0.21" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_show_task_details.xml" value="0.12" />
-        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_today.xml" value="0.209375" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_startup_chat.xml" value="0.17056277056277055" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_today.xml" value="0.15" />
         <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/activity_week_view.xml" value="0.1" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/content_main.xml" value="0.1" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/content_navigation_menu.xml" value="0.17280701754385966" />
         <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/edit_task.xml" value="0.209375" />
         <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/event_cell.xml" value="0.1" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/item_received_image.xml" value="0.11140350877192982" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/item_received_message.xml" value="0.11140350877192982" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/item_received_photo.xml" value="0.1" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/item_sent_image.xml" value="0.17280701754385966" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/item_sent_message.xml" value="0.17280701754385966" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/nav_header.xml" value="0.17280701754385966" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/nav_header2.xml" value="0.17280701754385966" />
         <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/spinner_with_icons.xml" value="0.209375" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/test.xml" value="0.14" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/layout/toolbar.xml" value="0.1763157894736842" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/menu/drawer_menu.xml" value="0.2" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/menu/home_menu.xml" value="0.18859649122807018" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/menu/nav_menu.xml" value="0.1" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/menu/navigation_menu.xml" value="0.1850877192982456" />
+        <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/menu/sort_menu.xml" value="0.1" />
         <entry key="..\:/Andrew/Semester 6/OOP/To-do-App/app/src/main/res/mipmap-anydpi-v26/ic_cold.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/andre/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.209375" />
       </map>

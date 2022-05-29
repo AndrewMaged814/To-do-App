@@ -13,12 +13,12 @@ public class UserLocalStore {
     stored when they've logged in */
     public static final String USER_DETAILS = "userDetails";
 
-    private static final String IS_LOGIN = "IsLoggedIn";
-
     public static final String KEY_NAME = "name";
     public static final String KEY_AGE = "age";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_PASSWORD = "password";
+    public static final String KEY_GENDER = "gender";
+    public static final String KEY_STATUS = "status";
 
 
     //SharedPreferences allows data to be stored locally in a file
@@ -36,32 +36,33 @@ public class UserLocalStore {
     }
 
     public void storeUserData(User user) {
-        editor.putString(KEY_AGE, user.getAge());
+        editor.putInt(KEY_AGE, user.getAge());
         editor.putString(KEY_NAME, user.getName());
         editor.putString(KEY_USERNAME, user.getUsername());
         editor.putString(KEY_PASSWORD, user.getPassword());
+        editor.putString(KEY_GENDER, user.getGender());
+        editor.putBoolean(KEY_STATUS,NormalUser.getStatus());
         editor.commit();
     }
 
     //gets data of the current user which is logged on
     public User getLoggedInUser() {
-        String name = userLocalDatabase.getString("name", "");
-        String age = userLocalDatabase.getString("age", "");
-        String username = userLocalDatabase.getString("username", "");
-        String password = userLocalDatabase.getString("password", "");
+        String name = userLocalDatabase.getString(KEY_NAME, "");
+        int age = userLocalDatabase.getInt(KEY_AGE, 0);
+        String username = userLocalDatabase.getString(KEY_PASSWORD, "");
+        String password = userLocalDatabase.getString(KEY_PASSWORD, "");
+        String gender = userLocalDatabase.getString(KEY_GENDER, "");
 
-        return new NormalUser(name, username, password, age);
+        return new NormalUser(name, username, password, age,gender);
     }
 
-
-    //if the user is logged in loggedIn is set to true otherwise false
-
-    public void setUserLoggedIn(boolean loggedIn) {
-        editor.putBoolean(IS_LOGIN, loggedIn);
+    public void setUserStatus(boolean status) {
+        editor.putBoolean(KEY_STATUS, status);
         editor.commit();
-
     }
-
+    public boolean getUserStatus(){
+        return userLocalDatabase.getBoolean(KEY_STATUS, false);
+    }
     public void RemoveUser() {
         editor.clear();
         editor.apply();

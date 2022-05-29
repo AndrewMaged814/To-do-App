@@ -34,12 +34,14 @@ public class ChatActivity extends AppCompatActivity implements TextWatcher {
 
     private String name;
     private WebSocket webSocket;
-    private String SERVER_PATH = "ws://192.168.1.103:3000";
-    private EditText messageEdit;
-    private View sendBtn, pickImgBtn;
+    //on this link a webSocket server runs
+    private String SERVER_PATH="ws://192.168.100.9:3000";
+    private EditText messageBox;
+    private View sendButton, pickImage;
     private RecyclerView recyclerView;
-    private int IMAGE_REQUEST_ID = 1;
-    private MessageAdapter messageAdapter;
+    private int IMAGE_REQUEST_ID=1;
+    private MessageAdapter MessageAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,8 @@ public class ChatActivity extends AppCompatActivity implements TextWatcher {
 
     }
 
-    private void initiateSocketConnection() {
+    private void initiateSocketConnection()
+    {
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(SERVER_PATH).build();
@@ -70,165 +73,206 @@ public class ChatActivity extends AppCompatActivity implements TextWatcher {
     }
 
     @Override
-    public void afterTextChanged(Editable s) {
-
+    public void afterTextChanged(Editable s)
+    {
+        //will hold the string in message box and trim will remove all leading and trailing empty
+        //spaces from a string
         String string = s.toString().trim();
+        //condition to change buttons based on message box
+        if(string.isEmpty())
+        {
+            resetMessageBox();
+        }
+        else
+        {
+            sendButton.setVisibility(View.VISIBLE);
+            pickImage.setVisibility(View.INVISIBLE);
 
-        if (string.isEmpty()) {
-            resetMessageEdit();
-        } else {
-
-            sendBtn.setVisibility(View.VISIBLE);
-            pickImgBtn.setVisibility(View.INVISIBLE);
         }
 
     }
 
-    private void resetMessageEdit() {
+    private void resetMessageBox()
+    {
+        //removes the string "message..." not enter an infinite loop
+        messageBox.removeTextChangedListener(this);
+        messageBox.setText(" ");
 
-        messageEdit.removeTextChangedListener(this);
+        sendButton.setVisibility(View.INVISIBLE);
+        pickImage.setVisibility(View.VISIBLE);
 
-        messageEdit.setText("");
-        sendBtn.setVisibility(View.INVISIBLE);
-        pickImgBtn.setVisibility(View.VISIBLE);
-
-        messageEdit.addTextChangedListener(this);
-
+        messageBox.addTextChangedListener(this);
     }
 
-    private class SocketListener extends WebSocketListener {
+    //nested class
+    private class SocketListener extends WebSocketListener
+    {
 
+        //when client successful connects with server
         @Override
-        public void onOpen(WebSocket webSocket, Response response) {
+        public void onOpen(WebSocket webSocket, Response response)
+        {
+
             super.onOpen(webSocket, response);
 
-            runOnUiThread(() -> {
-                Toast.makeText(ChatActivity.this,
-                        "Socket Connection Successful!",
+            //onOpen called from background thread and can't touch Ui from background thread
+            runOnUiThread(() ->
+            {
+                Toast.makeText(ChatActivity.this, "Socket Connection is Successful!",
                         Toast.LENGTH_SHORT).show();
 
                 initializeView();
-            });
 
+
+            });
         }
 
+        //when client receives any message in form of string
         @Override
-        public void onMessage(WebSocket webSocket, String text) {
+        public void onMessage(WebSocket webSocket, String text)
+        {
             super.onMessage(webSocket, text);
 
-            runOnUiThread(() -> {
+            //message sent to everyone on server except the sender
+            //accept message and show it in recycler view
+            runOnUiThread(()->{
 
                 try {
                     JSONObject jsonObject = new JSONObject(text);
-                    jsonObject.put("isSent", false);
+                    jsonObject.put("isSent",false );
+                    MessageAdapter.addItem(jsonObject);
 
-                    messageAdapter.addItem(jsonObject);
+                    //for the recycler view to automatically scroll to new message
+                    recyclerView.smoothScrollToPosition(MessageAdapter.getItemCount() - 1);
 
-                    recyclerView.smoothScrollToPosition(messageAdapter.getItemCount() - 1);
-
-                } catch (JSONException e) {
+                } catch (JSONException e)
+                {
                     e.printStackTrace();
                 }
 
             });
-
         }
     }
 
-    private void initializeView() {
-
-        messageEdit = findViewById(R.id.messageEdit);
-        sendBtn = findViewById(R.id.sendBtn);
-        pickImgBtn = findViewById(R.id.pickImgBtn);
-
+    //store reference items to all the things in chat Activity Layout
+    private void initializeView()
+    {
+        messageBox = findViewById(R.id.messageBox);
+        sendButton = findViewById(R.id.sendButton);
+        pickImage = findViewById(R.id.pickImage);
         recyclerView = findViewById(R.id.recyclerView);
 
-        messageAdapter = new MessageAdapter(getLayoutInflater());
-        recyclerView.setAdapter(messageAdapter);
+        MessageAdapter = new MessageAdapter(getLayoutInflater());
+        recyclerView.setAdapter(MessageAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //if message box empty the image button will be visible else wise send button will be visible
+        messageBox.addTextChangedListener(this);
 
-        messageEdit.addTextChangedListener(this);
-
-        sendBtn.setOnClickListener(v -> {
+        //functionalities of send button
+        //take message in message box and place it in a json object which then sends it to server
+        sendButton.setOnClickListener( v -> {
 
             JSONObject jsonObject = new JSONObject();
+
+
             try {
+                //name of sender
                 jsonObject.put("name", name);
-                jsonObject.put("message", messageEdit.getText().toString());
+                //sender's message
+                jsonObject.put("message",messageBox.getText().toString());
 
+                //sends the json object to server
                 webSocket.send(jsonObject.toString());
-
                 jsonObject.put("isSent", true);
-                messageAdapter.addItem(jsonObject);
+                MessageAdapter.addItem(jsonObject);
 
-                recyclerView.smoothScrollToPosition(messageAdapter.getItemCount() - 1);
+                recyclerView.smoothScrollToPosition(MessageAdapter.getItemCount()-1);
 
-                resetMessageEdit();
+                //empty the message box after sending the message
+                resetMessageBox();
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
+
         });
 
-        pickImgBtn.setOnClickListener(v -> {
+        //pick image button functionality
+        //gallery will open and user can select any image
+        pickImage.setOnClickListener(v -> {
 
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.setType("image/*");
 
-            startActivityForResult(Intent.createChooser(intent, "Pick image"),
+            //This API was replaced by android but couldn't find alternative
+            //however deprecated APIs can still be used
+            startActivityForResult (Intent.createChooser(intent, "Pick image"),
                     IMAGE_REQUEST_ID);
 
         });
 
     }
 
+    //to accept the selected image
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == IMAGE_REQUEST_ID && resultCode == RESULT_OK) {
-
+        if (requestCode ==IMAGE_REQUEST_ID && resultCode == RESULT_OK)
+        {
             try {
+                //to obtain the selected image from user
                 InputStream is = getContentResolver().openInputStream(data.getData());
                 Bitmap image = BitmapFactory.decodeStream(is);
 
                 sendImage(image);
 
-            } catch (FileNotFoundException e) {
+            } catch (FileNotFoundException e)
+            {
                 e.printStackTrace();
             }
 
         }
-
     }
 
-    private void sendImage(Bitmap image) {
-
+    private void sendImage(Bitmap image)
+    {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
+        //format of compression also the quality
+        //output stream is where we want to compress the image
+        image.compress(Bitmap.CompressFormat.JPEG,50,outputStream);
 
-        String base64String = Base64.encodeToString(outputStream.toByteArray(),
+        //image will be sent in a form of string
+        //to convert image into string
+        String base64string = Base64.encodeToString(outputStream.toByteArray(),
                 Base64.DEFAULT);
-
+        //To send the image to server
         JSONObject jsonObject = new JSONObject();
-
         try {
-            jsonObject.put("name", name);
-            jsonObject.put("image", base64String);
-
+            //name of sender
+            jsonObject.put("name",name);
+            //the image
+            jsonObject.put("image",base64string);
+            //send name and image to server
             webSocket.send(jsonObject.toString());
 
+            //show messages in recyclerview
             jsonObject.put("isSent", true);
 
-            messageAdapter.addItem(jsonObject);
+            MessageAdapter.addItem(jsonObject);
 
-            recyclerView.smoothScrollToPosition(messageAdapter.getItemCount() - 1);
+            recyclerView.smoothScrollToPosition(MessageAdapter.getItemCount()-1);
 
-        } catch (JSONException e) {
+        }
+        catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 }
+
+
+
+

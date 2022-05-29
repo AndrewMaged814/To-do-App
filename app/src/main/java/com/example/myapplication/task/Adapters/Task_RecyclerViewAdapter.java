@@ -17,6 +17,7 @@ import com.example.myapplication.task.Task;
 import com.example.myapplication.task.Tasks_Store;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.myapplication.task.Tasks_Store.Tasks;
 
@@ -25,11 +26,16 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
     private final RecyclerViewInterface recyclerViewInterface;
     Context context;
     public static ArrayList<Task> taskModelArrayList;
+    Tasks_Store sharedPreferences;
+
+
+
 
     public Task_RecyclerViewAdapter(Context context,ArrayList<Task> taskModelArrayList, RecyclerViewInterface recyclerViewInterface){
         this.context = context;
         Task_RecyclerViewAdapter.taskModelArrayList = taskModelArrayList;
         this.recyclerViewInterface = recyclerViewInterface;
+
 
 
     }
@@ -73,7 +79,6 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
         ImageView imageView;
         TextView tvName;
         CheckBox cbDone;
-
         private final static String TAG = "TASK APP";
         public MyViewHolder(@NonNull View itemView,RecyclerViewInterface recyclerViewInterface) {
             super(itemView);

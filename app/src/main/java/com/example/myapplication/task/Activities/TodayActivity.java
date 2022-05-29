@@ -1,4 +1,5 @@
 package com.example.myapplication.task.Activities;
+import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,7 +17,10 @@ import com.example.myapplication.R;
 import com.example.myapplication.task.Adapters.RecyclerViewInterface;
 import com.example.myapplication.task.Task;
 import com.example.myapplication.task.Adapters.Task_RecyclerViewAdapter;
+import com.example.myapplication.task.Tasks_Store;
 import com.example.myapplication.task.taskTypes.Today;
+import com.example.myapplication.task.Activities.CreateNewTask;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -27,24 +31,26 @@ public class TodayActivity extends AppCompatActivity implements RecyclerViewInte
 
     static ArrayList<Task> taskModelArrayList= Today.TodTasks;
     Task_RecyclerViewAdapter adapter;
-    Menu menu;
-    private final static String TAG = "TASK APP";
+    Tasks_Store sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
 
         getCurrentDate();
 
+
         RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
-        //setup the the arraylist model before sending it out to the adapter
-       // setTaskModelArrayList();
         adapter = new Task_RecyclerViewAdapter(this,taskModelArrayList,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        sharedPreferences = new Tasks_Store(this);
+
 
     }
 
@@ -80,9 +86,11 @@ public class TodayActivity extends AppCompatActivity implements RecyclerViewInte
     public void onItemLongClick(int position) {
         //this method also implements the interface -RecycleViewInterface- to handle long clicks
         //long press can remove items from the list
-        //by getting the position of the item pressed.. item at that position(index) will be removed
+        //by getting the position of the item pressed; item at that position(index) will be removed
+        //from the arraylist and shared preference
         //then notify the adapter to update the list
-        taskModelArrayList.remove(position);
+        Task task = taskModelArrayList.get(position);
+        task.DeleteTask(taskModelArrayList,task.getTaskName(), sharedPreferences);
         adapter.notifyItemRemoved(position);
     }
 

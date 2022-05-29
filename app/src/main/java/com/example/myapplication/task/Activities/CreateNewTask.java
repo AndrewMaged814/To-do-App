@@ -45,7 +45,7 @@ public class CreateNewTask extends AppCompatActivity implements AdapterView.OnIt
 
 
         //dropdown category menu
-        spinnerCat = (Spinner) findViewById(R.id.spinnerCat);
+        spinnerCat = findViewById(R.id.spinnerCat);
         spinnerCat.setOnItemSelectedListener(this);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(CreateNewTask.this, android.R.layout.simple_spinner_item, paths);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -107,6 +107,7 @@ public class CreateNewTask extends AppCompatActivity implements AdapterView.OnIt
 
 
     }
+
 
 
     private void Update() {

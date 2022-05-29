@@ -1,8 +1,10 @@
 
 package com.example.myapplication.task.Activities;
 
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,11 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.myapplication.R;
+import com.example.myapplication.user.Personality.Active;
+import com.example.myapplication.user.Personality.LongBreak;
+import com.example.myapplication.user.Personality.Personality;
+import com.example.myapplication.user.Personality.ShortBreak;
+import com.google.gson.Gson;
 
 import java.util.Locale;
 
@@ -37,6 +44,7 @@ public class pomodoroTimer extends AppCompatActivity {
     private long totalTimeCountInMilliseconds;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +61,11 @@ public class pomodoroTimer extends AppCompatActivity {
         lottieAnimationView = findViewById(R.id.lottieTimer);
         String TaskName = getIntent().getStringExtra("TaskNamePomodoro");
         tvTaskName.setText(TaskName);
+        SharedPreferences mPrefs= getSharedPreferences("pre", 0);
+        Gson gson = new Gson();
+        String json = mPrefs.getString("MyObject","");
+        Active obj = gson.fromJson(json,Active.class);
+        DeterminingPersonality(obj);
 
 
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +90,36 @@ public class pomodoroTimer extends AppCompatActivity {
         updateCountDownText();
 
 
+    }
+//    public Personality getObject(){
+//        Gson gson = new Gson();
+//        String json = mPrefs.getString("MyObject", "");
+//        Personality obj = gson.fromJson(json, Personality.class);
+//        return obj ;
+//    }
+    public void DeterminingPersonality(Personality x)
+    {
+        if(x instanceof LongBreak)
+        {
+//            START_TIME_IN_MILLIS =((LongBreak) x).noOfHours;
+//            Break_TIME_IN_MILLIS =((LongBreak) x).TimerDuration;
+            Toast.makeText(pomodoroTimer.this, "longBreak", Toast.LENGTH_LONG).show();
+        }
+
+        if(x instanceof ShortBreak)
+        {
+//            START_TIME_IN_MILLIS =((ShortBreaks) x).noOfHours;
+//            Break_TIME_IN_MILLIS =((ShortBreaks) x).TimerDuration;
+            Toast.makeText(pomodoroTimer.this, "ShortBreak", Toast.LENGTH_LONG).show();
+        }
+
+        if(x instanceof Active)
+        {
+            Toast.makeText(pomodoroTimer.this, "Active", Toast.LENGTH_LONG).show();
+//            START_TIME_IN_MILLIS =((Active) x).noOfHours;
+//            Break_TIME_IN_MILLIS =((Active) x).TimerDuration;
+
+        }
     }
 
     private void startTimer() {

@@ -1,63 +1,338 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".HomeActivity.Home"
-    android:gravity="center">
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:id="@+id/tvName"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:textColor="#212121"
-        android:hint="user's name"
-        />
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/paperplane"
-        app:lottie_loop="true"/>
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/laptopworking"
-        app:lottie_loop="true"/>
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/taskman"
-        app:lottie_loop="true"/>
-
-    <Button
-        android:id="@+id/btnToday"
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Today" />
-    <Button
-            android:text="CreateNewTask"
+        android:layout_height="match_parent"
+        tools:context="com.example.myapplication.HomeActivity.Home"
+        android:orientation="vertical"
+        android:background="@color/almost_black"
+        android:gravity="center"
+        android:id="@+id/ll">
+    <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnCreate"/>
-    <Button
-            android:text="Upcoming"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnUpcoming"/>
+            android:layout_height="match_parent"
+            android:background="@drawable/card_background_corner_end"
+            android:backgroundTint="@color/colorRed"
+            android:layout_weight=".50">
 
-    <Button
-        android:id="@+id/bntLogout"
-        android:text="Logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+        >
+            <ImageView
+                    android:id="@+id/img_user"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/iconsuser"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tvHomename"
+                    android:textSize="34sp"
+                    android:paddingRight="80dp"
+                    android:paddingTop="40dp"
+                    android:textAlignment="center"
+                    android:background="@drawable/card_background_corner_end"
+                    android:backgroundTint="@color/colorRed"
+                    android:text="Welcome Back"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:hint="user's name"/>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+
+            android:background="@drawable/card_background"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:backgroundTint="@color/almost_black"
+            android:paddingTop="30dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:id="@+id/cardToday"
+                android:layout_width="140dp"
+                android:layout_height="190dp"
+                app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="@color/grey"
+                android:layout_margin="10dp" android:focusable="true">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:background="@drawable/circlebackgroundpink"
+                        android:src="@drawable/icon_today"
+                        android:padding="10dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:text="Today"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26dp"/>
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lightgray"
+                        android:layout_margin="10dp"/>
+                <!--                <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="Check your daily tasks"-->
+                <!--                        android:padding="5dp"-->
+                <!--                        android:textColor="@android:color/darker_gray"/>-->
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:layout_width="140dp"
+                android:layout_height="190dp"
+                android:id="@+id/cardUpcoming"
+                app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="@color/grey"
+                android:layout_margin="10dp" android:focusable="true">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:background="@drawable/circlebackgroundpink"
+                        android:src="@drawable/icon_calendar"
+                        android:padding="10dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:text="Calender"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26dp"/>
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lightgray"
+                        android:layout_margin="10dp"/>
+                <!--                <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="Check your upcoming tasks"-->
+                <!--                        android:padding="1dp"-->
+                <!--                        android:textColor="@android:color/darker_gray"/>-->
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+    <LinearLayout
+            android:clipToPadding="false"
+            android:background="@drawable/card_background_no_corners"
+            android:gravity="center"
+            android:backgroundTint="#29272A"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:layout_width="140dp"
+                android:layout_height="190dp"
+                app:cardCornerRadius="15dp"
+                android:id="@+id/cardDelayed"
+
+                app:cardBackgroundColor="@color/grey"
+                android:layout_margin="10dp" android:focusable="true">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:background="@drawable/circlebackgroundpink"
+                        android:src="@drawable/icon_late"
+                        android:padding="10dp" android:contentDescription="image"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="24dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Delayed tasks"/>
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lightgray"
+                        android:layout_margin="10dp"/>
+                <!--                <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="Check your delayed tasks"-->
+                <!--                        android:padding="1dp"-->
+                <!--                        android:textColor="@android:color/darker_gray"/>-->
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                app:cardCornerRadius="15dp"
+
+                app:cardBackgroundColor="@color/grey"
+                android:id="@+id/cardChatRoom"
+                android:layout_width="140dp"
+                android:layout_height="190dp"
+                android:layout_margin="10dp" android:focusable="true">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+
+                    app:cardCornerRadius="15dp"
+                    android:elevation="3dp"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:background="@drawable/circlebackgroundpink"
+                        android:padding="10dp"
+                        android:src="@drawable/icon_chat"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Chat room"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26dp"
+                        android:textStyle="bold"/>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/lightgray"/>
+
+                <!--                <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:padding="5dp"-->
+                <!--                        android:text="Chat with your friends"-->
+                <!--                        android:textColor="@android:color/darker_gray"/>-->
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+    <LinearLayout
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:backgroundTint="#29272A"
+            android:background="@drawable/card_background_corner_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+                app:cardCornerRadius="15dp"
+
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                app:cardBackgroundColor="@color/grey"
+                android:id="@+id/cardAddtask"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:layout_margin="10dp" android:focusable="true">
+            <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:background="@drawable/circlebackgroundpink"
+                        android:src="@drawable/ic_baseline_add_24"
+                        android:padding="10dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26dp"
+                        android:text="Add task"/>
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lightgray"
+                        android:layout_margin="10dp"/>
+                <!--                <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="Check your bank activities"-->
+                <!--                        android:padding="5dp"-->
+                <!--                        android:textColor="@android:color/darker_gray"/>-->
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fab_logout"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="end"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:src="@drawable/icon_logout"-->
+<!--            app:fabSize="normal"-->
+<!--            app:borderWidth="0dp"-->
+<!--            android:backgroundTint="@color/colorRed"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:contentDescription="logout"/>-->
+
 </LinearLayout>
+

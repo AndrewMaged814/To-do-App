@@ -4,28 +4,29 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".chat.ChatStartupActivity">
-
+                tools:context=".chat.ChatStartUpActivity">
 
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:hint="Enter your name"
-            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:hint="Enter Your Name"
+            android:textSize="16dp"
             android:id="@+id/editText"
             android:background="@drawable/edittext_design"
             android:padding="10dp"/>
 
     <Button
+            android:id="@+id/EnterButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/editText"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:text="Enter room"
-            android:textColor="#ffffff"
-            android:background="@color/colorPrimaryDark"
-            android:id="@+id/enterBtn"/>
+            android:backgroundTint="#ffea"
+            android:text="Enter Study Room"
+            android:textColor="#785b58"/>
+
 
 </RelativeLayout>

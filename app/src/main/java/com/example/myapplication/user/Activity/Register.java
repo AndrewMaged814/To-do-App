@@ -1,5 +1,12 @@
 package com.example.myapplication.user.Activity;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.view.MotionEvent;
+import android.widget.ImageView;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,18 +16,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.myapplication.R;
 import com.example.myapplication.user.UserLocalStore;
+import com.example.myapplication.user.ValideRegister;
 import com.example.myapplication.user.userTypes.NormalUser;
 import com.example.myapplication.user.userTypes.User;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class Register extends AppCompatActivity implements View.OnClickListener {
+
+public class Register extends AppCompatActivity implements View.OnClickListener, ValideRegister {
     private EditText etName, etUsername, etAge, etPassword,etConfirmPassword;
+    private CardView cardMale,cardFemale;
     private UserLocalStore userLocalStore;
-
-
+    ImageView imageView;
+    String gender;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,31 +43,52 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         etPassword = findViewById(R.id.etPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
         Button btRegister = findViewById(R.id.btnRegister);
+        cardMale = findViewById(R.id.card_male);
+        cardFemale = findViewById(R.id.card_female);
         btRegister.setOnClickListener(this);
         userLocalStore = new UserLocalStore(Register.this);
+        cardMale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardMale.setCardBackgroundColor(Color.parseColor("#EB3349"));
+                cardFemale.setCardBackgroundColor(Color.parseColor("#322e2f"));
+                gender = "male";
+            }
+        });
+        cardFemale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardFemale.setCardBackgroundColor(Color.parseColor("#EB3349"));
+                cardMale.setCardBackgroundColor(Color.parseColor("#322e2f"));
+                gender = "female";
+            }
+        });
+
+
     }
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btnRegister) {
-            String name = etName.getText().toString();
-            String Username = etUsername.getText().toString();
-            String password = etPassword.getText().toString();
-            String ConfirmedPassword = etConfirmPassword.getText().toString();
-            String age = etAge.getText().toString();
+            final String name = etName.getText().toString();
+            final String Username = etUsername.getText().toString();
+            final String password = etPassword.getText().toString();
+            final String ConfirmedPassword = etConfirmPassword.getText().toString();
+            final int age = Integer.parseInt(etAge.getText().toString());
             //validate each field that is taken as input
-            if (validateCheck(name, Username, password, age,ConfirmedPassword)) {
+            if (ValideRegister(name, Username, password, String.valueOf(age),ConfirmedPassword)) {
                 //if it validates then register the user as a new user and store their details into the database
-                User user = new NormalUser(name, Username, password, age);
+                User user = new NormalUser(name, Username, password, age,gender);
                 registerUser(user);
 
 
             }
+
+            }
         }
-    }
 
-
-    private boolean validateCheck(String name, String username, String password, String age,String confirmedPassword) {
+@Override
+    public boolean ValideRegister(String name, String username, String password, String age, String confirmedPassword) {
         if(name.isEmpty()){
             YoYo.with(Techniques.Bounce).duration(700).repeat(1).playOn(etName);
             etName.setError("full name is required");
@@ -95,8 +128,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
         return true;
     }
-
-    private void registerUser(User user) {
+@Override
+     public void registerUser(User user) {
         userLocalStore.storeUserData(user);
         Toast.makeText(Register.this, "Registered successfully!", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, Login.class));

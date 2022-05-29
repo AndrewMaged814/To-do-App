@@ -1,6 +1,7 @@
 package com.example.myapplication.user.Activity;
 
 import android.content.Intent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.myapplication.R;
 import com.example.myapplication.user.UserLocalStore;
+import com.example.myapplication.user.userTypes.NormalUser;
 import com.example.myapplication.user.userTypes.User;
 
 public class AdminPanel extends AppCompatActivity {
@@ -16,6 +18,7 @@ public class AdminPanel extends AppCompatActivity {
     TextView tvAge;
     TextView tvUsername;
     TextView tvPassword;
+    Button btnAprove;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +28,9 @@ public class AdminPanel extends AppCompatActivity {
         tvAge = findViewById(R.id.tvAge);
         tvUsername = findViewById(R.id.tvUsername);
         tvPassword = findViewById(R.id.tvPassword);
+        btnAprove = findViewById(R.id.btnAprove);
         userLocalStore = new UserLocalStore(AdminPanel.this);
         loadUserDetails();
-
         Button btnRemoveUser = findViewById(R.id.btnRemoveUser);
         btnRemoveUser.setOnClickListener(view -> {
             userLocalStore.RemoveUser();
@@ -38,6 +41,14 @@ public class AdminPanel extends AppCompatActivity {
             Toast.makeText(AdminPanel.this, "User removed from database", Toast.LENGTH_LONG).show();
             startActivity(new Intent(AdminPanel.this, Login.class));
 
+        });
+        btnAprove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NormalUser.setStatus(true);
+                userLocalStore.setUserStatus(NormalUser.getStatus());
+                Toast.makeText(AdminPanel.this, "User approved", Toast.LENGTH_LONG).show();
+            }
         });
     }
 

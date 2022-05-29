@@ -1,35 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.example.myapplication">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.myapplication">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
             android:allowBackup="true"
+            android:hardwareAccelerated="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.MyApplication"
-            android:usesCleartextTraffic="true">
+            android:usesCleartextTraffic="true"
+            tools:targetApi="m">
+        <activity
+                android:name=".task.Activities.PersonalityTest"
+                android:exported="true"/>
         <activity
                 android:name=".user.Activity.AdminPanel"
                 android:exported="true"/>
         <activity
                 android:name=".chat.MessageAdapter"
-                android:exported="true" tools:ignore="Instantiatable"/>
-        <activity android:name=".task.Calender.EventEditActivity"
-                  android:exported="false"/>
-        <activity android:name=".task.Calender.MainActivity"
-                  android:exported="false"/>
-        <activity android:name=".task.Calender.WeekViewActivity"
-                  android:exported="false"/>
+                android:exported="true"
+                tools:ignore="Instantiatable"/>
         <activity
-                android:name=".chat.ChatStartupActivity"
+                android:name=".task.Calender.EventEditActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".task.Calender.MainActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".task.Calender.WeekViewActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".chat.ChatStartUpActivity"
                 android:exported="true"/>
         <activity
                 android:name=".chat.ChatActivity"
                 android:exported="true"/>
-        <activity android:name=".task.Activities.CreateNewTask"
-                  android:exported="false"/>
+        <activity
+                android:name=".task.Activities.CreateNewTask"
+                android:exported="false"/>
         <activity
                 android:name=".user.Activity.Login"
                 android:exported="false"/>
