@@ -1,5 +1,5 @@
 package com.example.myapplication.task.Activities;
-import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,14 +13,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.myapplication.R;
 import com.example.myapplication.task.Adapters.RecyclerViewInterface;
-import com.example.myapplication.task.Task;
 import com.example.myapplication.task.Adapters.Task_RecyclerViewAdapter;
+import com.example.myapplication.task.Task;
 import com.example.myapplication.task.Tasks_Store;
 import com.example.myapplication.task.taskTypes.Today;
-import com.example.myapplication.task.Activities.CreateNewTask;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -31,25 +30,26 @@ public class TodayActivity extends AppCompatActivity implements RecyclerViewInte
 
     static ArrayList<Task> taskModelArrayList= Today.TodTasks;
     Task_RecyclerViewAdapter adapter;
-    Tasks_Store sharedPreferences;
-
+    Menu menu;
+    private final static String TAG = "TASK APP";
+    LottieAnimationView lottieAnimationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
 
         getCurrentDate();
 
-
         RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
-        adapter = new Task_RecyclerViewAdapter(this,taskModelArrayList,this);
+        lottieAnimationView = findViewById(R.id.lottieAnimationceleberation);
+        //setup the the arraylist model before sending it out to the adapter
+
+        adapter = new Task_RecyclerViewAdapter(this,taskModelArrayList,this,lottieAnimationView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        sharedPreferences = new Tasks_Store(this);
 
 
     }
@@ -61,6 +61,8 @@ public class TodayActivity extends AppCompatActivity implements RecyclerViewInte
         TextView tvDate = findViewById(R.id.tvTodayDate);
         tvDate.setText(currentDate);
     }
+
+
 
     @Override
     public void OnItemClick(int position) {
@@ -74,7 +76,9 @@ public class TodayActivity extends AppCompatActivity implements RecyclerViewInte
         intent.putExtra("Image",taskModelArrayList.get(position).getImage());
         intent.putExtra("done",taskModelArrayList.get(position).isTaskDone());
         intent.putExtra("taskId",taskModelArrayList.get(position).getTaskId());
-
+        intent.putExtra("TaskCat",taskModelArrayList.get(position).Category);
+        intent.putExtra("TaskDate",taskModelArrayList.get(position).date);
+        intent.putExtra("TaskPri",taskModelArrayList.get(position).Priority);
 
         startActivity(intent);
 
@@ -86,12 +90,15 @@ public class TodayActivity extends AppCompatActivity implements RecyclerViewInte
     public void onItemLongClick(int position) {
         //this method also implements the interface -RecycleViewInterface- to handle long clicks
         //long press can remove items from the list
-        //by getting the position of the item pressed; item at that position(index) will be removed
-        //from the arraylist and shared preference
+        //by getting the position of the item pressed.. item at that position(index) will be removed
         //then notify the adapter to update the list
-        Task task = taskModelArrayList.get(position);
-        task.DeleteTask(taskModelArrayList,task.getTaskName(), sharedPreferences);
+
+        Tasks_Store sharedPreferences;
+        sharedPreferences =new Tasks_Store(this);
+        sharedPreferences.deleteTask(taskModelArrayList.get(position).getTaskName());
+        taskModelArrayList.remove(position);
         adapter.notifyItemRemoved(position);
+
     }
 
     //onCreateOptionsMenu, onOptionsItemSelected methods overrides methods in Activity class

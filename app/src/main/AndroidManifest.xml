@@ -17,6 +17,11 @@
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
         <activity
+                android:name=".task.Activities.DelayedActivity"
+                android:exported="true"/>
+        <activity android:name=".task.Activities.EditTask"
+                  android:exported="false"/>
+        <activity
                 android:name=".task.Activities.PersonalityTest"
                 android:exported="true"/>
         <activity
@@ -62,8 +67,9 @@
         <activity
                 android:name=".user.Activity.Register"
                 android:exported="false"/>
-        <activity android:name=".HomeActivity.Notification.NotificationActivity"
-                  android:exported="false"/>
+        <activity
+                android:name=".HomeActivity.Notification.NotificationActivity"
+                android:exported="false"/>
         <activity
                 android:name=".HomeActivity.Home"
                 android:exported="false"/>

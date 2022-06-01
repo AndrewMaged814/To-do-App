@@ -13,17 +13,17 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.myapplication.R;
-import com.example.myapplication.user.Personality.Active;
-import com.example.myapplication.user.Personality.LongBreak;
+import com.example.myapplication.user.Personality.Energetic;
+import com.example.myapplication.user.Personality.Workaholic;
 import com.example.myapplication.user.Personality.Personality;
-import com.example.myapplication.user.Personality.ShortBreak;
+import com.example.myapplication.user.Personality.Procrastinator;
 import com.google.gson.Gson;
 
 import java.util.Locale;
 
 public class pomodoroTimer extends AppCompatActivity {
-    private static final long START_TIME_IN_MILLIS = 15000;
-    private static final long Break_TIME_IN_MILLIS = 3000;
+    private static long START_TIME_IN_MILLIS;
+    private static long Break_TIME_IN_MILLIS;
     private int i=0;
     private TextView mTextViewCountDown, tvTimeSpent,tvTaskName,tvNoOfCycles;
     private Button mButtonStartPause;
@@ -61,11 +61,29 @@ public class pomodoroTimer extends AppCompatActivity {
         lottieAnimationView = findViewById(R.id.lottieTimer);
         String TaskName = getIntent().getStringExtra("TaskNamePomodoro");
         tvTaskName.setText(TaskName);
+
+
         SharedPreferences mPrefs= getSharedPreferences("pre", 0);
         Gson gson = new Gson();
-        String json = mPrefs.getString("MyObject","");
-        Active obj = gson.fromJson(json,Active.class);
-        DeterminingPersonality(obj);
+        String json = mPrefs.getString("Personality","");
+
+           // obj =gson.fromJson(json, Energetic.class);
+           //Energetic obj = new Energetic();
+        if(json.contains("Energetic")) {
+            Personality obj = gson.fromJson(json, Personality.class);
+            DeterminingPersonality(obj);
+        }
+
+
+        else if(json.contains("Workaholic")) {
+            Personality obj = gson.fromJson(json, Workaholic.class);
+            DeterminingPersonality(obj);
+        }
+        else if(json.contains("Procrastinator")) {
+            Personality obj = gson.fromJson(json, Procrastinator.class);
+
+            DeterminingPersonality(obj);
+        }
 
 
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
@@ -99,26 +117,42 @@ public class pomodoroTimer extends AppCompatActivity {
 //    }
     public void DeterminingPersonality(Personality x)
     {
-        if(x instanceof LongBreak)
-        {
-//            START_TIME_IN_MILLIS =((LongBreak) x).noOfHours;
-//            Break_TIME_IN_MILLIS =((LongBreak) x).TimerDuration;
-            Toast.makeText(pomodoroTimer.this, "longBreak", Toast.LENGTH_LONG).show();
+//        if(x instanceof Workaholic)
+//        {
+////            START_TIME_IN_MILLIS =((LongBreak) x).noOfHours;
+////            Break_TIME_IN_MILLIS =((LongBreak) x).TimerDuration;
+//            Toast.makeText(pomodoroTimer.this, "longBreak", Toast.LENGTH_LONG).show();
+//        }
+//
+//        if(x instanceof Procrastinator)
+//        {
+////            START_TIME_IN_MILLIS =((ShortBreaks) x).noOfHours;
+////            Break_TIME_IN_MILLIS =((ShortBreaks) x).TimerDuration;
+//            Toast.makeText(pomodoroTimer.this, "ShortBreak", Toast.LENGTH_LONG).show();
+//        }
+//
+//        if(x instanceof Energetic)
+//        {
+//            Toast.makeText(pomodoroTimer.this, "Active", Toast.LENGTH_LONG).show();
+////            START_TIME_IN_MILLIS =((Active) x).noOfHours;
+////            Break_TIME_IN_MILLIS =((Active) x).TimerDuration;
+//
+
+        if(x instanceof Energetic){
+            START_TIME_IN_MILLIS = ((Energetic)x).NO_OF_MIN;
+            Break_TIME_IN_MILLIS = ((Energetic)x).TIMER_DURATION;
+            Toast.makeText(pomodoroTimer.this, "energetic", Toast.LENGTH_LONG).show();
         }
+        else if(x instanceof Workaholic){
+            Toast.makeText(pomodoroTimer.this, "workaholic", Toast.LENGTH_LONG).show();
+            START_TIME_IN_MILLIS = ((Workaholic)x).NO_OF_MIN;
+            Break_TIME_IN_MILLIS = ((Workaholic)x).TIMER_DURATION;
 
-        if(x instanceof ShortBreak)
-        {
-//            START_TIME_IN_MILLIS =((ShortBreaks) x).noOfHours;
-//            Break_TIME_IN_MILLIS =((ShortBreaks) x).TimerDuration;
-            Toast.makeText(pomodoroTimer.this, "ShortBreak", Toast.LENGTH_LONG).show();
         }
-
-        if(x instanceof Active)
-        {
-            Toast.makeText(pomodoroTimer.this, "Active", Toast.LENGTH_LONG).show();
-//            START_TIME_IN_MILLIS =((Active) x).noOfHours;
-//            Break_TIME_IN_MILLIS =((Active) x).TimerDuration;
-
+        else if(x instanceof Procrastinator){
+            Toast.makeText(pomodoroTimer.this, "Procrastinator", Toast.LENGTH_LONG).show();
+            START_TIME_IN_MILLIS = x.NO_OF_MIN;
+            Break_TIME_IN_MILLIS =x.TIMER_DURATION;
         }
     }
 

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/previous"
-            android:textColor="@color/blue"
+            android:textColor="@color/navy"
             android:background="@null"
             android:textStyle="bold"
             android:onClick="previousWeekAction"
@@ -36,7 +36,7 @@
             android:text="May 2022"
             android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/navy"
             />
 
         <Button
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/next"
-            android:textColor="@color/blue"
+            android:textColor="@color/navy"
             android:background="@null"
             android:textStyle="bold"
             android:onClick="nextWeekAction"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="SUN"
-            android:textColor="@color/yellow"
+            android:textColor="@color/orange"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="MON"
-            android:textColor="@color/yellow"
+            android:textColor="@color/orange"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TUES"
-            android:textColor="@color/yellow"
+            android:textColor="@color/orange"
             android:textAlignment="center"
             android:textSize="16sp"/>
         <TextView
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="WED"
-            android:textColor="@color/yellow"
+            android:textColor="@color/orange"
             android:textAlignment="center"
             android:textSize="16sp"/>
         <TextView
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="THUR"
-            android:textColor="@color/yellow"
+            android:textColor="@color/orange"
             android:textAlignment="center"
             android:textSize="16sp"/>
         <TextView
@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="FRI"
-            android:textColor="@color/yellow"
+            android:textColor="@color/orange"
             android:textAlignment="center"
             android:textSize="16sp"/>
         <TextView
@@ -112,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="SAT"
-            android:textColor="@color/yellow"
+            android:textColor="@color/orange"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -131,7 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Event"
-            android:textColor="@color/blue"
+            android:textColor="@color/navy"
             android:background="@null"
             android:textStyle="bold"
             android:onClick="newEventAction"

@@ -12,17 +12,20 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.ArrayList;
+
+import static com.example.myapplication.task.Calender.MainActivity.eventsList;
 
 public class Task {
 
     String TaskDetails;
-    protected String Name;
-    protected String Category;
+    public String Name;
+    public String Category;
     protected int day, month, year;
     protected double p;
-    protected String Priority;
+    public String Priority;
     protected boolean done = false;
-    protected String date;
+    public String date;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String getDate() {
@@ -41,10 +44,7 @@ public class Task {
     protected static final int image = R.drawable.ic_baseline_edit_24;
     pomodoroTimer pomodoro;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-
-
-    public static List<Task> eventsList = UpComing.UpComingTasks;
+    //public static List<Task> eventsList = UpComing.UpComingTasks;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -52,6 +52,7 @@ public class Task {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String formattedString = date.format(formatter);
         ArrayList<Task> events = new ArrayList<>();
+
 
         for (Task event : eventsList) {
             if (event.getDate().equals(formattedString)) events.add(event);

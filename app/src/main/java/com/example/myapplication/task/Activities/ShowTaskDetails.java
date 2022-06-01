@@ -9,9 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.example.myapplication.R;
-import com.example.myapplication.task.Task;
+import com.example.myapplication.task.Activities.EditTask;
 import com.example.myapplication.task.Adapters.Task_RecyclerViewAdapter;
-
+import com.example.myapplication.task.Task;
 
 public class ShowTaskDetails extends AppCompatActivity implements View.OnClickListener {
     EditText etTaskDescription;
@@ -21,6 +21,9 @@ public class ShowTaskDetails extends AppCompatActivity implements View.OnClickLi
     Button btEditTaskDescription;
     Button btEditTaskDescriptionDone;
     String TaskName;
+    String TaskDate;
+    String TaskCat;
+    String TaskPri;
     String TaskDescription;
     Button addNotes;
     int taskId;
@@ -35,6 +38,10 @@ public class ShowTaskDetails extends AppCompatActivity implements View.OnClickLi
 
         TaskName = getIntent().getStringExtra("TaskName");
         TaskDescription = getIntent().getStringExtra("TaskDetails");
+        TaskDate = getIntent().getStringExtra("TaskDate");
+        TaskPri = getIntent().getStringExtra("TaskPri");
+        TaskCat = getIntent().getStringExtra("TaskCat");
+
         //if id >= 0 then treat form as edit mode otherwise its will be new task
         taskId = getIntent().getIntExtra("taskId",-1);
         TaskDone = getIntent().getBooleanExtra("done",false);
@@ -62,7 +69,13 @@ public class ShowTaskDetails extends AppCompatActivity implements View.OnClickLi
         Task taskModel = findTaskUsingForLoop(taskId);
         switch (view.getId()) {
             case R.id.btEditTaskDescription:
-                startActivity(new Intent(ShowTaskDetails.this,EditTask.class));
+                Intent intent = new Intent(ShowTaskDetails.this, EditTask.class);
+                intent.putExtra("TaskName",TaskName);
+                intent.putExtra("Date",TaskDate);
+                intent.putExtra("Priority",TaskPri);
+                intent.putExtra("Cat",TaskCat);
+                startActivity(intent);
+
                 break;
             case(R.id.addNotes):
                 etTaskDescription.setVisibility(View.VISIBLE);
@@ -72,17 +85,19 @@ public class ShowTaskDetails extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.btEditTaskDescriptionDone:
 
+
                 if(taskModel!=null){
                     tvTaskDescription.append("\n\t"+etDescription);
-                    // taskModel.setTaskDetails(tvTaskDescription.getText().toString());
                     etTaskDescription.getText().clear();
                     etTaskDescription.setVisibility(View.INVISIBLE);
                     btEditTaskDescriptionDone.setVisibility(View.INVISIBLE);
                     taskModel.notes= etTaskDescription.getText().toString();
+
                 }
+
                 break;
             case R.id.startTask:
-                Intent intent = new Intent(ShowTaskDetails.this, pomodoroTimer.class);
+                intent = new Intent(ShowTaskDetails.this, pomodoroTimer.class);
                 intent.putExtra("TaskNamePomodoro",TaskName);
                 startActivity(intent);
                 break;

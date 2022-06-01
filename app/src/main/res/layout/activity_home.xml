@@ -7,14 +7,14 @@
         android:layout_height="match_parent"
         tools:context="com.example.myapplication.HomeActivity.Home"
         android:orientation="vertical"
-        android:background="@color/almost_black"
+        android:background="@color/offwhite"
         android:gravity="center"
         android:id="@+id/ll">
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/card_background_corner_end"
-            android:backgroundTint="@color/colorRed"
+            android:backgroundTint="@color/orange"
             android:layout_weight=".50">
 
 
@@ -41,11 +41,11 @@
                     android:paddingTop="40dp"
                     android:textAlignment="center"
                     android:background="@drawable/card_background_corner_end"
-                    android:backgroundTint="@color/colorRed"
+                    android:backgroundTint="@color/orange"
                     android:text="Welcome Back"
                     android:layout_weight="1"
                     android:fontFamily="@font/segoe_ui_bold"
-                    android:textColor="@color/colorTextWhite"
+                    android:textColor="@color/navy"
                     android:hint="user's name"/>
 
 
@@ -57,7 +57,7 @@
             android:background="@drawable/card_background"
             android:clipToPadding="false"
             android:gravity="center"
-            android:backgroundTint="@color/almost_black"
+            android:backgroundTint="@color/offwhite"
             android:paddingTop="30dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -70,7 +70,7 @@
                 android:layout_width="140dp"
                 android:layout_height="190dp"
                 app:cardCornerRadius="15dp"
-                app:cardBackgroundColor="@color/grey"
+                app:cardBackgroundColor="@color/greenish"
                 android:layout_margin="10dp" android:focusable="true">
             <LinearLayout
                     android:layout_width="match_parent"
@@ -90,7 +90,7 @@
                         android:layout_marginTop="10dp"
                         android:text="Today"
                         android:fontFamily="@font/seg_ui_semibold"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/offwhite"
                         android:textSize="26dp"/>
                 <View
                         android:layout_width="match_parent"
@@ -114,7 +114,7 @@
                 android:layout_height="190dp"
                 android:id="@+id/cardUpcoming"
                 app:cardCornerRadius="15dp"
-                app:cardBackgroundColor="@color/grey"
+                app:cardBackgroundColor="@color/pinkish"
                 android:layout_margin="10dp" android:focusable="true">
             <LinearLayout
                     android:layout_width="match_parent"
@@ -134,7 +134,7 @@
                         android:layout_marginTop="10dp"
                         android:text="Calender"
                         android:fontFamily="@font/seg_ui_semibold"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/offwhite"
                         android:textSize="26dp"/>
                 <View
                         android:layout_width="match_parent"
@@ -157,7 +157,7 @@
             android:clipToPadding="false"
             android:background="@drawable/card_background_no_corners"
             android:gravity="center"
-            android:backgroundTint="#29272A"
+            android:backgroundTint="@color/offwhite"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -168,7 +168,7 @@
                 android:layout_height="190dp"
                 app:cardCornerRadius="15dp"
                 android:id="@+id/cardDelayed"
-                app:cardBackgroundColor="@color/grey"
+                app:cardBackgroundColor="@color/purplish"
                 android:layout_margin="10dp" android:focusable="true">
             <LinearLayout
                     android:layout_width="match_parent"
@@ -187,7 +187,7 @@
                         android:textStyle="bold"
                         android:textAlignment="center"
                         android:fontFamily="@font/seg_ui_semibold"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/offwhite"
                         android:textSize="24dp"
                         android:layout_marginTop="10dp"
                         android:text="Delayed tasks"/>
@@ -211,7 +211,7 @@
                 android:clickable="true"
                 app:cardCornerRadius="15dp"
 
-                app:cardBackgroundColor="@color/grey"
+                app:cardBackgroundColor="@color/orange"
                 android:id="@+id/cardChatRoom"
                 android:layout_width="140dp"
                 android:layout_height="190dp"
@@ -239,7 +239,7 @@
                         android:text="Chat room"
 
                         android:fontFamily="@font/seg_ui_semibold"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/offwhite"
                         android:textSize="26dp"
                         android:textStyle="bold"/>
 
@@ -265,7 +265,7 @@
             android:clipToPadding="false"
             android:gravity="center"
             android:orientation="horizontal"
-            android:backgroundTint="#29272A"
+            android:backgroundTint="@color/offwhite"
             android:background="@drawable/card_background_corner_end"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -274,7 +274,7 @@
 
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                app:cardBackgroundColor="@color/grey"
+                app:cardBackgroundColor="@color/offwhite"
                 android:id="@+id/cardAddtask"
                 android:layout_width="300dp"
                 android:layout_height="150dp"
@@ -288,7 +288,8 @@
                 <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/circlebackgroundpink"
+                        android:backgroundTint="@color/greenish"
+                        android:background="@drawable/circle"
                         android:src="@drawable/ic_baseline_add_24"
                         android:padding="10dp"/>
                 <TextView
@@ -297,7 +298,7 @@
                         android:textStyle="bold"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/seg_ui_semibold"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/navy"
                         android:textSize="26dp"
                         android:text="Add task"/>
                 <View

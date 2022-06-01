@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.myapplication.R;
 import com.example.myapplication.task.Activities.CreateNewTask;
 import com.example.myapplication.task.Task;
+import com.example.myapplication.task.Tasks_Store;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -37,6 +38,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week_view);
+
         initWidgets();
         setWeekView();
     }

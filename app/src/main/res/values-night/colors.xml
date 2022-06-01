@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#121212</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorTextWhite">#ffffff</color>
+    <color name="navy">#ffffff</color>
     <color name="colorWhite">#1D1D1D</color>
     <color name="colorTextBlack">#ffffff</color>
     <color name="colorBlack">#ffffff</color>

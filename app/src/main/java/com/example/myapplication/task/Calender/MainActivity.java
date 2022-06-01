@@ -15,12 +15,18 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.myapplication.R;
+import com.example.myapplication.task.Task;
+import com.example.myapplication.task.Tasks_Store;
+import com.example.myapplication.task.taskTypes.DelayedTask;
+import com.example.myapplication.task.taskTypes.Today;
+import com.example.myapplication.task.taskTypes.UpComing;
 
 import java.time.LocalDate;
 import java.time.Year;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.myapplication.task.Calender.CalendarUtils.daysInMonthArray;
 import static com.example.myapplication.task.Calender.CalendarUtils.monthYearFormDate;
@@ -30,16 +36,25 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
-
-
+    public static List<Task> eventsList = new ArrayList<>();
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         initWidgets();
+
+
+        mergeArrayList();
         CalendarUtils.selectedDate = LocalDate.now();
         setMonthView();
+    }
+
+    private void mergeArrayList() {
+        eventsList.addAll(Today.TodTasks);
+        eventsList.addAll(DelayedTask.DelayedTasks);
+        eventsList.addAll(UpComing.UpComingTasks);
     }
 
     private void initWidgets()

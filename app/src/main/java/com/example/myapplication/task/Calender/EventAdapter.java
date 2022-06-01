@@ -33,6 +33,7 @@ public class EventAdapter extends ArrayAdapter<Task>
 
         String eventTitle = event.getTaskName();
         eventCellTV.setText(eventTitle);
+
         return convertView;
     }
 }

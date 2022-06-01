@@ -18,6 +18,7 @@ import com.example.myapplication.R;
 
 import com.example.myapplication.chat.ChatStartUpActivity;
 import com.example.myapplication.task.Activities.CreateNewTask;
+import com.example.myapplication.task.Activities.DelayedActivity;
 import com.example.myapplication.task.Activities.TodayActivity;
 import com.example.myapplication.task.Calender.MainActivity;
 import com.example.myapplication.user.UserLocalStore;
@@ -48,10 +49,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         cvUpcoming.setOnClickListener(this);
         cvDelayed.setOnClickListener(this);
         cvChatRoom.setOnClickListener(this);
+        cvAddTask.setOnClickListener(this);
         userLocalStore = new UserLocalStore(this);
 
         displayUserDetails();
-        MotivationalPopups();
+       // MotivationalPopups();
 
 
     }
@@ -146,6 +148,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 startActivity(new Intent(this, MainActivity.class));
                 break;
             case R.id.cardDelayed:
+                startActivity(new Intent(this, DelayedActivity.class));
                 break;
             case R.id.cardChatRoom:
                 startActivity(new Intent(this, ChatStartUpActivity.class));

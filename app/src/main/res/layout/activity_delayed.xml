@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   tools:context=".task.Activities.TodayActivity"
-                                                   android:background="@color/offwhite">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".task.Activities.DelayedActivity"
+        android:background="@color/offwhite">
 
     <include
             android:id="@+id/toolbar"
@@ -15,27 +16,12 @@
             tools:layout_editor_absoluteX="5dp"
             tools:layout_editor_absoluteY="-2dp"/>
 
-    <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottieAnimationceleberation"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:visibility="visible"
-            app:lottie_autoPlay="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:lottie_rawRes="@raw/confetti4" />
-
     <TextView
-            android:id="@+id/tvToday"
+            android:id="@+id/tvDelayed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Today"
+            android:text="Delayed"
             android:fontFamily="@font/segoe_ui_bold"
             android:textColor="@color/navy"
             android:textSize="38sp"
@@ -46,7 +32,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-            android:id="@+id/tvTodayDate"
+            android:id="@+id/tvTodayDate1"
             android:layout_width="196dp"
             android:layout_height="27dp"
             android:layout_marginTop="4dp"
@@ -56,18 +42,18 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.06"
-            app:layout_constraintStart_toStartOf="@+id/tvToday"
-            app:layout_constraintTop_toBottomOf="@+id/tvToday"/>
+            app:layout_constraintStart_toStartOf="@+id/tvDelayed"
+            app:layout_constraintTop_toBottomOf="@+id/tvDelayed"/>
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mRecyclerView"
+            android:id="@+id/mRecyclerViewDelayed"
             android:layout_width="match_parent"
             android:layout_height="680dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.333"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTodayDate"
+            app:layout_constraintTop_toBottomOf="@+id/tvTodayDate1"
             app:layout_constraintVertical_bias="1.0"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

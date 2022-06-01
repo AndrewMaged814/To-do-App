@@ -35,7 +35,8 @@ public class ChatActivity extends AppCompatActivity implements TextWatcher {
     private String name;
     private WebSocket webSocket;
     //on this link a webSocket server runs
-    private String SERVER_PATH="ws://192.168.100.9:3000";
+    private String SERVER_PATH="ws://172.24.74.211:3000";
+    //private String SERVER_PATH="ws://192.168.100.9:3000";
     private EditText messageBox;
     private View sendButton, pickImage;
     private RecyclerView recyclerView;

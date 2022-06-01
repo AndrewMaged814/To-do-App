@@ -2,18 +2,21 @@ package com.example.myapplication.task.Activities;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.task.Adapters.CustomAdapter;
+import com.example.myapplication.task.Adapters.RowItem;
 import com.example.myapplication.task.Priorities.HighPriority;
 import com.example.myapplication.task.Priorities.LowPriority;
 import com.example.myapplication.task.Priorities.ModeratePriority;
-import com.example.myapplication.task.Adapters.RowItem;
 import com.example.myapplication.task.Task;
 import com.example.myapplication.task.Tasks_Store;
+import com.example.myapplication.task.taskTypes.Today;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,10 +30,11 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
     private static final String[] paths = {"Task category","Study", "Sport", "hobby", "other"};
     private static final String [] p={"Low","Medium","High"};
     private static final int [] icons={R.mipmap.ic_cold,R.mipmap.ic_medium,R.mipmap.ic_fire};
-    private Button Add;
-    private String cat;
+    private Button edit;
+    private String cat ;
     private int year,month,day;
     private EditText input;
+    String OldName;
     private String Priority;
     private EditText D;
     final Calendar myCal =Calendar.getInstance();
@@ -41,8 +45,18 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_startup_chat);
+        setContentView(R.layout.edit_task);
 
+        Intent intent=getIntent();
+        cat= intent.getStringExtra("Cat");
+        Priority = intent.getStringExtra("Priority");
+        date=intent.getStringExtra("Date");
+        OldName=intent.getStringExtra("TaskName");
+
+        for (Task t : Today.TodTasks) {
+            if (t.Name.equals(OldName))
+                Today.TodTasks.remove(t);
+        }
 
         //dropdown category menu
         spinnerCat = (Spinner) findViewById(R.id.spinnerCat);
@@ -51,7 +65,10 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCat.setAdapter(adapter);
         sharedPreferences=new Tasks_Store(this);
-
+        for (int i=0; i<paths.length;i++) {
+            if (cat.equals(paths[i]))
+                spinnerCat.setSelection(i);
+        }
 
         List<RowItem> rowItems=new ArrayList<RowItem>();
         for (int i = 0; i < p.length; i++) {
@@ -60,18 +77,22 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
             rowItems.add(item);
         }
 
+        //priority spinner
         spinnerPri = (Spinner) findViewById(R.id.spinnerPri);
-        CustomAdapter A = new CustomAdapter(EditTask.this,
-                R.layout.spinner_with_icons, R.id.text, rowItems);
+        CustomAdapter A = new CustomAdapter(EditTask.this, R.layout.spinner_with_icons, R.id.text, rowItems);
         spinnerPri.setAdapter(A);
         spinnerPri.setOnItemSelectedListener(this);
 
-
+        for (int i=0; i<p.length;i++) {
+            if (Priority.equals(p[i]))
+                spinnerPri.setSelection(i);
+        }
 
 
 
         //Date
         D=(EditText)findViewById(R.id.PickDate);
+        D.setText(date);
         int style= AlertDialog.THEME_HOLO_LIGHT;
         D.setShowSoftInputOnFocus(false);
         DatePickerDialog.OnDateSetListener date=new DatePickerDialog.OnDateSetListener() {
@@ -98,13 +119,14 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
         });
 
 
-        //Add button
-        Add = findViewById(R.id.button);
+        //EDIT button
+        edit = findViewById(R.id.button);
         input = findViewById(R.id.EditTaskName);
-        Add.setOnClickListener(new View.OnClickListener() {
+        input.setText(OldName);
+        edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddTask(view);
+                EDIT_Task(view);
             }
         });
 
@@ -137,8 +159,8 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
 
     }
 
-    //Add Button
-    public void AddTask(View view) {
+    //EDIT Button
+    public void EDIT_Task(View view) {
         String Name= input.getText().toString();
         date=D.getText().toString();
 
@@ -174,10 +196,9 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
 
 
             }
-            sharedPreferences.store(task);
-
-
-
+            sharedPreferences.EditTask(OldName,task);
+            Intent intent = new Intent(EditTask.this,TodayActivity.class);
+            startActivity(intent);
 
         }
 

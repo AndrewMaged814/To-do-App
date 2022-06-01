@@ -50,16 +50,16 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
         cardMale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardMale.setCardBackgroundColor(Color.parseColor("#EB3349"));
-                cardFemale.setCardBackgroundColor(Color.parseColor("#322e2f"));
+                cardMale.setCardBackgroundColor(Color.parseColor("#309397"));
+                cardFemale.setCardBackgroundColor(Color.parseColor("#fff9ec"));
                 gender = "male";
             }
         });
         cardFemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardFemale.setCardBackgroundColor(Color.parseColor("#EB3349"));
-                cardMale.setCardBackgroundColor(Color.parseColor("#322e2f"));
+                cardFemale.setCardBackgroundColor(Color.parseColor("#e46472"));
+                cardMale.setCardBackgroundColor(Color.parseColor("#fff9ec"));
                 gender = "female";
             }
         });

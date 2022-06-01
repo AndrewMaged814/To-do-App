@@ -68,8 +68,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
                             loadTodaysList();
                             ShowPersonalityTest();
 
-                        }
-                        else if(!authenticate(user))
+                        } else if (!authenticate(user))
                             Toast.makeText(Login.this, "Incorrect Username or password", Toast.LENGTH_LONG).show();
                         else
                             Toast.makeText(Login.this, "Pending approval...", Toast.LENGTH_LONG).show();
@@ -88,6 +87,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
         }
 
     }
+
     @Override
     public boolean checkAdminPrivileges(String username, String password) {
         boolean isAdmin = username.equals(Admin.getAdminUsername()) && password.equals(Admin.getAdminPassword());

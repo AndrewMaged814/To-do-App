@@ -6,8 +6,8 @@
     android:background="@null"
     android:translationZ="0.1dp"
     app:elevation="0dp"
-    app:title=" "
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    >
+    app:title=" " app:popupTheme="@style/Theme.MyApplication"
 
+    >
+<!--    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
 </androidx.appcompat.widget.Toolbar>

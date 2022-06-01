@@ -1,11 +1,10 @@
 package com.example.myapplication.task;
-
 import android.content.Context;
 import android.content.SharedPreferences;
+import com.example.myapplication.user.userTypes.NormalUser;
+import com.example.myapplication.user.userTypes.User;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 
 public class Tasks_Store {
@@ -18,7 +17,7 @@ public class Tasks_Store {
 
 
     public Tasks_Store(Context context) {
-        tasksList = context.getSharedPreferences(Tasks, 0);
+        tasksList= context.getSharedPreferences(Tasks, 0);
         this.context = context;
         editor = tasksList.edit();
 
@@ -39,27 +38,27 @@ public class Tasks_Store {
         Set<String> setT = new HashSet<String>(tasksList.getStringSet(KEY_Task, new HashSet<String>()));
         // String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
-        for (String s : setT) {
-            String strings[] = s.split("\n", 6);
-            String Name = strings[0];
-            String Date = strings[1];
-            String Priority = strings[2];
-            String Category = strings[3];
-            String Done = strings[4];
-            String ID = strings[5];
-            Task task = new Task(Name, Date, Priority, Category, Done, ID);
-            SortTaskList.CompareTaskDate(s, task);
-            if (s.contains("true")) {
+        for (String s:setT){
+            String strings[]=s.split("\n",6);
+            String Name=strings[0];
+            String Date=strings[1];
+            String Priority =strings[2];
+            String Category= strings[3];
+            String Done =strings[4];
+            String ID =strings[5];
+            Task task =new Task(Name,Date,Priority,Category,Done,ID);
+            SortTaskList. CompareTaskDate(s,task);
+            if(s.contains("true")){
                 deleteTask(s);
             }
 
         }
     }
 
-    public void deleteTask(String name) {
+    public  void deleteTask(String name) {
         Set<String> setT = new HashSet<String>(tasksList.getStringSet(KEY_Task, new HashSet<String>()));
-        for (Object s : setT.toArray()) {
-            String string = s.toString();
+        for (Object s:setT.toArray()){
+            String string=s.toString();
             if (string.contains(name)) {
                 setT.remove(s);
                 editor.commit();
@@ -71,12 +70,12 @@ public class Tasks_Store {
         }
     }
 
-    public void EditTask(Task tOld, Task tNew) {
+    public void EditTask(String Name,Task tNew){
         Set<String> setT = new HashSet<String>(tasksList.getStringSet(KEY_Task, new HashSet<String>()));
 
-        for (Object s : setT.toArray()) {
-            String string = s.toString();
-            if (string.equals(tOld.toString())) {
+        for (Object s:setT.toArray()){
+            String string=s.toString();
+            if (string.contains(Name)) {
                 setT.remove(s);
                 editor.commit();
                 setT.addAll(Collections.singleton(tNew.toString()));
@@ -89,4 +88,5 @@ public class Tasks_Store {
 
 
     }
+
 }
