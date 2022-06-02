@@ -28,7 +28,7 @@ public  interface SortTaskList {
     }
 
 
-   static public void CompareTaskDate(String s,Task task){
+   static void CompareTaskDate(String s,Task task){
 
        String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
        String PrevDate = new SimpleDateFormat("dd/MM/yyyy",Locale.getDefault()).format(new Date(System.currentTimeMillis()-24*60*60*1000));

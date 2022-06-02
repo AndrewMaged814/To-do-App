@@ -5,13 +5,14 @@ import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.myapplication.HomeActivity.Home;
 import com.example.myapplication.R;
-import com.example.myapplication.user.Personality.Energetic;
-import com.example.myapplication.user.Personality.Personality;
-import com.example.myapplication.user.Personality.Procrastinator;
-import com.example.myapplication.user.Personality.Workaholic;
+import com.example.myapplication.user.Activity.Login;
+import com.example.myapplication.user.Personality.*;
+import com.example.myapplication.user.UserLocalStore;
 import com.example.myapplication.user.userTypes.User;
 import com.google.gson.Gson;
 
@@ -23,22 +24,25 @@ public class PersonalityTest extends AppCompatActivity {
     String answer1;
     String answer2;
     String answer3;
+    Questions PersonalityQuestions = new Questions();
+    private UserLocalStore userLocalStore;
     int energeticCounter =0, procrastinatorCounter=0, workaholicCounter=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personality_test2);
-        //SharedPreferences SavedPersonality = getPreferences(MODE_PRIVATE);
+        userLocalStore = new UserLocalStore(PersonalityTest.this);
         SharedPreferences mPrefs = getSharedPreferences("pre", 0);
-        SharedPreferences preferences = getSharedPreferences("userDetails",MODE_PRIVATE);
-        boolean firstStart = preferences.getBoolean("firstStart", true);
 
+        User user = userLocalStore.getLoggedInUser();
 
-        if(firstStart)
-            showMainActivity();
+        if (user.isFirstTimeLogin()) {
+            user.setFirstTimeLogin(false);
+            userLocalStore.setfirstTime(false);
+        }
 
-        ArrayList<String> AnswersList = new ArrayList<String>();
+            ArrayList<String> AnswersList = new ArrayList<String>();
 
         CheckBox Q1Option1 = (CheckBox) findViewById(R.id.Q1Option1);
         CheckBox Q1Option2 = (CheckBox) findViewById(R.id.Q1Option2);
@@ -54,6 +58,13 @@ public class PersonalityTest extends AppCompatActivity {
         CheckBox Q3Option1 = (CheckBox) findViewById(R.id.Q3Option1);
         CheckBox Q3Option2 = (CheckBox) findViewById(R.id.Q3Option2);
         CheckBox Q3Option3 = (CheckBox) findViewById(R.id.Q3Option3);
+        TextView q1 = findViewById(R.id.Question1);
+        TextView q2 = findViewById(R.id.Question2);
+        TextView q3 = findViewById(R.id.Question3);
+
+        q1.setText(Questions.Question1);
+        q2.setText(Questions.Question2);
+        q3.setText(Questions.Question3);
 
 
         Q1Option1.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +134,7 @@ public class PersonalityTest extends AppCompatActivity {
         Transition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PersonalityTest.this,pomodoroTimer.class));
+                startActivity(new Intent(PersonalityTest.this, Home.class));
                 SharedPreferences.Editor prefsEditor;
                 //Toast.makeText(MainActivity.this, "Pressed", Toast.LENGTH_SHORT).show();
 

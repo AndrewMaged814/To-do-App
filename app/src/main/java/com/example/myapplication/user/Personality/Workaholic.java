@@ -5,7 +5,7 @@ public class Workaholic extends Personality{
 
     public Workaholic()
     {
-        NO_OF_MIN = 10000;
-        TIMER_DURATION = 10000;
+        NO_OF_MIN = 1000000;
+        TIMER_DURATION = 100000;
     }
 }

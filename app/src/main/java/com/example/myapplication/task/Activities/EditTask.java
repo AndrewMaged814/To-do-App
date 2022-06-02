@@ -127,6 +127,8 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
             @Override
             public void onClick(View view) {
                 EDIT_Task(view);
+                finish();
+
             }
         });
 

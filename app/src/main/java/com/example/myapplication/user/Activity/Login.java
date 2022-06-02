@@ -65,6 +65,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
                         User user = new NormalUser(username, password);
                         if (authenticate(user) && userLocalStore.getUserStatus()) {
                             Toast.makeText(Login.this, "Logged in successfully!", Toast.LENGTH_LONG).show();
+                            user.setFirstTimeLogin(true);
                             loadTodaysList();
                             ShowPersonalityTest();
 
@@ -99,10 +100,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
     }
 
     private void ShowPersonalityTest() {
-        boolean firstStart = preferences.getBoolean("firstStart", true);
+       // boolean firstStart = preferences.getBoolean("firststart", true);
+        User user = userLocalStore.getLoggedInUser();
 
-        if (firstStart) {
+        if (user.isFirstTimeLogin() && userLocalStore.getfirstTime()) {
             startActivity(new Intent(this, PersonalityTest.class));
+
 
         } else
             startActivity(new Intent(this, Home.class));

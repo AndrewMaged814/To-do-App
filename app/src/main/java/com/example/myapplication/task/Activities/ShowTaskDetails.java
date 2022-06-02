@@ -75,6 +75,7 @@ public class ShowTaskDetails extends AppCompatActivity implements View.OnClickLi
                 intent.putExtra("Priority",TaskPri);
                 intent.putExtra("Cat",TaskCat);
                 startActivity(intent);
+                finish();
 
                 break;
             case(R.id.addNotes):

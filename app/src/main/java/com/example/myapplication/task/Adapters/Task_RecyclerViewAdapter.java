@@ -114,13 +114,16 @@ public class Task_RecyclerViewAdapter extends RecyclerView.Adapter<Task_Recycler
                         if (cbDone.isChecked()) {
                             tvName.setText(Html.fromHtml("<strike>" + taskName + "</strike>"));
                             task.setTaskDone(true);
-                            lottieAnimationView.playAnimation();
+
 
                         } else {
                             tvName.setText(taskName);
                             task.setTaskDone(false);
                         }
                         Log.d(TAG, "onCreate: " + taskModelArrayList.toString());
+                        if(task.isTaskDone()){
+                            lottieAnimationView.playAnimation();
+                        }
 
                     }
 

@@ -62,9 +62,6 @@
                 android:name=".task.Activities.TodayActivity"
                 android:exported="false"/>
         <activity
-                android:name=".user.PersonalityTest"
-                android:exported="false"/>
-        <activity
                 android:name=".user.Activity.Register"
                 android:exported="false"/>
         <activity

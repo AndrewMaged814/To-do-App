@@ -96,8 +96,8 @@ public class CreateNewTask extends AppCompatActivity implements AdapterView.OnIt
 
 
         //Add button
-        Add = findViewById(R.id.button1);
-        input = findViewById(R.id.EditTaskName1);
+        Add = findViewById(R.id.button);
+        input = findViewById(R.id.EditTaskName);
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -88,5 +88,9 @@ public class Tasks_Store {
 
 
     }
+    public void clearAllTasks(){
+        editor.clear();
+        editor.apply();
+    }
 
 }

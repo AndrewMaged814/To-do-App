@@ -20,6 +20,7 @@ import androidx.cardview.widget.CardView;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.myapplication.R;
+import com.example.myapplication.task.Tasks_Store;
 import com.example.myapplication.user.UserLocalStore;
 import com.example.myapplication.user.ValideRegister;
 import com.example.myapplication.user.userTypes.NormalUser;
@@ -31,7 +32,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
     private EditText etName, etUsername, etAge, etPassword,etConfirmPassword;
     private CardView cardMale,cardFemale;
     private UserLocalStore userLocalStore;
-    ImageView imageView;
+    private Tasks_Store tasks_store;
     String gender;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
         cardFemale = findViewById(R.id.card_female);
         btRegister.setOnClickListener(this);
         userLocalStore = new UserLocalStore(Register.this);
+        tasks_store = new Tasks_Store(this);
         cardMale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,8 +80,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
             //validate each field that is taken as input
             if (ValideRegister(name, Username, password, String.valueOf(age),ConfirmedPassword)) {
                 //if it validates then register the user as a new user and store their details into the database
-                User user = new NormalUser(name, Username, password, age,gender);
+                User user = new NormalUser(name, Username, password, age,gender,true);
                 registerUser(user);
+                tasks_store.clearAllTasks();
 
 
             }

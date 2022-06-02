@@ -2,6 +2,7 @@ package com.example.myapplication.user.userTypes;
 
  abstract public class User {
      private String name, username, password,gender;
+     private boolean firstTimeLogin;
 
      private int age;
 
@@ -14,12 +15,13 @@ package com.example.myapplication.user.userTypes;
 
     }
 
-    public User(String name, String username, String password, int age,String gender) {
+    public User(String name, String username, String password, int age,String gender,boolean firstTimeLogin) {
         this.name = name;
         this.username = username;
         this.password = password;
         this.age = age;
         this.gender = gender;
+        this.firstTimeLogin = firstTimeLogin;
     }
 
 
@@ -63,5 +65,11 @@ package com.example.myapplication.user.userTypes;
          this.gender = gender;
      }
 
+     public boolean isFirstTimeLogin() {
+         return firstTimeLogin;
+     }
 
+     public void setFirstTimeLogin(boolean firstTimeLogin) {
+         this.firstTimeLogin = firstTimeLogin;
+     }
  }

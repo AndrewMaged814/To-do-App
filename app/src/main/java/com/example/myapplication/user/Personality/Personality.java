@@ -1,6 +1,6 @@
 package com.example.myapplication.user.Personality;
 
-public class Personality {
+abstract public class Personality {
 
     public  int TIMER_DURATION ;
     public int NO_OF_MIN ;

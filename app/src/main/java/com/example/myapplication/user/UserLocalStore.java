@@ -19,6 +19,7 @@ public class UserLocalStore {
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_GENDER = "gender";
     public static final String KEY_STATUS = "status";
+    public static final String KEY_FIRSTTIME = "firsttime";
 
 
     //SharedPreferences allows data to be stored locally in a file
@@ -42,6 +43,7 @@ public class UserLocalStore {
         editor.putString(KEY_PASSWORD, user.getPassword());
         editor.putString(KEY_GENDER, user.getGender());
         editor.putBoolean(KEY_STATUS,NormalUser.getStatus());
+        editor.putBoolean(KEY_FIRSTTIME,user.isFirstTimeLogin());
         editor.commit();
     }
 
@@ -49,19 +51,27 @@ public class UserLocalStore {
     public User getLoggedInUser() {
         String name = userLocalDatabase.getString(KEY_NAME, "");
         int age = userLocalDatabase.getInt(KEY_AGE, 0);
-        String username = userLocalDatabase.getString(KEY_PASSWORD, "");
+        String username = userLocalDatabase.getString(KEY_USERNAME, "");
         String password = userLocalDatabase.getString(KEY_PASSWORD, "");
         String gender = userLocalDatabase.getString(KEY_GENDER, "");
+        boolean firstTime = userLocalDatabase.getBoolean(KEY_FIRSTTIME, true);
 
-        return new NormalUser(name, username, password, age,gender);
+        return new NormalUser(name, username, password, age,gender,firstTime);
     }
 
     public void setUserStatus(boolean status) {
         editor.putBoolean(KEY_STATUS, status);
         editor.commit();
     }
+    public void setfirstTime(boolean status) {
+        editor.putBoolean(KEY_FIRSTTIME, status);
+        editor.commit();
+    }
     public boolean getUserStatus(){
         return userLocalDatabase.getBoolean(KEY_STATUS, false);
+    }
+    public boolean getfirstTime(){
+        return userLocalDatabase.getBoolean(KEY_FIRSTTIME, false);
     }
     public void RemoveUser() {
         editor.clear();

@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.myapplication.R;
+import com.example.myapplication.task.SortTaskList;
 import com.example.myapplication.task.Task;
 import com.example.myapplication.task.Tasks_Store;
 import com.example.myapplication.task.taskTypes.DelayedTask;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         eventsList.addAll(Today.TodTasks);
         eventsList.addAll(DelayedTask.DelayedTasks);
         eventsList.addAll(UpComing.UpComingTasks);
+        SortTaskList.sortByPriority(eventsList);
     }
 
     private void initWidgets()

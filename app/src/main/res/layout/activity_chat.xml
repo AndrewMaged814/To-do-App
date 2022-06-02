@@ -18,6 +18,7 @@
             android:background="@drawable/edittext_design"
             android:padding="8dp"
             android:hint="Message..."
+            android:textColor="@color/navy"
             android:textSize="16sp"
             android:layout_toStartOf="@id/sendButton"
             android:layout_alignParentBottom="true"
@@ -34,7 +35,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="16dp"
-            app:tint="@color/brick_red"
+            app:tint="@color/orange"
             android:id="@+id/sendButton"/>
 
     <ImageView
@@ -47,6 +48,6 @@
             android:layout_toEndOf="@id/messageBox"
             android:padding="8dp"
             android:src="@drawable/ic_baseline_image_24"
-            app:tint="@color/brick_red" />
+            app:tint="@color/orange" />
 
 </RelativeLayout>

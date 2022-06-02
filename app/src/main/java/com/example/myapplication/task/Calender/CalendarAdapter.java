@@ -1,7 +1,5 @@
 package com.example.myapplication.task.Calender;
 
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
-import com.example.myapplication.task.Task;
-import com.example.myapplication.task.Tasks_Store;
-import com.example.myapplication.task.taskTypes.UpComing;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static com.example.myapplication.task.Adapters.Task_RecyclerViewAdapter.taskModelArrayList;
-import static com.example.myapplication.task.taskTypes.UpComing.UpComingTasks;
+
 
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 {
@@ -62,7 +55,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         else
         {
         holder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
-        holder.dayOfMonth.setBackgroundResource(R.drawable.circlebackgroundorange);
+
         if (date.equals(CalendarUtils.selectedDate))
 
            // holder.parentView.setBackgroundColor(Color.LTGRAY);

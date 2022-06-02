@@ -11,9 +11,10 @@ public class NormalUser extends User{
         super(username, password);
     }
 
-    public NormalUser(String name, String username, String password, int age,String gender) {
-        super(name, username, password, age,gender);
+    public NormalUser(String name, String username, String password, int age, String gender, boolean firstTimeLogin) {
+        super(name, username, password, age, gender, firstTimeLogin);
     }
+
     public static boolean getStatus() {
         return status;
     }

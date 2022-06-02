@@ -1,10 +1,13 @@
 
 package com.example.myapplication.task.Activities;
 
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +15,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.myapplication.HomeActivity.Home;
+import com.example.myapplication.HomeActivity.Notification.NotifyGenerator;
 import com.example.myapplication.R;
 import com.example.myapplication.user.Personality.Energetic;
 import com.example.myapplication.user.Personality.Workaholic;
@@ -61,6 +66,7 @@ public class pomodoroTimer extends AppCompatActivity {
         lottieAnimationView = findViewById(R.id.lottieTimer);
         String TaskName = getIntent().getStringExtra("TaskNamePomodoro");
         tvTaskName.setText(TaskName);
+        MotivationalPopups();
 
 
         SharedPreferences mPrefs= getSharedPreferences("pre", 0);
@@ -70,7 +76,7 @@ public class pomodoroTimer extends AppCompatActivity {
            // obj =gson.fromJson(json, Energetic.class);
            //Energetic obj = new Energetic();
         if(json.contains("Energetic")) {
-            Personality obj = gson.fromJson(json, Personality.class);
+            Personality obj = gson.fromJson(json, Energetic.class);
             DeterminingPersonality(obj);
         }
 
@@ -109,50 +115,99 @@ public class pomodoroTimer extends AppCompatActivity {
 
 
     }
-//    public Personality getObject(){
-//        Gson gson = new Gson();
-//        String json = mPrefs.getString("MyObject", "");
-//        Personality obj = gson.fromJson(json, Personality.class);
-//        return obj ;
-//    }
+    private void MotivationalPopups() {
+        final Handler handler = new Handler();
+        Runnable runnable = new Runnable()
+        {
+            @Override
+            public void run() {
+                try
+                {
+                    String Title;
+                    String Message;
+                    NotifyGenerator MG= new NotifyGenerator();
+                    Title = MG.TGenerator(i);
+                    Message = MG.MGenerator(i);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(pomodoroTimer.this);
+
+                    builder.setCancelable(true);
+                    builder.setTitle(Title);
+                    builder.setMessage(Message);
+                    builder.setNegativeButton("Okay", new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            dialog.cancel();
+                        }
+                    });
+
+
+                    if(i<2)
+                        i++;
+                    else
+                        i=0;
+
+                    builder.show();
+                }
+                catch (Exception e)
+                {
+
+
+                }
+                finally
+                {
+                    handler.postDelayed(this,300000);
+
+
+                }
+            }
+        };
+
+        handler.post(runnable);
+    }
+
     public void DeterminingPersonality(Personality x)
     {
-//        if(x instanceof Workaholic)
-//        {
-////            START_TIME_IN_MILLIS =((LongBreak) x).noOfHours;
-////            Break_TIME_IN_MILLIS =((LongBreak) x).TimerDuration;
-//            Toast.makeText(pomodoroTimer.this, "longBreak", Toast.LENGTH_LONG).show();
-//        }
-//
-//        if(x instanceof Procrastinator)
-//        {
-////            START_TIME_IN_MILLIS =((ShortBreaks) x).noOfHours;
-////            Break_TIME_IN_MILLIS =((ShortBreaks) x).TimerDuration;
-//            Toast.makeText(pomodoroTimer.this, "ShortBreak", Toast.LENGTH_LONG).show();
-//        }
-//
-//        if(x instanceof Energetic)
-//        {
-//            Toast.makeText(pomodoroTimer.this, "Active", Toast.LENGTH_LONG).show();
-////            START_TIME_IN_MILLIS =((Active) x).noOfHours;
-////            Break_TIME_IN_MILLIS =((Active) x).TimerDuration;
-//
 
         if(x instanceof Energetic){
             START_TIME_IN_MILLIS = ((Energetic)x).NO_OF_MIN;
             Break_TIME_IN_MILLIS = ((Energetic)x).TIMER_DURATION;
+            int minutes = (int) ( START_TIME_IN_MILLIS / 1000) / 60;
+            int seconds = (int) ( START_TIME_IN_MILLIS / 1000) % 60;
+
+            String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+
+            mTextViewCountDown.setText(timeLeftFormatted);
+
             Toast.makeText(pomodoroTimer.this, "energetic", Toast.LENGTH_LONG).show();
         }
         else if(x instanceof Workaholic){
             Toast.makeText(pomodoroTimer.this, "workaholic", Toast.LENGTH_LONG).show();
             START_TIME_IN_MILLIS = ((Workaholic)x).NO_OF_MIN;
             Break_TIME_IN_MILLIS = ((Workaholic)x).TIMER_DURATION;
+            int minutes = (int) ( START_TIME_IN_MILLIS / 1000) / 60;
+            int seconds = (int) ( START_TIME_IN_MILLIS / 1000) % 60;
+
+            String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+
+            mTextViewCountDown.setText(timeLeftFormatted);
+
+
 
         }
         else if(x instanceof Procrastinator){
             Toast.makeText(pomodoroTimer.this, "Procrastinator", Toast.LENGTH_LONG).show();
             START_TIME_IN_MILLIS = x.NO_OF_MIN;
             Break_TIME_IN_MILLIS =x.TIMER_DURATION;
+            int minutes = (int) ( START_TIME_IN_MILLIS / 1000) / 60;
+            int seconds = (int) ( START_TIME_IN_MILLIS / 1000) % 60;
+
+            String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+
+            mTextViewCountDown.setText(timeLeftFormatted);
+
+
         }
     }
 

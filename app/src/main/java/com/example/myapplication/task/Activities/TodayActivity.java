@@ -30,8 +30,6 @@ public class TodayActivity extends AppCompatActivity implements RecyclerViewInte
 
     static ArrayList<Task> taskModelArrayList= Today.TodTasks;
     Task_RecyclerViewAdapter adapter;
-    Menu menu;
-    private final static String TAG = "TASK APP";
     LottieAnimationView lottieAnimationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
