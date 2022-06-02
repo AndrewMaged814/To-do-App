@@ -9,7 +9,7 @@
                                                    android:background="@color/orange">
 
     <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="419dp"
             android:layout_height="546dp"
 
 
@@ -30,7 +30,8 @@
                 android:backgroundTint="@color/orange" android:foreground="@drawable/b"
                 android:popupBackground="@drawable/spinner_options" android:layout_alignParentBottom="true"
                 android:layout_marginBottom="361dp" android:layout_alignParentEnd="true"
-                android:layout_marginEnd="51dp" android:layout_alignParentStart="true"/>
+                android:layout_marginEnd="48dp" android:layout_alignParentStart="true"
+                android:requiresFadingEdge="vertical" android:popupElevation="20dp"/>
         <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
@@ -42,9 +43,9 @@
                 android:textSize="20sp"
                 android:backgroundTint="#02FFFFFF" android:foreground="@drawable/b" android:textColor="@color/navy"
                 android:layout_alignParentBottom="true" android:layout_marginBottom="444dp"
-                android:layout_alignParentEnd="true" android:layout_marginEnd="60dp"
-                android:layout_alignParentStart="true" android:layout_marginStart="53dp"
-                android:layout_alignParentTop="true"/>
+                android:layout_alignParentEnd="true" android:layout_marginEnd="48dp"
+                android:layout_alignParentStart="true" android:layout_marginStart="54dp"
+                android:layout_alignParentTop="true" android:textAlignment="viewStart"/>
         <EditText
                 android:layout_width="280dp"
                 android:layout_height="59dp"
@@ -58,9 +59,10 @@
                 android:backgroundTint="#00595454"
                 android:focusable="false"
                 android:selectAllOnFocus="false" android:foreground="@drawable/b"
-                android:layout_alignParentEnd="true" android:layout_marginEnd="49dp"
-                android:layout_alignParentStart="true" android:layout_marginStart="56dp"
-                android:layout_alignParentBottom="true" android:layout_marginBottom="272dp"/>
+                android:layout_alignParentEnd="true" android:layout_marginEnd="48dp"
+                android:layout_alignParentStart="true" android:layout_marginStart="54dp"
+                android:layout_alignParentBottom="true" android:layout_marginBottom="272dp"
+                android:textColor="@color/navy"/>
         <Spinner
                 android:layout_width="288dp"
                 android:layout_height="63dp"
@@ -70,8 +72,8 @@
                 android:popupBackground="@drawable/spinner_options"
                 android:spinnerMode="dropdown" android:foreground="@drawable/b"
                 android:layout_alignParentBottom="true" android:layout_marginBottom="173dp"
-                android:layout_alignParentEnd="true" android:layout_marginEnd="50dp"
-                android:layout_alignParentStart="true" android:layout_marginStart="55dp"/>
+                android:layout_alignParentEnd="true" android:layout_marginEnd="48dp"
+                android:layout_alignParentStart="true" android:layout_marginStart="54dp" android:popupElevation="20dp"/>
         <Button
 
 
@@ -79,7 +81,7 @@
                 android:layout_width="155dp"
                 android:background="@drawable/button"
                 android:layout_height="67dp" android:id="@+id/button"
-                android:backgroundTint="@color/orange" android:textColor="#FFFFFF" android:textAlignment="center"
+                android:backgroundTint="@color/orange" android:textColor="@color/offwhite" android:textAlignment="center"
                 android:textSize="20sp"
                 android:layout_alignParentBottom="true" android:layout_marginBottom="75dp"
                 android:layout_alignParentEnd="true" android:layout_marginEnd="124dp"
@@ -90,7 +92,7 @@
             android:layout_width="401dp"
             android:layout_height="74dp" android:id="@+id/textView5"
             android:textAlignment="center" android:textStyle="bold" android:textSize="40sp"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/offwhite"
             app:layout_constraintBottom_toTopOf="@+id/relativeLayout" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_bias="0.1" android:layout_marginTop="52dp"

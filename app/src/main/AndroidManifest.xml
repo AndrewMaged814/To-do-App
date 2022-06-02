@@ -28,7 +28,7 @@
                 android:name=".user.Activity.AdminPanel"
                 android:exported="true"/>
         <activity
-                android:name=".chat.MessageAdapter"
+                android:name=".chat.messageAdapter"
                 android:exported="true"
                 tools:ignore="Instantiatable"/>
         <activity

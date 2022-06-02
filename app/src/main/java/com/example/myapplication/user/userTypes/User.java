@@ -1,10 +1,13 @@
 package com.example.myapplication.user.userTypes;
 
- abstract public class User {
+import com.example.myapplication.user.Personality.Personality;
+
+abstract public class User {
      private String name, username, password,gender;
      private boolean firstTimeLogin;
 
      private int age;
+
 
 
     public User() {
@@ -12,6 +15,7 @@ package com.example.myapplication.user.userTypes;
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+
 
     }
 

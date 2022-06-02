@@ -21,6 +21,7 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.myapplication.R;
 import com.example.myapplication.task.Tasks_Store;
+import com.example.myapplication.task.taskTypes.Today;
 import com.example.myapplication.user.UserLocalStore;
 import com.example.myapplication.user.ValideRegister;
 import com.example.myapplication.user.userTypes.NormalUser;
@@ -80,9 +81,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
             //validate each field that is taken as input
             if (ValideRegister(name, Username, password, String.valueOf(age),ConfirmedPassword)) {
                 //if it validates then register the user as a new user and store their details into the database
+                tasks_store.clearAllTasks();
+                Today.TodTasks = null;
                 User user = new NormalUser(name, Username, password, age,gender,true);
                 registerUser(user);
-                tasks_store.clearAllTasks();
+
 
 
             }

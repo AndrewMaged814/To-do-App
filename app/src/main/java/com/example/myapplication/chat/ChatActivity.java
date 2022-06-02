@@ -40,7 +40,7 @@ public class ChatActivity extends AppCompatActivity implements TextWatcher {
     private View sendButton, pickImage;
     private RecyclerView recyclerView;
     private int IMAGE_REQUEST_ID=1;
-    private MessageAdapter MessageAdapter;
+    private messageAdapter MessageAdapter;
 
 
     @Override
@@ -162,7 +162,7 @@ public class ChatActivity extends AppCompatActivity implements TextWatcher {
         pickImage = findViewById(R.id.pickImage);
         recyclerView = findViewById(R.id.recyclerView);
 
-        MessageAdapter = new MessageAdapter(getLayoutInflater());
+        MessageAdapter = new messageAdapter(getLayoutInflater());
         recyclerView.setAdapter(MessageAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

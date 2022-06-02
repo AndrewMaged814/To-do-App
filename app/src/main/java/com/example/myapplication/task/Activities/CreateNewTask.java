@@ -1,5 +1,6 @@
 package com.example.myapplication.task.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -24,11 +25,13 @@ import java.util.Locale;
 public class CreateNewTask extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Spinner spinnerCat;
     private Spinner spinnerPri;
-    private static final String[] paths = {"Task category", "Study", "Sport", "hobby", "other"};
-    private static final String[] p = {"Low", "Medium", "High"};
-    private static final int[] icons = {R.mipmap.ic_cold, R.mipmap.ic_medium, R.mipmap.ic_fire};
+    private static final String[] c = {"   Task category", "Study", "Sport", "hobby", "other"};
+    private static final String[] p = {"   Task Priority","Low", "Medium", "High"};
+    private static final int[] iconsP = {R.drawable.icon,R.mipmap.ic_cold, R.mipmap.ic_medium, R.mipmap.ic_fire};
+    private static final int[] iconsC = {R.drawable.icon,R.mipmap.ic_study,R.mipmap.ic_sport,R.mipmap.ic_hobby,R.mipmap.ic_other};
     private Button Add;
     private String cat;
+
     private int year, month, day;
     private EditText input;
     private String Priority;
@@ -39,31 +42,43 @@ public class CreateNewTask extends AppCompatActivity implements AdapterView.OnIt
     Tasks_Store sharedPreferences;
 
 
+    @SuppressLint("ResourceType")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_task);
-
-
-        //dropdown category menu
-        spinnerCat = findViewById(R.id.spinnerCat);
-        spinnerCat.setOnItemSelectedListener(this);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(CreateNewTask.this, android.R.layout.simple_spinner_item, paths);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCat.setAdapter(adapter);
         sharedPreferences = new Tasks_Store(this);
 
+        //dropdown category menu
+        List<RowItem> rowItemsC = new ArrayList<RowItem>();
+        for (int i = 0; i < c.length; i++) {
 
-        List<RowItem> rowItems = new ArrayList<RowItem>();
+            RowItem item = new RowItem(c[i], iconsC[i]);
+            rowItemsC.add(item);
+        }
+
+        spinnerCat = (Spinner) findViewById(R.id.spinnerCat);
+        CustomAdapter A_C = new CustomAdapter(CreateNewTask.this,
+                R.layout.spinner_with_icons, R.id.text, rowItemsC);
+        spinnerCat.setAdapter(A_C);
+        spinnerCat.setOnItemSelectedListener(this);
+
+        //  A_C.setDropDownViewResource(R.drawable.spinner_options);
+
+
+
+        List<RowItem> rowItemsP = new ArrayList<RowItem>();
         for (int i = 0; i < p.length; i++) {
 
-            RowItem item = new RowItem(p[i], icons[i]);
-            rowItems.add(item);
+            RowItem item = new RowItem(p[i], iconsP[i]);
+            rowItemsP.add(item);
         }
 
         spinnerPri = (Spinner) findViewById(R.id.spinnerPri);
-        CustomAdapter A = new CustomAdapter(CreateNewTask.this,
-                R.layout.spinner_with_icons, R.id.text, rowItems);
-        spinnerPri.setAdapter(A);
+        CustomAdapter A_P = new CustomAdapter(CreateNewTask.this,
+                R.layout.spinner_with_icons, R.id.text, rowItemsP);
+        spinnerPri.setAdapter(A_P);
+        // A_P.setDropDownViewResource(R.drawable.spinner_options);
+
         spinnerPri.setOnItemSelectedListener(this);
 
 
@@ -89,7 +104,7 @@ public class CreateNewTask extends AppCompatActivity implements AdapterView.OnIt
         D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePicker = new DatePickerDialog(CreateNewTask.this, style, date, myCal.get(Calendar.YEAR), myCal.get(Calendar.MONTH), myCal.get(Calendar.DAY_OF_MONTH));
+                DatePickerDialog datePicker = new DatePickerDialog(CreateNewTask.this,style,date,myCal.get(Calendar.YEAR), myCal.get(Calendar.MONTH), myCal.get(Calendar.DAY_OF_MONTH));
                 datePicker.show();
             }
         });
@@ -140,9 +155,9 @@ public class CreateNewTask extends AppCompatActivity implements AdapterView.OnIt
 
         if (spinnerCat.getSelectedItemPosition() == 0) {
             onNothingSelected(spinnerCat);
-        } else if (Name.equals("Name")) {
+        } else if (Name.equals("")) {
             Toast.makeText(getApplicationContext(), "please enter task name", Toast.LENGTH_LONG).show();
-        } else if (date.equals("PickDate")) {
+        } else if (date.equals("")) {
             Toast.makeText(getApplicationContext(), "please enter the date", Toast.LENGTH_LONG).show();
 
         } else {

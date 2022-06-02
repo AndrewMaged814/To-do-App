@@ -1,5 +1,6 @@
 package com.example.myapplication.task.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -27,9 +28,10 @@ import java.util.Locale;
 public class EditTask extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private Spinner spinnerCat;
     private Spinner spinnerPri;
-    private static final String[] paths = {"Task category","Study", "Sport", "hobby", "other"};
-    private static final String [] p={"Low","Medium","High"};
-    private static final int [] icons={R.mipmap.ic_cold,R.mipmap.ic_medium,R.mipmap.ic_fire};
+    private static final String[] c = {"   Task category", "Study", "Sport", "hobby", "other"};
+    private static final String[] p = {"   Task Priority","Low", "Medium", "High"};
+    private static final int[] iconsP = {R.drawable.icon,R.mipmap.ic_cold, R.mipmap.ic_medium, R.mipmap.ic_fire};
+    private static final int[] iconsC = {R.drawable.icon,R.mipmap.ic_study,R.mipmap.ic_sport,R.mipmap.ic_hobby,R.mipmap.ic_other};;
     private Button edit;
     private String cat ;
     private int year,month,day;
@@ -43,6 +45,7 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
     Tasks_Store sharedPreferences;
 
 
+    @SuppressLint("ResourceType")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_task);
@@ -54,26 +57,38 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
         OldName=intent.getStringExtra("TaskName");
 
         for (Task t : Today.TodTasks) {
-            if (t.Name.equals(OldName))
+            if (t.Name.equals(OldName)) {
                 Today.TodTasks.remove(t);
+                break;
+            }
         }
 
         //dropdown category menu
+        List<RowItem> rowItemsC = new ArrayList<RowItem>();
+        for (int i = 0; i < c.length; i++) {
+
+            RowItem item = new RowItem(c[i], iconsC[i]);
+            rowItemsC.add(item);
+        }
+
         spinnerCat = (Spinner) findViewById(R.id.spinnerCat);
+        CustomAdapter A_C = new CustomAdapter(EditTask.this,
+                R.layout.spinner_with_icons, R.id.text, rowItemsC);
+        spinnerCat.setAdapter(A_C);
         spinnerCat.setOnItemSelectedListener(this);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(EditTask.this, android.R.layout.simple_spinner_item , paths);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCat.setAdapter(adapter);
+
+
+
         sharedPreferences=new Tasks_Store(this);
-        for (int i=0; i<paths.length;i++) {
-            if (cat.equals(paths[i]))
+        for (int i=0; i<p.length;i++) {
+            if (cat.equals(p[i]))
                 spinnerCat.setSelection(i);
         }
 
         List<RowItem> rowItems=new ArrayList<RowItem>();
         for (int i = 0; i < p.length; i++) {
 
-            RowItem item = new RowItem(p[i],icons[i]);
+            RowItem item = new RowItem(p[i],iconsP[i]);
             rowItems.add(item);
         }
 
@@ -127,8 +142,6 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
             @Override
             public void onClick(View view) {
                 EDIT_Task(view);
-                finish();
-
             }
         });
 
@@ -169,10 +182,10 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
         if (spinnerCat.getSelectedItemPosition()==0) {
             onNothingSelected(spinnerCat);
         }
-        else if (Name.equals("Name")) {
+        else if (Name.equals("")) {
             Toast.makeText(getApplicationContext(), "please enter task name", Toast.LENGTH_LONG).show();
         }
-        else if (date.equals("PickDate")){
+        else if (date.equals("")){
             Toast.makeText(getApplicationContext(), "please enter the date", Toast.LENGTH_LONG).show();
 
         }

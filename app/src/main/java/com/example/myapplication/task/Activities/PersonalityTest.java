@@ -134,9 +134,8 @@ public class PersonalityTest extends AppCompatActivity {
         Transition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
                 startActivity(new Intent(PersonalityTest.this, Home.class));
-                SharedPreferences.Editor prefsEditor;
-                //Toast.makeText(MainActivity.this, "Pressed", Toast.LENGTH_SHORT).show();
 
                 if(Q1Option1.isChecked()) {
                     answer1= Q1Option1.getText().toString();
@@ -250,15 +249,6 @@ public class PersonalityTest extends AppCompatActivity {
 
             }
         });
-
-
-    }
-    private void showMainActivity() {
-        //store that the user has already toke the test so he won't take it again when login
-        SharedPreferences preferences = getSharedPreferences("userDetails",MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("firstStart",false);
-        editor.apply();
 
 
     }
