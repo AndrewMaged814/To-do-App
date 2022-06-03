@@ -17,6 +17,7 @@ import com.example.myapplication.*;
 import com.example.myapplication.HomeActivity.Home;
 import com.example.myapplication.task.Activities.PersonalityTest;
 import com.example.myapplication.task.Tasks_Store;
+import com.example.myapplication.task.taskTypes.Today;
 import com.example.myapplication.user.UserLocalStore;
 import com.example.myapplication.user.ValidatesLogin;
 import com.example.myapplication.user.userTypes.Admin;
@@ -100,10 +101,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
     }
 
     private void ShowPersonalityTest() {
-       // boolean firstStart = preferences.getBoolean("firststart", true);
         User user = userLocalStore.getLoggedInUser();
 
         if (user.isFirstTimeLogin() && userLocalStore.getfirstTime()) {
+            Tasks_Store sh =new Tasks_Store(this);
+            sh.clearAllTasks();
+            Today.TodTasks.clear();
+
             startActivity(new Intent(this, PersonalityTest.class));
 
 

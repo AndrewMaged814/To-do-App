@@ -4,7 +4,7 @@ public class Energetic extends Personality{
 
   public Energetic()
   {
-    NO_OF_MIN = 300000;
-    TIMER_DURATION = 3000;
+    NO_OF_MIN = 2700000;
+    TIMER_DURATION = 900000;
   }
 }

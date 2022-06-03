@@ -10,14 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.myapplication.HomeActivity.Home;
 import com.example.myapplication.R;
-import com.example.myapplication.user.Activity.Login;
 import com.example.myapplication.user.Personality.*;
 import com.example.myapplication.user.UserLocalStore;
 import com.example.myapplication.user.userTypes.User;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class PersonalityTest extends AppCompatActivity {
 
@@ -33,8 +31,6 @@ public class PersonalityTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personality_test2);
         userLocalStore = new UserLocalStore(PersonalityTest.this);
-        SharedPreferences mPrefs = getSharedPreferences("pre", 0);
-
         User user = userLocalStore.getLoggedInUser();
 
         if (user.isFirstTimeLogin()) {
@@ -197,54 +193,29 @@ public class PersonalityTest extends AppCompatActivity {
                     AnswersList.add(answer3);
                     procrastinatorCounter++;
                 }
-                //energetic
-
-//                if()
-//                {
-//                    Energetic UserPersonality = new Energetic();
-//                    UserPersonality.name = "Andrew";
-//                    SharedPreferences.Editor prefEditor = mPrefs.edit();
-//                    Gson gson = new Gson();
-//                    String json = gson.toJson(UserPersonality);
-//                    prefEditor.putString("MyObject",json);
-//                    prefEditor.apply();
-//
-//                }
 
                 if (energeticCounter > workaholicCounter && energeticCounter > procrastinatorCounter) {
                     //Here you determine second biggest, but you know that a is largest
-                    Personality UserPersonality = new Energetic();
-                    UserPersonality.setName("Energetic");
-                    SharedPreferences.Editor prefEditor = mPrefs.edit();
                     Gson gson = new Gson();
-                    String json = gson.toJson(UserPersonality);
-                    prefEditor.putString("Personality",json);
-                    prefEditor.apply();
+                    String json = gson.toJson(User.PersonalityType(1));
+                    userLocalStore.storePersonality(json);
+
                 }
 
                 else if (workaholicCounter > energeticCounter && workaholicCounter > procrastinatorCounter) {
                     //Here you determine second biggest, but you know that b is largest
-                    Personality UserPersonality = new Workaholic();
-                    UserPersonality.setName("Workaholic");
-                    SharedPreferences.Editor prefEditor = mPrefs.edit();
                     Gson gson = new Gson();
-                    String json = gson.toJson(UserPersonality);
-                    prefEditor.putString("Personality",json);
+                    String json = gson.toJson(User.PersonalityType(2));
+                    userLocalStore.storePersonality(json);
 
-                    prefEditor.apply();
                 }
 
                 else  {
                     //Here you determine second biggest, but you know that c is largest
                     //this is the default
-                    Personality UserPersonality = new Procrastinator();
-                    UserPersonality.setName("Procrastinator");
-                    SharedPreferences.Editor prefEditor = mPrefs.edit();
                     Gson gson = new Gson();
-                    String json = gson.toJson(UserPersonality);
-                    prefEditor.putString("Personality",json);
-
-                    prefEditor.apply();
+                    String json = gson.toJson(User.PersonalityType(3));
+                    userLocalStore.storePersonality(json);
                 }
 
             }

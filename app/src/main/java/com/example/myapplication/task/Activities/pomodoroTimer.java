@@ -22,11 +22,13 @@ import com.example.myapplication.user.Personality.Energetic;
 import com.example.myapplication.user.Personality.Workaholic;
 import com.example.myapplication.user.Personality.Personality;
 import com.example.myapplication.user.Personality.Procrastinator;
+import com.example.myapplication.user.UserLocalStore;
 import com.google.gson.Gson;
 
 import java.util.Locale;
 
 public class pomodoroTimer extends AppCompatActivity {
+    private UserLocalStore userLocalStore;
     private static long START_TIME_IN_MILLIS;
     private static long Break_TIME_IN_MILLIS;
     private int i=0;
@@ -67,14 +69,13 @@ public class pomodoroTimer extends AppCompatActivity {
         String TaskName = getIntent().getStringExtra("TaskNamePomodoro");
         tvTaskName.setText(TaskName);
         MotivationalPopups();
+        userLocalStore = new UserLocalStore(this);
 
 
-        SharedPreferences mPrefs= getSharedPreferences("pre", 0);
+
         Gson gson = new Gson();
-        String json = mPrefs.getString("Personality","");
+        String json = userLocalStore.getPersonality();
 
-           // obj =gson.fromJson(json, Energetic.class);
-           //Energetic obj = new Energetic();
         if(json.contains("Energetic")) {
             Personality obj = gson.fromJson(json, Energetic.class);
             DeterminingPersonality(obj);
@@ -173,12 +174,7 @@ public class pomodoroTimer extends AppCompatActivity {
         if(x instanceof Energetic){
             START_TIME_IN_MILLIS = ((Energetic)x).NO_OF_MIN;
             Break_TIME_IN_MILLIS = ((Energetic)x).TIMER_DURATION;
-            int minutes = (int) ( START_TIME_IN_MILLIS / 1000) / 60;
-            int seconds = (int) ( START_TIME_IN_MILLIS / 1000) % 60;
 
-            String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-
-            mTextViewCountDown.setText(timeLeftFormatted);
 
             Toast.makeText(pomodoroTimer.this, "energetic", Toast.LENGTH_LONG).show();
         }
@@ -186,13 +182,6 @@ public class pomodoroTimer extends AppCompatActivity {
             Toast.makeText(pomodoroTimer.this, "workaholic", Toast.LENGTH_LONG).show();
             START_TIME_IN_MILLIS = ((Workaholic)x).NO_OF_MIN;
             Break_TIME_IN_MILLIS = ((Workaholic)x).TIMER_DURATION;
-            int minutes = (int) ( START_TIME_IN_MILLIS / 1000) / 60;
-            int seconds = (int) ( START_TIME_IN_MILLIS / 1000) % 60;
-
-            String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-
-            mTextViewCountDown.setText(timeLeftFormatted);
-
 
 
         }
@@ -200,19 +189,11 @@ public class pomodoroTimer extends AppCompatActivity {
             Toast.makeText(pomodoroTimer.this, "Procrastinator", Toast.LENGTH_LONG).show();
             START_TIME_IN_MILLIS = x.NO_OF_MIN;
             Break_TIME_IN_MILLIS =x.TIMER_DURATION;
-            int minutes = (int) ( START_TIME_IN_MILLIS / 1000) / 60;
-            int seconds = (int) ( START_TIME_IN_MILLIS / 1000) % 60;
-
-            String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-
-            mTextViewCountDown.setText(timeLeftFormatted);
-
 
         }
     }
 
     private void startTimer() {
-        //mProgressBar.setProgress(i);
         mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1) {
 
             @Override

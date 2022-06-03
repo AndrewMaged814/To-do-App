@@ -27,8 +27,8 @@
 
     <TextView
             android:id="@+id/tvTaskDescription"
-            android:layout_width="322dp"
-            android:layout_height="163dp"
+            android:layout_width="318dp"
+            android:layout_height="255dp"
             android:layout_marginTop="36dp"
             android:background="@drawable/edit_text_background"
             android:fontFamily="@font/seg_ui_semibold"
@@ -40,7 +40,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.275" />
+            app:layout_constraintVertical_bias="0.275"/>
 
     <Button
             android:id="@+id/btEditTaskDescription"
@@ -53,10 +53,10 @@
             android:fontFamily="@font/segoe_ui_bold"
             app:layout_constraintBottom_toBottomOf="@+id/tvTaskDescription"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.962"
+            app:layout_constraintHorizontal_bias="0.967"
             app:layout_constraintStart_toStartOf="@+id/tvTaskDescription"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.631" tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
+            app:layout_constraintVertical_bias="0.507" tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
     <Button
             android:id="@+id/startTask"
             android:layout_width="129dp"
@@ -87,12 +87,11 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.861"
+            app:layout_constraintHorizontal_bias="0.86"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.536"
+            app:layout_constraintVertical_bias="0.6"
             app:tint="@color/offwhite"/>
-
     <EditText
             android:id="@+id/etTaskDescription"
             android:layout_width="322dp"

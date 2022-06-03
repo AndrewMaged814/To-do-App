@@ -4,17 +4,12 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 import com.example.myapplication.R;
 import com.example.myapplication.task.Activities.pomodoroTimer;
-import com.example.myapplication.task.taskTypes.DelayedTask;
-import com.example.myapplication.task.taskTypes.Today;
-import com.example.myapplication.task.taskTypes.UpComing;
-
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.ArrayList;
+import static com.example.myapplication.user.userTypes.User.eventsList;
 
-import static com.example.myapplication.task.Calender.MainActivity.eventsList;
 
 public class Task {
 
@@ -22,7 +17,7 @@ public class Task {
     public String Name;
     public String Category;
     protected int day, month, year;
-    protected double p;
+    protected int p;
     public String Priority;
     protected boolean done = false;
     public String date;
@@ -39,7 +34,6 @@ public class Task {
 
     protected static int numOfTasks;
     protected int taskId;
-    private static int taskIdIncreamter=0;
     public String notes;
     protected static final int image = R.drawable.ic_baseline_edit_24;
     pomodoroTimer pomodoro;
@@ -55,7 +49,8 @@ public class Task {
 
 
         for (Task event : eventsList) {
-            if (event.getDate().equals(formattedString)) events.add(event);
+            if (event.getDate().equals(formattedString))
+                events.add(event);
         }
 
         return events;
@@ -65,27 +60,28 @@ public class Task {
     public Task(String Name, String Category, String Priority, int day, int month, int year, String date) {
         this.Name = Name;
         this.Category = Category;
-        // this.p = p;
         this.day = day;
         this.month = month;
         this.year = year;
         this.date = date;
         this.Priority = Priority;
         numOfTasks++;
-        this.taskId = taskIdIncreamter++;
+        this.taskId = numOfTasks;
 
         this.TaskDetails = this.Name + "\n" + this.date + "\n" + this.Priority + "\n" + this.Category + "\n" + this.done + "\n" + this.taskId;
     }
 
-    public Task(String Name, String date, String Priority, String Category, String Done, String ID) {
+    public Task(String Name, String date, int p,String Priority, String Category, String Done, String ID) {
         this.Name = Name;
         this.Category = Category;
+        this.p = p;
         this.Priority = Priority;
         this.done = Boolean.parseBoolean(Done);
         this.date = date;
-        this.taskId = taskIdIncreamter++;
-        this.TaskDetails = Name + "\n" + date + "\n" + Priority + "\n" + Category + "\n" + done + "\n" + taskId;
+        this.taskId = numOfTasks++;
+        this.TaskDetails = Name + date  + Priority + Category;
     }
+
 
 
     public Task(Task T) {
@@ -107,7 +103,7 @@ public class Task {
     }
 
     public String getTaskDetails() {
-        return "Date:" + date + "\nCategory:" + Category + "\nPriority:" + Priority;
+        return TaskDetails;
     }
 
     public void setDone() {
@@ -142,24 +138,6 @@ public class Task {
         this.taskId = taskId;
     }
 
-//    public static void EditName(Task  t,String NewName,Tasks_Store sh){
-//        Task tmp= new Task(t);
-//        t.Name=NewName;
-//        sh.EditTask(tmp,t);
-//
-//    }
-//    public static void EditDate(Task  t,String NewDate,Tasks_Store sh){
-//        Task tmp= new Task(t);
-//        t.date=NewDate;
-//        sh.EditTask(tmp,t);
-//
-//    }
-//    public static void EditCat(Task  t,String NewCat,Tasks_Store sh){
-//        Task tmp= new Task(t);
-//        t.Category=NewCat;
-//        sh.EditTask(tmp,t);
-//
-//    }
 
     public void DeleteTask(List<Task> t, String Name, Tasks_Store sh) {
         for (Task T : t) {
@@ -190,6 +168,7 @@ public class Task {
 
     public String toString() {
 
-        return TaskDetails;
+        return this.Name+"\n" + this.date +"\n"+ this.Priority+"\n"+this.p+"\n" + this.Category+"\n"+this.done+"\n"+this.taskId;
     }
+
 }

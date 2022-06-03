@@ -80,8 +80,8 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
 
 
         sharedPreferences=new Tasks_Store(this);
-        for (int i=0; i<p.length;i++) {
-            if (cat.equals(p[i]))
+        for (int i=0; i<c.length;i++) {
+            if (cat.equals(c[i]))
                 spinnerCat.setSelection(i);
         }
 
@@ -220,4 +220,3 @@ public class EditTask extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
 }
-

@@ -61,20 +61,20 @@
         app:layout_constraintTop_toBottomOf="@+id/text_view_countdown" />
 
     <TextView
-        android:id="@+id/tvBreak"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:layout_marginEnd="109dp"
-        android:layout_marginBottom="48dp"
-        android:fontFamily="@font/seg_ui_semibold"
-        android:text="Break time"
-        android:textColor="@color/navy"
-        android:textSize="25sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/tvTimeSpent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            android:id="@+id/tvBreak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="108dp"
+            android:layout_marginEnd="109dp"
+            android:layout_marginBottom="48dp"
+            android:fontFamily="@font/seg_ui_semibold"
+            android:text="Task"
+            android:textColor="@color/navy"
+            android:textSize="25sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/tvTimeSpent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/tvTimeSpent"

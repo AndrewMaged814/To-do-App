@@ -88,12 +88,11 @@ public class ShowTaskDetails extends AppCompatActivity implements View.OnClickLi
 
 
                 if(taskModel!=null){
-                    tvTaskDescription.append("\n\t"+etDescription);
+                    tvTaskDescription.append("\n"+etDescription);
+                    taskModel.setTaskDetails(tvTaskDescription.getText().toString());
                     etTaskDescription.getText().clear();
                     etTaskDescription.setVisibility(View.INVISIBLE);
                     btEditTaskDescriptionDone.setVisibility(View.INVISIBLE);
-                    taskModel.notes= etTaskDescription.getText().toString();
-
                 }
 
                 break;

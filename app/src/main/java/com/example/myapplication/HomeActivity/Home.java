@@ -21,6 +21,7 @@ import com.example.myapplication.task.Activities.CreateNewTask;
 import com.example.myapplication.task.Activities.DelayedActivity;
 import com.example.myapplication.task.Activities.TodayActivity;
 import com.example.myapplication.task.Calender.MainActivity;
+import com.example.myapplication.task.taskTypes.Today;
 import com.example.myapplication.user.UserLocalStore;
 import com.example.myapplication.user.userTypes.User;
 
@@ -78,7 +79,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        finish();
+
+                        Today.TodTasks.clear();finish();
                     }
 
                 })

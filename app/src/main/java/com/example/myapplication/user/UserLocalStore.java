@@ -46,6 +46,13 @@ public class UserLocalStore {
         editor.putBoolean(KEY_FIRSTTIME,user.isFirstTimeLogin());
         editor.commit();
     }
+    public void storePersonality(String json){
+        editor.putString("Personality",json);
+        editor.commit();
+    }
+    public String getPersonality(){
+        return userLocalDatabase.getString("Personality", "");
+    }
 
     //gets data of the current user which is logged on
     public User getLoggedInUser() {

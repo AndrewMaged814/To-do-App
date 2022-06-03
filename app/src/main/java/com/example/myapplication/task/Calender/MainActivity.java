@@ -31,13 +31,15 @@ import java.util.List;
 
 import static com.example.myapplication.task.Calender.CalendarUtils.daysInMonthArray;
 import static com.example.myapplication.task.Calender.CalendarUtils.monthYearFormDate;
+import static com.example.myapplication.user.userTypes.User.eventsList;
+import static com.example.myapplication.user.userTypes.User.mergeArrayList;
 
 public class MainActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
 
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
-    public static List<Task> eventsList = new ArrayList<>();
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +48,12 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 
         initWidgets();
 
-
         mergeArrayList();
         CalendarUtils.selectedDate = LocalDate.now();
         setMonthView();
     }
 
-    private void mergeArrayList() {
-        eventsList.addAll(Today.TodTasks);
-        eventsList.addAll(DelayedTask.DelayedTasks);
-        eventsList.addAll(UpComing.UpComingTasks);
-        SortTaskList.sortByPriority(eventsList);
-    }
+
 
     private void initWidgets()
     {

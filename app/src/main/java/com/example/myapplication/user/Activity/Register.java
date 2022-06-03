@@ -81,8 +81,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
             //validate each field that is taken as input
             if (ValideRegister(name, Username, password, String.valueOf(age),ConfirmedPassword)) {
                 //if it validates then register the user as a new user and store their details into the database
-                tasks_store.clearAllTasks();
-                Today.TodTasks = null;
                 User user = new NormalUser(name, Username, password, age,gender,true);
                 registerUser(user);
 

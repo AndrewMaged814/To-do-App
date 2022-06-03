@@ -39,20 +39,22 @@ public class Tasks_Store {
         // String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
         for (String s:setT){
-            String strings[]=s.split("\n",6);
+            String strings[]=s.split("\n",7);
             String Name=strings[0];
             String Date=strings[1];
             String Priority =strings[2];
-            String Category= strings[3];
-            String Done =strings[4];
-            String ID =strings[5];
-            Task task =new Task(Name,Date,Priority,Category,Done,ID);
+            int P =Integer.parseInt(strings[3]);
+            String Category= strings[4];
+            String Done =strings[5];
+            String ID =strings[6];
+            Task task =new Task(Name,Date,P,Priority,Category,Done,ID);
             SortTaskList. CompareTaskDate(s,task);
             if(s.contains("true")){
                 deleteTask(s);
             }
 
         }
+
     }
 
     public  void deleteTask(String name) {

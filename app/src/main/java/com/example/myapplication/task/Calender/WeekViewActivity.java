@@ -33,6 +33,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
 
     private ListView eventListView;
 
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +99,8 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         super.onResume();
         setEventAdapter();
 
-
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setEventAdapter()
@@ -111,9 +112,12 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void newEventAction(View view)
     {
 
         startActivity(new Intent(this, CreateNewTask.class));
+
+
     }
 }
